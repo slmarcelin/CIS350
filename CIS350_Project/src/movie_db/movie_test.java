@@ -152,7 +152,7 @@ public class movie_test {
 		TmdbSearch tmdbSearch = tmdbApi.getSearch();
 		
 		// search for movies containing "civil war" in title
-		MovieResultsPage results = tmdbSearch.searchMovie("civil war", 0, "en", false, 0);
+		MovieResultsPage results = tmdbSearch.searchMovie("titanic", 0, "en", false, 0);
 		Iterator<MovieDb> iterator = results.iterator();
 		while (iterator.hasNext()) {
 			MovieDb movie = iterator.next();
