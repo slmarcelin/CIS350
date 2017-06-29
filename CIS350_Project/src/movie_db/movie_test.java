@@ -31,6 +31,9 @@ public class movie_test {
 		
 		// demo of account related features of TMDb API
 		demoAccountFeatures();
+		
+		MainFrame frm = new MainFrame();
+		frm.show();
 	}
 
 	private static SessionToken getSessionToken() {
