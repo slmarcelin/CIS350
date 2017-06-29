@@ -2,15 +2,15 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="lib" path="C:/Users/gentex.local/Downloads/themoviedbapi-1.5.jar"/>
-	<classpathentry kind="lib" path="C:/Users/gentex.local/Downloads/slf4j-simple-1.7.21.jar"/>
-	<classpathentry kind="lib" path="C:/Users/gentex.local/Downloads/slf4j-api-1.7.21.jar"/>
-	<classpathentry kind="lib" path="C:/Users/gentex.local/Downloads/jackson-databind-2.7.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/gentex.local/Downloads/jackson-core-2.7.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/gentex.local/Downloads/jackson-annotations-2.7.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/gentex.local/Downloads/guava-19.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/gentex.local/Downloads/commons-lang3-3.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/gentex.local/Downloads/commons-codec-1.10.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/commons-codec-1.10.jar"/>
 	<classpathentry kind="lib" path="jgoodies-forms-1.8.0.jar" sourcepath="jgoodies-forms-1.8.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/commons-lang3-3.4.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/guava-19.0.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/jackson-annotations-2.7.4.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/jackson-core-2.7.4.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/jackson-databind-2.7.4.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/slf4j-api-1.7.21.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/slf4j-simple-1.7.21.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/themoviedbapi-1.5.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
