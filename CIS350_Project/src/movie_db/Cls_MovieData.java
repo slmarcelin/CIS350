@@ -94,4 +94,17 @@ public class Cls_MovieData {
 		}
 		return eachMovie;
 	}
+	
+	public ArrayList<MovieDb> m_getNewMovies(){
+		TmdbMovies tmdbMovie = tmdbApi.getMovies();
+		ArrayList<MovieDb> eachMovie = new ArrayList<MovieDb>();
+		
+		MovieResultsPage results = tmdbMovie.getUpcoming("en", 0);
+		Iterator<MovieDb> iterator = results.iterator();
+		while (iterator.hasNext()) {
+			MovieDb movie = iterator.next();
+			eachMovie.add(movie);
+		}
+		return eachMovie;
+	}
 }

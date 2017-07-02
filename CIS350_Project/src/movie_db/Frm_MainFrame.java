@@ -139,6 +139,12 @@ public class Frm_MainFrame extends JFrame {
 		System.out.println();
 		System.out.println();
 		JButton actorsSearch = new JButton("Search");
+		actorsSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Frm_SearchActors searchActors = new Frm_SearchActors(actors_textField.getText());
+				searchActors.actorSearch(actors_textField.getText());
+			}
+		});
 		actorsSearch.setBackground(new Color(153, 204, 255));
 		actorsSearch.setBounds(228, 71, 79, 21);
 		Menu_Panel.add(actorsSearch);
@@ -163,6 +169,12 @@ public class Frm_MainFrame extends JFrame {
 		Menu_Panel.add(moviesLabel);
 		
 		JButton moviesSearch = new JButton("Search");
+		moviesSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Frm_SearchMovies searchMovies = new Frm_SearchMovies(movies_textField.getText());
+				searchMovies.movieSearch(movies_textField.getText());
+			}
+		});
 		moviesSearch.setBackground(new Color(153, 204, 255));
 		moviesSearch.setBounds(228, 105, 79, 20);
 		Menu_Panel.add(moviesSearch);
@@ -178,6 +190,12 @@ public class Frm_MainFrame extends JFrame {
 		Menu_Panel.add(showsLabel);
 		
 		JButton showsSearch = new JButton("Search");
+		showsSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Frm_SearchTVShows searchShows = new Frm_SearchTVShows(shows_textField.getText());
+				searchShows.tvSearch(shows_textField.getText());
+			}
+		});
 		showsSearch.setBackground(new Color(153, 204, 255));
 		showsSearch.setBounds(228, 136, 80, 21);
 		Menu_Panel.add(showsSearch);
