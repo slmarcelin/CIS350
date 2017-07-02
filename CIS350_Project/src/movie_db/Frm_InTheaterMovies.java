@@ -11,7 +11,7 @@ import info.movito.themoviedbapi.model.MovieDb;
 
 import javax.swing.JTextArea;
 
-public class Frm_Movies {
+public class Frm_InTheaterMovies {
 
 	private JFrame Movie_list;
 	private JTextField textField;
@@ -25,7 +25,7 @@ public class Frm_Movies {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Frm_Movies window = new Frm_Movies();
+					Frm_InTheaterMovies window = new Frm_InTheaterMovies();
 					window.Movie_list.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -37,7 +37,7 @@ public class Frm_Movies {
 	/**
 	 * Create the application.
 	 */
-	public Frm_Movies() {
+	public Frm_InTheaterMovies() {
 		initialize();
 	}
 

@@ -81,7 +81,7 @@ public class Frm_MainFrame extends JFrame {
 		Theaters_button.setBounds(3, 5, 97, 23);
 		Theaters_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Frm_Movies listMovies= new Frm_Movies();
+				Frm_InTheaterMovies listMovies= new Frm_InTheaterMovies();
 				listMovies.movieList();
 			}
 		});
