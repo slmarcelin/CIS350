@@ -75,18 +75,18 @@ public class MainFrame extends JFrame {
 		Menu_Panel.setBackground(new Color(0, 204, 204));
 		getContentPane().add(Menu_Panel, BorderLayout.CENTER);
 		
-		JButton movies_button = new JButton("Movies");
-		movies_button.setForeground(new Color(0, 0, 0));
-		movies_button.setBackground(new Color(153, 204, 255));
-		movies_button.setBounds(3, 5, 97, 23);
-		movies_button.addActionListener(new ActionListener() {
+		JButton Theaters_button = new JButton("In theaters");
+		Theaters_button.setForeground(new Color(0, 0, 0));
+		Theaters_button.setBackground(new Color(153, 204, 255));
+		Theaters_button.setBounds(3, 5, 97, 23);
+		Theaters_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Movies listMovies= new Movies();
 				listMovies.movieList();
 			}
 		});
 		Menu_Panel.setLayout(null);
-		Menu_Panel.add(movies_button);
+		Menu_Panel.add(Theaters_button);
 		
 		JButton newMovies_button = new JButton("New Movies");
 		newMovies_button.setBackground(new Color(153, 204, 255));
