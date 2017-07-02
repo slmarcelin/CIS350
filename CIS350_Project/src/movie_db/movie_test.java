@@ -21,19 +21,19 @@ public class movie_test {
 		sessionToken = getSessionToken();
 		
 		// demo of retrieving information on movies
-		demoMovies();
+		//demoMovies();
 		
 		// demo of retrieving information on a specific movie
-		demoMovieFeatures();
+		//demoMovieFeatures();
 		
 		// demo of searching features of TMDb API
-		demoSearchFeatures();
+		//demoSearchFeatures();
 		
 		// demo of account related features of TMDb API
-		demoAccountFeatures();
+		//demoAccountFeatures();
 		
 		MainFrame frm = new MainFrame();
-		frm.show();
+		frm.setVisible(true);
 	}
 
 	private static SessionToken getSessionToken() {
