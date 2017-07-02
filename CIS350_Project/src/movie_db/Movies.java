@@ -47,16 +47,12 @@ public class Movies {
 		Movie_list.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Movie_list.getContentPane().setLayout(null);
 		
-		JTextArea txtrHjhj = new JTextArea();
-		txtrHjhj.setColumns(100);
-		txtrHjhj.setText("This is an editable JTextArea. \n ");
-		txtrHjhj.setText("\nA text area is a \"plain\" text component, " +
-    "which means that although it can display text " +
-    "in any font, all of the text is in the same font.");
-		txtrHjhj.setTabSize(100);
-		txtrHjhj.setRows(100);
-		txtrHjhj.setBounds(10, 11, 420, 220);
-		Movie_list.getContentPane().add(txtrHjhj);
+		JTextArea results = new JTextArea();
+		results.setColumns(100);
+		results.setTabSize(100);
+		results.setRows(100);
+		results.setBounds(10, 11, 420, 220);
+		Movie_list.getContentPane().add(results);
 		
 	}
 }
