@@ -78,7 +78,7 @@ public class Frm_MainFrame extends JFrame {
 		JButton Theaters_button = new JButton("In theaters");
 		Theaters_button.setForeground(new Color(0, 0, 0));
 		Theaters_button.setBackground(new Color(153, 204, 255));
-		Theaters_button.setBounds(3, 5, 97, 23);
+		Theaters_button.setBounds(8, 5, 97, 23);
 		Theaters_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Frm_InTheaterMovies listMovies= new Frm_InTheaterMovies();
@@ -90,7 +90,7 @@ public class Frm_MainFrame extends JFrame {
 		
 		JButton newMovies_button = new JButton("New Movies");
 		newMovies_button.setBackground(new Color(153, 204, 255));
-		newMovies_button.setBounds(103, 5, 110, 23);
+		newMovies_button.setBounds(105, 5, 110, 23);
 		newMovies_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Frm_NewMovies newMovie= new Frm_NewMovies();
@@ -101,7 +101,7 @@ public class Frm_MainFrame extends JFrame {
 		
 		JButton btnPopularMovies = new JButton("Popular Movies");
 		btnPopularMovies.setBackground(new Color(153, 204, 255));
-		btnPopularMovies.setBounds(218, 5, 121, 23);
+		btnPopularMovies.setBounds(215, 5, 121, 23);
 		Menu_Panel.add(btnPopularMovies);
 		btnPopularMovies.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -115,24 +115,24 @@ public class Frm_MainFrame extends JFrame {
 		btnTopRated.setBounds(281, 33, 110, 23);
 		Menu_Panel.add(btnTopRated);
 		
-		JButton tvShows_button = new JButton("TV Shows");
+		JButton tvShows_button = new JButton("On Air");
 		tvShows_button.setBackground(new Color(153, 204, 255));
 		tvShows_button.setBounds(63, 33, 97, 23);
 		Menu_Panel.add(tvShows_button);
 		
-		JButton newTvShows_button = new JButton("New TV Shows");
+		JButton newTvShows_button = new JButton("Pop. TV Shows");
 		newTvShows_button.setBackground(new Color(153, 204, 255));
 		newTvShows_button.setBounds(160, 33, 121, 23);
 		Menu_Panel.add(newTvShows_button);
 		
 		JButton btnGenres = new JButton("Genres");
 		btnGenres.setBackground(new Color(153, 204, 255));
-		btnGenres.setBounds(345, 5, 89, 23);
+		btnGenres.setBounds(336, 5, 89, 23);
 		Menu_Panel.add(btnGenres);
 		btnGenres.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Frm_Genres genreList= new Frm_Genres();
-				genreList.genreWindow();
+				Frm_GenreMovies genreList= new Frm_GenreMovies();
+				genreList.movieGenres();
 			}
 		});
 		

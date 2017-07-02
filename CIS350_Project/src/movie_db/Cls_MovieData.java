@@ -6,13 +6,17 @@ import java.util.List;
 
 import info.movito.themoviedbapi.TmdbApi;
 import info.movito.themoviedbapi.TmdbAuthentication;
+import info.movito.themoviedbapi.TmdbGenre;
 import info.movito.themoviedbapi.TmdbMovies;
 import info.movito.themoviedbapi.TmdbPeople.PersonResultsPage;
 import info.movito.themoviedbapi.TmdbKeywords;
 import info.movito.themoviedbapi.TmdbLists;
 import info.movito.themoviedbapi.TmdbSearch;
+import info.movito.themoviedbapi.TmdbTV;
 import info.movito.themoviedbapi.TvResultsPage;
+import info.movito.themoviedbapi.model.Genre;
 import info.movito.themoviedbapi.model.MovieDb;
+import info.movito.themoviedbapi.model.config.Timezone;
 import info.movito.themoviedbapi.model.config.TokenSession;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.core.SessionToken;
@@ -106,5 +110,75 @@ public class Cls_MovieData {
 			eachMovie.add(movie);
 		}
 		return eachMovie;
+	}
+	
+	public ArrayList<MovieDb> m_getPopularMovies(){
+		TmdbMovies tmdbMovie = tmdbApi.getMovies();
+		ArrayList<MovieDb> eachMovie = new ArrayList<MovieDb>();
+		
+		MovieResultsPage results = tmdbMovie.getPopularMovies("en", 0);
+		Iterator<MovieDb> iterator = results.iterator();
+		while (iterator.hasNext()) {
+			MovieDb movie = iterator.next();
+			eachMovie.add(movie);
+		}
+		return eachMovie;
+	}
+	
+	public ArrayList<Genre> m_getGenres(){
+		TmdbGenre tmdbGenre = tmdbApi.getGenre();
+		return (ArrayList<Genre>)tmdbGenre.getGenreList("en");
+	}
+	
+	public ArrayList<MovieDb> m_getMoviesByGenre(int int_GenreID){
+		TmdbGenre tmdbGenre = tmdbApi.getGenre();
+		ArrayList<MovieDb> eachMovie = new ArrayList<MovieDb>();
+		
+		MovieResultsPage results = tmdbGenre.getGenreMovies(int_GenreID, "en", 0, true);
+		Iterator<MovieDb> iterator = results.iterator();
+		while (iterator.hasNext()) {
+			MovieDb movie = iterator.next();
+			eachMovie.add(movie);
+		}
+		return eachMovie;
+	}
+	
+	public ArrayList<TvSeries> m_getTvShowsOnAir(){
+		TmdbTV tmdbTv = tmdbApi.getTvSeries();
+		ArrayList<TvSeries> eachSeries = new ArrayList<TvSeries>();
+		
+		TvResultsPage results = tmdbTv.getOnTheAir("en", 0);
+		Iterator<TvSeries> iterator = results.iterator();
+		while (iterator.hasNext()) {
+			TvSeries tv = iterator.next();
+			eachSeries.add(tv);
+		}
+		return eachSeries;
+	}
+	
+	public ArrayList<TvSeries> m_getTvShowsPopular(){
+		TmdbTV tmdbTv = tmdbApi.getTvSeries();
+		ArrayList<TvSeries> eachSeries = new ArrayList<TvSeries>();
+		
+		TvResultsPage results = tmdbTv.getPopular("en", 0);
+		Iterator<TvSeries> iterator = results.iterator();
+		while (iterator.hasNext()) {
+			TvSeries tv = iterator.next();
+			eachSeries.add(tv);
+		}
+		return eachSeries;
+	}
+	
+	public ArrayList<TvSeries> m_getTvShowsTopRated(){
+		TmdbTV tmdbTv = tmdbApi.getTvSeries();
+		ArrayList<TvSeries> eachSeries = new ArrayList<TvSeries>();
+		
+		TvResultsPage results = tmdbTv.getPopular("en", 0);
+		Iterator<TvSeries> iterator = results.iterator();
+		while (iterator.hasNext()) {
+			TvSeries tv = iterator.next();
+			eachSeries.add(tv);
+		}
+		return eachSeries;
 	}
 }
