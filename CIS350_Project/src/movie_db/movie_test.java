@@ -32,7 +32,7 @@ public class movie_test {
 		// demo of account related features of TMDb API
 		//demoAccountFeatures();
 		
-		MainFrame frm = new MainFrame();
+		Frm_MainFrame frm = new Frm_MainFrame();
 		frm.setVisible(true);
 	}
 

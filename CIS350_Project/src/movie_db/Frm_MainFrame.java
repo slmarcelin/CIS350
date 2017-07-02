@@ -29,7 +29,7 @@ import java.awt.Color;
 import java.awt.Panel;
 import java.awt.Dialog.ModalExclusionType;
 
-public class MainFrame extends JFrame {
+public class Frm_MainFrame extends JFrame {
 	//private final Action action = new SwingAction();
 	//private final Action action_1 = new SwingAction_1();
 	private JTextField actors_textField;
@@ -43,7 +43,7 @@ public class MainFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainFrame frame = new MainFrame();
+					Frm_MainFrame frame = new Frm_MainFrame();
 					frame.setVisible(true);
 					frame.setResizable(false);
 				} catch (Exception e) {
@@ -56,7 +56,7 @@ public class MainFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MainFrame() {
+	public Frm_MainFrame() {
 		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
 		setBackground(new Color(153, 204, 255));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -81,7 +81,7 @@ public class MainFrame extends JFrame {
 		Theaters_button.setBounds(3, 5, 97, 23);
 		Theaters_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Movies listMovies= new Movies();
+				Frm_Movies listMovies= new Frm_Movies();
 				listMovies.movieList();
 			}
 		});
@@ -93,7 +93,7 @@ public class MainFrame extends JFrame {
 		newMovies_button.setBounds(103, 5, 110, 23);
 		newMovies_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new_Movies newMovie= new new_Movies();
+				Frm_NewMovies newMovie= new Frm_NewMovies();
 				newMovie.movies_new();
 			}
 		});
@@ -105,7 +105,7 @@ public class MainFrame extends JFrame {
 		Menu_Panel.add(btnPopularMovies);
 		btnPopularMovies.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				popular_Movies popularMovie= new popular_Movies();
+				Frm_PopularMovies popularMovie= new Frm_PopularMovies();
 				popularMovie.popular();
 			}
 		});
@@ -131,7 +131,7 @@ public class MainFrame extends JFrame {
 		Menu_Panel.add(btnGenres);
 		btnGenres.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Genres genreList= new Genres();
+				Frm_Genres genreList= new Frm_Genres();
 				genreList.genreWindow();
 			}
 		});

@@ -12,7 +12,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
 
-public class Genres {
+public class Frm_Genres {
 
 	private JFrame Genre_frame;
 
@@ -23,7 +23,7 @@ public class Genres {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Genres window = new Genres();
+					Frm_Genres window = new Frm_Genres();
 					window.Genre_frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,7 +35,7 @@ public class Genres {
 	/**
 	 * Create the application.
 	 */
-	public Genres() {
+	public Frm_Genres() {
 		initialize();
 	}
 

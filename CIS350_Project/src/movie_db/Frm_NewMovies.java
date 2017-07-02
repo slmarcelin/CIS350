@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JTable;
 import java.awt.Color;
 
-public class new_Movies {
+public class Frm_NewMovies {
 
 	private JFrame frame3;
 
@@ -17,7 +17,7 @@ public class new_Movies {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					new_Movies window = new new_Movies();
+					Frm_NewMovies window = new Frm_NewMovies();
 					window.frame3.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -29,7 +29,7 @@ public class new_Movies {
 	/**
 	 * Create the application.
 	 */
-	public new_Movies() {
+	public Frm_NewMovies() {
 		initialize();
 	}
 

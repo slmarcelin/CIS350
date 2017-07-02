@@ -5,7 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import java.awt.Color;
 
-public class popular_Movies {
+public class Frm_PopularMovies {
 
 	private JFrame Popular;
 
@@ -16,7 +16,7 @@ public class popular_Movies {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					popular_Movies window = new popular_Movies();
+					Frm_PopularMovies window = new Frm_PopularMovies();
 					window.Popular.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -28,7 +28,7 @@ public class popular_Movies {
 	/**
 	 * Create the application.
 	 */
-	public popular_Movies() {
+	public Frm_PopularMovies() {
 		initialize();
 	}
 
