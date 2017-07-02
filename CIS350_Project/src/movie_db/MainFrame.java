@@ -27,13 +27,14 @@ import java.awt.Font;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Panel;
+import java.awt.Dialog.ModalExclusionType;
 
 public class MainFrame extends JFrame {
 	//private final Action action = new SwingAction();
 	//private final Action action_1 = new SwingAction_1();
 	private JTextField actors_textField;
 	private JTextField movies_textField;
-	private JTextField genres_textField;
+	private JTextField shows_textField;
 
 	/**
 	 * Launch the application.
@@ -56,6 +57,8 @@ public class MainFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public MainFrame() {
+		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+		setBackground(new Color(153, 204, 255));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		
@@ -63,14 +66,19 @@ public class MainFrame extends JFrame {
 		setJMenuBar(menuBar);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("                                     Menu");
+		mntmNewMenuItem_1.setForeground(new Color(0, 0, 0));
+		mntmNewMenuItem_1.setBackground(new Color(0, 204, 204));
 		mntmNewMenuItem_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 21));
 		menuBar.add(mntmNewMenuItem_1);
 		
 		JPanel Menu_Panel = new JPanel();
+		Menu_Panel.setBackground(new Color(0, 204, 204));
 		getContentPane().add(Menu_Panel, BorderLayout.CENTER);
 		
 		JButton movies_button = new JButton("Movies");
-		movies_button.setBounds(3, 5, 79, 23);
+		movies_button.setForeground(new Color(0, 0, 0));
+		movies_button.setBackground(new Color(153, 204, 255));
+		movies_button.setBounds(3, 5, 97, 23);
 		movies_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Movies listMovies= new Movies();
@@ -81,7 +89,8 @@ public class MainFrame extends JFrame {
 		Menu_Panel.add(movies_button);
 		
 		JButton newMovies_button = new JButton("New Movies");
-		newMovies_button.setBounds(92, 5, 89, 23);
+		newMovies_button.setBackground(new Color(153, 204, 255));
+		newMovies_button.setBounds(103, 5, 110, 23);
 		newMovies_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new_Movies newMovie= new new_Movies();
@@ -91,25 +100,47 @@ public class MainFrame extends JFrame {
 		Menu_Panel.add(newMovies_button);
 		
 		JButton btnPopularMovies = new JButton("Popular Movies");
-		btnPopularMovies.setBounds(191, 5, 105, 23);
+		btnPopularMovies.setBackground(new Color(153, 204, 255));
+		btnPopularMovies.setBounds(218, 5, 121, 23);
 		Menu_Panel.add(btnPopularMovies);
+		btnPopularMovies.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				popular_Movies popularMovie= new popular_Movies();
+				popularMovie.popular();
+			}
+		});
 		
 		JButton btnTopRated = new JButton("Top rated ");
-		btnTopRated.setBounds(92, 33, 89, 23);
+		btnTopRated.setBackground(new Color(153, 204, 255));
+		btnTopRated.setBounds(281, 33, 110, 23);
 		Menu_Panel.add(btnTopRated);
 		
 		JButton tvShows_button = new JButton("TV Shows");
-		tvShows_button.setBounds(3, 33, 79, 23);
+		tvShows_button.setBackground(new Color(153, 204, 255));
+		tvShows_button.setBounds(63, 33, 97, 23);
 		Menu_Panel.add(tvShows_button);
 		
 		JButton newTvShows_button = new JButton("New TV Shows");
-		newTvShows_button.setBounds(191, 33, 103, 23);
+		newTvShows_button.setBackground(new Color(153, 204, 255));
+		newTvShows_button.setBounds(160, 33, 121, 23);
 		Menu_Panel.add(newTvShows_button);
+		
+		JButton btnGenres = new JButton("Genres");
+		btnGenres.setBackground(new Color(153, 204, 255));
+		btnGenres.setBounds(345, 5, 89, 23);
+		Menu_Panel.add(btnGenres);
+		btnGenres.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Genres genreList= new Genres();
+				genreList.genreWindow();
+			}
+		});
 		
 		System.out.println();
 		System.out.println();
 		JButton actorsSearch = new JButton("Search");
-		actorsSearch.setBounds(239, 70, 79, 21);
+		actorsSearch.setBackground(new Color(153, 204, 255));
+		actorsSearch.setBounds(228, 71, 79, 21);
 		Menu_Panel.add(actorsSearch);
 		actors_textField = new JTextField();
 		actors_textField.setBounds(63, 71, 166, 20);
@@ -117,8 +148,8 @@ public class MainFrame extends JFrame {
 		actors_textField.setColumns(20);
 		
 		JLabel actorsLabel = new JLabel("Actors");
-		actorsLabel.setBounds(13, 72, 40, 17);
-		actorsLabel.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		actorsLabel.setBounds(3, 72, 50, 21);
+		actorsLabel.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		Menu_Panel.add(actorsLabel);
 		
 		movies_textField = new JTextField();
@@ -127,31 +158,34 @@ public class MainFrame extends JFrame {
 		movies_textField.setColumns(20);
 		
 		JLabel moviesLabel = new JLabel("Movies");
-		moviesLabel.setBounds(10, 103, 43, 23);
-		moviesLabel.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		moviesLabel.setBounds(3, 103, 50, 22);
+		moviesLabel.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		Menu_Panel.add(moviesLabel);
 		
 		JButton moviesSearch = new JButton("Search");
-		moviesSearch.setBounds(239, 104, 79, 23);
+		moviesSearch.setBackground(new Color(153, 204, 255));
+		moviesSearch.setBounds(228, 105, 79, 20);
 		Menu_Panel.add(moviesSearch);
 		
-		genres_textField = new JTextField();
-		genres_textField.setBounds(63, 138, 166, 20);
-		Menu_Panel.add(genres_textField);
-		genres_textField.setColumns(20);
+		shows_textField = new JTextField();
+		shows_textField.setBounds(63, 138, 166, 20);
+		Menu_Panel.add(shows_textField);
+		shows_textField.setColumns(20);
 		
-		JLabel genresLabel = new JLabel("Genres");
-		genresLabel.setBounds(9, 137, 44, 17);
-		genresLabel.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		Menu_Panel.add(genresLabel);
+		JLabel showsLabel = new JLabel("Shows");
+		showsLabel.setBounds(3, 139, 44, 17);
+		showsLabel.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Menu_Panel.add(showsLabel);
 		
-		JButton genresSearch = new JButton("Search");
-		genresSearch.setBounds(239, 135, 79, 23);
-		Menu_Panel.add(genresSearch);
+		JButton showsSearch = new JButton("Search");
+		showsSearch.setBackground(new Color(153, 204, 255));
+		showsSearch.setBounds(228, 136, 80, 21);
+		Menu_Panel.add(showsSearch);
 		
 		//this will display an image when user hovers over a choice
 		Panel panel = new Panel();
-		panel.setBounds(332, 33, 92, 95);
+		panel.setBounds(332, 63, 92, 95);
 		Menu_Panel.add(panel);
+		
 	}
 }
