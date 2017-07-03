@@ -1,31 +1,29 @@
 package movie_db;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.JTextArea;
 
 import info.movito.themoviedbapi.model.MovieDb;
 
-import java.awt.Color;
+public class Frm_OnAir {
 
-public class Frm_NewMovies {
-
-	private JFrame frame3;
-	private Cls_MovieData new_movies;
+	private JFrame frame4;
+	private Cls_MovieData onAir;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void movies_new() {
+	public static void onAirShows() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Frm_NewMovies window = new Frm_NewMovies();
-					window.frame3.setLocationRelativeTo(null);
-					window.frame3.setVisible(true);
+					Frm_OnAir window = new Frm_OnAir();
+					window.frame4.setVisible(true);
+					window.frame4.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -36,7 +34,7 @@ public class Frm_NewMovies {
 	/**
 	 * Create the application.
 	 */
-	public Frm_NewMovies() {
+	public Frm_OnAir() {
 		initialize();
 	}
 
@@ -44,25 +42,27 @@ public class Frm_NewMovies {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame3 = new JFrame();
-		frame3.getContentPane().setBackground(new Color(250, 235, 215));
-		frame3.setTitle("New Movies");
-		frame3.setBounds(100, 100, 450, 300);
-		frame3.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame3.getContentPane().setLayout(null);
+		frame4 = new JFrame();
+		frame4.getContentPane().setBackground(new Color(250, 235, 215));
+		frame4.setTitle("On Air");
+		frame4.setBounds(100, 100, 450, 300);
+		frame4.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame4.getContentPane().setLayout(null);
 		
-		new_movies = new Cls_MovieData();
+		onAir = new Cls_MovieData();
 		String dataFormat = "";
 		
-		for(MovieDb md : new_movies.m_getNewMovies()) {
+		/*
+		for(TvSeries md : onAir.m_getTvShowsOnAir()) {
 			dataFormat += " Movie title: " + md.getTitle() + "\n Released date: ";
 			dataFormat += md.getReleaseDate() + "\n Description: ";
 			dataFormat += md.getOverview() + "\n\n";
 		}
+		*/
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 11, 410, 220);
-		frame3.getContentPane().add(scrollPane);
+		frame4.getContentPane().add(scrollPane);
 		
 		JTextArea results = new JTextArea();
 		scrollPane.setViewportView(results);
@@ -72,4 +72,5 @@ public class Frm_NewMovies {
 		
 		results.setText(dataFormat);
 	}
+
 }

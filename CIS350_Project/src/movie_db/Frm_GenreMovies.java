@@ -70,8 +70,8 @@ public class Frm_GenreMovies {
 				Genre temp = (Genre)arg0.getItem();
 				
 				for(MovieDb md : data.m_getMoviesByGenre(temp.getId())) {
-					dataFormat += md.getTitle() + "\n   ";
-					dataFormat += md.getReleaseDate() + "\n   ";
+					dataFormat += "Movie title: "+ md.getTitle() + "\n Released date: ";
+					dataFormat += md.getReleaseDate() + "\n Description: ";
 					dataFormat += md.getOverview() + "\n\n";
 				}
 				
@@ -92,8 +92,8 @@ public class Frm_GenreMovies {
 		Genre temp = (Genre)cmb_GenreComboBox.getSelectedItem();
 		
 		for(MovieDb md : data.m_getMoviesByGenre(temp.getId())) {
-			dataFormat += md.getTitle() + "\n   ";
-			dataFormat += md.getReleaseDate() + "\n   ";
+			dataFormat += "Movie title: "+ md.getTitle() + "\n Released date: ";
+			dataFormat += md.getReleaseDate() + "\n Description: ";
 			dataFormat += md.getOverview() + "\n\n";
 		}
 		

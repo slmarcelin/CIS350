@@ -49,7 +49,7 @@ public class Frm_InTheaterMovies {
 	private void initialize() {
 		Movie_list = new JFrame();
 		Movie_list.setTitle("Movie List");
-		Movie_list.getContentPane().setBackground(new Color(250, 235, 215));
+		Movie_list.getContentPane().setBackground(new Color(0, 204, 204));
 		Movie_list.setBounds(100, 100, 450, 300);
 		Movie_list.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		Movie_list.getContentPane().setLayout(null);
@@ -58,8 +58,8 @@ public class Frm_InTheaterMovies {
 		String dataFormat = "";
 		
 		for(MovieDb md : data.m_getInTheaterMovies()) {
-			dataFormat += md.getTitle() + "\n   ";
-			dataFormat += md.getReleaseDate() + "\n   ";
+			dataFormat += " Movie title: " + md.getTitle() + "\n Released date: ";
+			dataFormat += md.getReleaseDate() + "\n Description: ";
 			dataFormat += md.getOverview() + "\n\n";
 		}
 		
