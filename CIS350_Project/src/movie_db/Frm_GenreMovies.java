@@ -100,7 +100,7 @@ public class Frm_GenreMovies {
 			dataFormat += md.getOverview() + "\n\n";
 		}
 		
-		movie_Genre.getContentPane().add(cmb_GenreComboBox, BorderLayout.SOUTH);
+		movie_Genre.getContentPane().add(cmb_GenreComboBox, BorderLayout.NORTH);
 		
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 11, 410, 198);
