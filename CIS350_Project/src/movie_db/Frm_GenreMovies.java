@@ -3,6 +3,8 @@ package movie_db;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Window.Type;
 import javax.swing.JTextField;
@@ -58,7 +60,7 @@ public class Frm_GenreMovies {
 		movie_Genre.getContentPane().setBackground(new Color(250, 235, 215));
 		movie_Genre.setBounds(100, 100, 450, 300);
 		movie_Genre.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		movie_Genre.getContentPane().setLayout(null);
+		movie_Genre.getContentPane().setLayout(new BorderLayout());
 		
 		data = new Cls_MovieData();
 		String dataFormat = "";
@@ -70,8 +72,8 @@ public class Frm_GenreMovies {
 				Genre temp = (Genre)arg0.getItem();
 				
 				for(MovieDb md : data.m_getMoviesByGenre(temp.getId())) {
-					dataFormat += "Movie title: "+ md.getTitle() + "\n Released date: ";
-					dataFormat += md.getReleaseDate() + "\n Description: ";
+					dataFormat += "Movie Title: "+ md.getTitle() + "\nReleased Date: ";
+					dataFormat += md.getReleaseDate() + "\nDescription: ";
 					dataFormat += md.getOverview() + "\n\n";
 				}
 				
@@ -81,9 +83,10 @@ public class Frm_GenreMovies {
 				}
 				catch(Exception e)
 				{ return; }
+		
 			}
 		});
-		cmb_GenreComboBox.setBounds(10, 220, 410, 22);
+		cmb_GenreComboBox.setBounds(10, 222, 410, 22);
 		
 		for(Genre g : data.m_getGenres()) {
 			cmb_GenreComboBox.addItem(g);
@@ -92,18 +95,20 @@ public class Frm_GenreMovies {
 		Genre temp = (Genre)cmb_GenreComboBox.getSelectedItem();
 		
 		for(MovieDb md : data.m_getMoviesByGenre(temp.getId())) {
-			dataFormat += "Movie title: "+ md.getTitle() + "\n Released date: ";
-			dataFormat += md.getReleaseDate() + "\n Description: ";
+			dataFormat += "Movie Title: "+ md.getTitle() + "\nReleased Date: ";
+			dataFormat += md.getReleaseDate() + "\nDescription: ";
 			dataFormat += md.getOverview() + "\n\n";
 		}
 		
-		movie_Genre.getContentPane().add(cmb_GenreComboBox);
+		movie_Genre.getContentPane().add(cmb_GenreComboBox, BorderLayout.SOUTH);
 		
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 11, 410, 198);
-		movie_Genre.getContentPane().add(scrollPane);
+		movie_Genre.getContentPane().add(scrollPane, BorderLayout.CENTER);
 		
 		results = new JTextArea();
+		results.setWrapStyleWord(true);
+		results.setLineWrap(true);
 		scrollPane.setViewportView(results);
 		results.setColumns(100);
 		results.setTabSize(100);
