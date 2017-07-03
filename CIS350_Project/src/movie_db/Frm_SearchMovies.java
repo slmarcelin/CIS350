@@ -27,6 +27,7 @@ public class Frm_SearchMovies {
 			public void run() {
 				try {
 					Frm_SearchMovies window = new Frm_SearchMovies(str_SearchValue);
+					window.movies_search.setLocationRelativeTo(null);
 					window.movies_search.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

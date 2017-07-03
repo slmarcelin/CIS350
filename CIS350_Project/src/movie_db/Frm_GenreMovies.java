@@ -31,6 +31,7 @@ public class Frm_GenreMovies {
 			public void run() {
 				try {
 					Frm_GenreMovies window = new Frm_GenreMovies();
+					window.movie_Genre.setLocationRelativeTo(null);
 					window.movie_Genre.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -54,7 +55,7 @@ public class Frm_GenreMovies {
 		movie_Genre.setTitle("Movie List");
 		movie_Genre.getContentPane().setBackground(new Color(250, 235, 215));
 		movie_Genre.setBounds(100, 100, 450, 300);
-		movie_Genre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		movie_Genre.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		movie_Genre.getContentPane().setLayout(null);
 		
 		data = new Cls_MovieData();

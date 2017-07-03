@@ -17,6 +17,7 @@ public class Frm_PopularMovies {
 			public void run() {
 				try {
 					Frm_PopularMovies window = new Frm_PopularMovies();
+					window.Popular.setLocationRelativeTo(null);
 					window.Popular.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +42,7 @@ public class Frm_PopularMovies {
 		Popular.getContentPane().setLayout(null);
 		Popular.setTitle("Popular Movies");
 		Popular.setBounds(100, 100, 450, 300);
-		Popular.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Popular.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 
 }

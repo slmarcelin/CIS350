@@ -29,6 +29,7 @@ public class Frm_SearchTVShows {
 			public void run() {
 				try {
 					Frm_SearchTVShows window = new Frm_SearchTVShows(str_SearchValue);
+					window.tv_search.setLocationRelativeTo(null);
 					window.tv_search.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

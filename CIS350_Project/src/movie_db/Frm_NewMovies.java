@@ -18,6 +18,7 @@ public class Frm_NewMovies {
 			public void run() {
 				try {
 					Frm_NewMovies window = new Frm_NewMovies();
+					window.frame3.setLocationRelativeTo(null);
 					window.frame3.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +42,7 @@ public class Frm_NewMovies {
 		frame3.getContentPane().setBackground(new Color(250, 235, 215));
 		frame3.setTitle("New Movies");
 		frame3.setBounds(100, 100, 450, 300);
-		frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame3.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame3.getContentPane().setLayout(null);
 	}
 }

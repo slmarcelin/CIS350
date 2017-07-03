@@ -33,6 +33,7 @@ public class movie_test {
 		//demoAccountFeatures();
 		
 		Frm_MainFrame frm = new Frm_MainFrame();
+		frm.setLocationRelativeTo(null);
 		frm.setVisible(true);
 	}
 

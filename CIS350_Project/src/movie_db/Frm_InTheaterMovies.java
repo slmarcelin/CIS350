@@ -26,6 +26,7 @@ public class Frm_InTheaterMovies {
 			public void run() {
 				try {
 					Frm_InTheaterMovies window = new Frm_InTheaterMovies();
+					window.Movie_list.setLocationRelativeTo(null);
 					window.Movie_list.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,7 +50,7 @@ public class Frm_InTheaterMovies {
 		Movie_list.setTitle("Movie List");
 		Movie_list.getContentPane().setBackground(new Color(250, 235, 215));
 		Movie_list.setBounds(100, 100, 450, 300);
-		Movie_list.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Movie_list.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		Movie_list.getContentPane().setLayout(null);
 		
 		data = new Cls_MovieData();

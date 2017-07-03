@@ -28,6 +28,7 @@ public class Frm_SearchActors {
 			public void run() {
 				try {
 					Frm_SearchActors window = new Frm_SearchActors(str_SearchValue);
+					window.actors_search.setLocationRelativeTo(null);
 					window.actors_search.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
