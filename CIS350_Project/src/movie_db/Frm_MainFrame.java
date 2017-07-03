@@ -28,7 +28,15 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Panel;
 import java.awt.Dialog.ModalExclusionType;
-
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.ImageIcon;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 public class Frm_MainFrame extends JFrame {
 	//private final Action action = new SwingAction();
 	//private final Action action_1 = new SwingAction_1();
@@ -75,6 +83,18 @@ public class Frm_MainFrame extends JFrame {
 		Menu_Panel.setBackground(new Color(0, 204, 204));
 		getContentPane().add(Menu_Panel, BorderLayout.CENTER);
 		
+		//this will display an image when user hovers over a choice
+		Panel panel = new Panel();
+		panel.setBounds(320, 70, 100, 95);
+		Menu_Panel.add(panel);
+		
+		JLabel imageLabel = new JLabel(" ");
+		imageLabel.setBounds(320, 70, 100, 95);
+		ImageIcon movies=new ImageIcon(getClass().getResource("movies.png"));
+		imageLabel.setIcon(movies);
+		panel.add(imageLabel);
+
+		
 		JButton Theaters_button = new JButton("In theaters");
 		Theaters_button.setForeground(new Color(0, 0, 0));
 		Theaters_button.setBackground(new Color(153, 204, 255));
@@ -85,6 +105,19 @@ public class Frm_MainFrame extends JFrame {
 				listMovies.movieList();
 			}
 		});
+		Theaters_button.addMouseListener(new MouseAdapter()
+        {
+			public void mouseEntered(MouseEvent e)
+            {
+				ImageIcon theater=new ImageIcon(getClass().getResource("now-in-theaters.jpg"));
+				imageLabel.setIcon(theater);
+            }
+			public void mouseExited(MouseEvent e)
+			{
+				imageLabel.setIcon(movies);
+			}
+	   });
+		
 		Menu_Panel.setLayout(null);
 		Menu_Panel.add(Theaters_button);
 		
@@ -97,6 +130,20 @@ public class Frm_MainFrame extends JFrame {
 				newMovie.movies_new();
 			}
 		});
+		
+		newMovies_button.addMouseListener(new MouseAdapter()
+        {
+			public void mouseEntered(MouseEvent e)
+            {
+				ImageIcon newMovie=new ImageIcon(getClass().getResource("newMovies.png"));
+				imageLabel.setIcon(newMovie);
+            }
+			
+			public void mouseExited(MouseEvent e)
+			{
+				imageLabel.setIcon(movies);
+			}
+	   });
 		Menu_Panel.add(newMovies_button);
 		
 		JButton btnPopularMovies = new JButton("Popular Movies");
@@ -109,21 +156,71 @@ public class Frm_MainFrame extends JFrame {
 				popularMovie.popular();
 			}
 		});
+		btnPopularMovies.addMouseListener(new MouseAdapter()
+        {
+			public void mouseEntered(MouseEvent e)
+            {
+				ImageIcon popular=new ImageIcon(getClass().getResource("popular.png"));
+				imageLabel.setIcon(popular);
+            }
+			
+			public void mouseExited(MouseEvent e)
+			{
+				imageLabel.setIcon(movies);
+			}
+	   });
 		
 		JButton btnTopRated = new JButton("Top rated ");
 		btnTopRated.setBackground(new Color(153, 204, 255));
 		btnTopRated.setBounds(281, 33, 110, 23);
 		Menu_Panel.add(btnTopRated);
+		btnTopRated.addMouseListener(new MouseAdapter()
+        {
+			public void mouseEntered(MouseEvent e)
+            {
+				ImageIcon top=new ImageIcon(getClass().getResource("topTV.png"));
+				imageLabel.setIcon(top);
+            }
+			
+			public void mouseExited(MouseEvent e)
+			{
+				imageLabel.setIcon(movies);
+			}
+	   });
 		
 		JButton tvShows_button = new JButton("On Air");
 		tvShows_button.setBackground(new Color(153, 204, 255));
 		tvShows_button.setBounds(63, 33, 97, 23);
 		Menu_Panel.add(tvShows_button);
+		tvShows_button.addMouseListener(new MouseAdapter()
+        {
+			public void mouseEntered(MouseEvent e)
+            {
+				ImageIcon onAir=new ImageIcon(getClass().getResource("onAir.jpg"));
+				imageLabel.setIcon(onAir);
+            }
+			public void mouseExited(MouseEvent e)
+			{
+				imageLabel.setIcon(movies);
+			}
+	   });
 		
 		JButton newTvShows_button = new JButton("Pop. TV Shows");
 		newTvShows_button.setBackground(new Color(153, 204, 255));
 		newTvShows_button.setBounds(160, 33, 121, 23);
 		Menu_Panel.add(newTvShows_button);
+		newTvShows_button.addMouseListener(new MouseAdapter()
+        {
+			public void mouseEntered(MouseEvent e)
+            {
+				ImageIcon popular_shows=new ImageIcon(getClass().getResource("popular_shows.jpg"));
+				imageLabel.setIcon(popular_shows);
+            }
+			public void mouseExited(MouseEvent e)
+			{
+				imageLabel.setIcon(movies);
+			}
+	   });
 		
 		JButton btnGenres = new JButton("Genres");
 		btnGenres.setBackground(new Color(153, 204, 255));
@@ -135,6 +232,18 @@ public class Frm_MainFrame extends JFrame {
 				genreList.movieGenres();
 			}
 		});
+		btnGenres.addMouseListener(new MouseAdapter()
+        {
+			public void mouseEntered(MouseEvent e)
+            {
+				ImageIcon genres=new ImageIcon(getClass().getResource("genres.jpg"));
+				imageLabel.setIcon(genres);
+            }
+			public void mouseExited(MouseEvent e)
+			{
+				imageLabel.setIcon(movies);
+			}
+	   });
 		
 		System.out.println();
 		System.out.println();
@@ -200,10 +309,7 @@ public class Frm_MainFrame extends JFrame {
 		showsSearch.setBounds(228, 136, 80, 21);
 		Menu_Panel.add(showsSearch);
 		
-		//this will display an image when user hovers over a choice
-		Panel panel = new Panel();
-		panel.setBounds(332, 63, 92, 95);
-		Menu_Panel.add(panel);
+		
 		
 	}
 }
