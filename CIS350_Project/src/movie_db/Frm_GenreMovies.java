@@ -30,7 +30,7 @@ public class Frm_GenreMovies {
 	/**
 	 * Launch the application.
 	 */
-	public static void movieGenres() {
+	public void movieGenres() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

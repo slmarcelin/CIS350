@@ -174,6 +174,12 @@ public class Frm_MainFrame extends JFrame {
 		btnTopRated.setBackground(new Color(153, 204, 255));
 		btnTopRated.setBounds(281, 33, 110, 23);
 		Menu_Panel.add(btnTopRated);
+		btnTopRated.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Frm_topShow topShows= new Frm_topShow();
+				topShows.topTV();
+			}
+		});
 		btnTopRated.addMouseListener(new MouseAdapter()
         {
 			public void mouseEntered(MouseEvent e)
@@ -215,6 +221,12 @@ public class Frm_MainFrame extends JFrame {
 		newTvShows_button.setBackground(new Color(153, 204, 255));
 		newTvShows_button.setBounds(160, 33, 121, 23);
 		Menu_Panel.add(newTvShows_button);
+		newTvShows_button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Frm_popularShows popShows= new Frm_popularShows();
+				popShows.popTV();
+			}
+		});
 		newTvShows_button.addMouseListener(new MouseAdapter()
         {
 			public void mouseEntered(MouseEvent e)

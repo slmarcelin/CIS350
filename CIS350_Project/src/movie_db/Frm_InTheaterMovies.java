@@ -3,6 +3,8 @@ package movie_db;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Window.Type;
 import javax.swing.JTextField;
@@ -53,6 +55,7 @@ public class Frm_InTheaterMovies {
 		Movie_list.setBounds(100, 100, 450, 300);
 		Movie_list.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		Movie_list.getContentPane().setLayout(null);
+		Movie_list.getContentPane().setLayout(new BorderLayout());
 		
 		data = new Cls_MovieData();
 		String dataFormat = "";
@@ -68,6 +71,8 @@ public class Frm_InTheaterMovies {
 		Movie_list.getContentPane().add(scrollPane);
 		
 		JTextArea results = new JTextArea();
+		results.setWrapStyleWord(true);
+		results.setLineWrap(true);
 		scrollPane.setViewportView(results);
 		results.setColumns(100);
 		results.setTabSize(100);

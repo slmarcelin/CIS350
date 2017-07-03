@@ -9,6 +9,7 @@ import javax.swing.JTextArea;
 
 import info.movito.themoviedbapi.model.MovieDb;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 
 public class Frm_NewMovies {
@@ -49,22 +50,25 @@ public class Frm_NewMovies {
 		frame3.setTitle("New Movies");
 		frame3.setBounds(100, 100, 450, 300);
 		frame3.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame3.getContentPane().setLayout(null);
+		
 		
 		new_movies = new Cls_MovieData();
 		String dataFormat = "";
 		
 		for(MovieDb md : new_movies.m_getNewMovies()) {
-			dataFormat += " Movie title: " + md.getTitle() + "\n Released date: ";
+			dataFormat += " Movie Title: " + md.getTitle() + "\n Released Date: ";
 			dataFormat += md.getReleaseDate() + "\n Description: ";
 			dataFormat += md.getOverview() + "\n\n";
 		}
+		
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 11, 410, 220);
 		frame3.getContentPane().add(scrollPane);
 		
 		JTextArea results = new JTextArea();
+		results.setWrapStyleWord(true);
+		results.setLineWrap(true);
 		scrollPane.setViewportView(results);
 		results.setColumns(100);
 		results.setTabSize(100);

@@ -1,31 +1,28 @@
 package movie_db;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import info.movito.themoviedbapi.model.MovieDb;
 import info.movito.themoviedbapi.model.tv.TvSeries;
 
-public class Frm_OnAir {
+public class Frm_popularShows {
 
-	private JFrame frame4;
-	private Cls_MovieData onAir;
-
+	private JFrame frame6;
+	private Cls_MovieData popShow;
+	private JScrollPane scrollPane;
 	/**
 	 * Launch the application.
 	 */
-	public void onAirShows() {
+	public void popTV() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Frm_OnAir window = new Frm_OnAir();
-					window.frame4.setLocationRelativeTo(null);
-					window.frame4.setVisible(true);
+					Frm_popularShows window = new Frm_popularShows();
+					window.frame6.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -36,7 +33,7 @@ public class Frm_OnAir {
 	/**
 	 * Create the application.
 	 */
-	public Frm_OnAir() {
+	public Frm_popularShows() {
 		initialize();
 	}
 
@@ -44,19 +41,16 @@ public class Frm_OnAir {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame4 = new JFrame();
-		frame4.getContentPane().setBackground(new Color(250, 235, 215));
-		frame4.setTitle("On Air");
-		frame4.setBounds(100, 100, 450, 300);
-		frame4.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame4.getContentPane().setLayout(null);
-		frame4.getContentPane().setLayout(new BorderLayout());
+		frame6 = new JFrame();
+		frame6.setBounds(100, 100, 450, 300);
+		frame6.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame6.getContentPane().setLayout(new BorderLayout());
+		frame6.getContentPane().setLayout(new BorderLayout());
 		
-		onAir = new Cls_MovieData();
+		popShow = new Cls_MovieData();
 		String dataFormat = "";
 		
-		
-		for(TvSeries md : onAir.m_getTvShowsOnAir()) {
+		for(TvSeries md : popShow.m_getTvShowsPopular()) {
 			dataFormat += " Show Title: " + md.getName() + "\n First Aired: ";
 			dataFormat += md.getFirstAirDate() + "\n Description: ";
 			dataFormat += md.getOverview() + "\n\n";
@@ -64,7 +58,7 @@ public class Frm_OnAir {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 11, 410, 220);
-		frame4.getContentPane().add(scrollPane);
+		frame6.getContentPane().add(scrollPane);
 		
 		JTextArea results = new JTextArea();
 		results.setWrapStyleWord(true);

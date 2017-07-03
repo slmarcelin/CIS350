@@ -8,6 +8,7 @@ import javax.swing.JTextArea;
 
 import info.movito.themoviedbapi.model.MovieDb;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 
 public class Frm_PopularMovies {
@@ -50,6 +51,8 @@ public class Frm_PopularMovies {
 		Popular.setTitle("Popular Movies");
 		Popular.setBounds(100, 100, 450, 300);
 		Popular.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		Popular.getContentPane().setLayout(new BorderLayout());
+		Popular.getContentPane().setLayout(new BorderLayout());
 		
 		popular_movies = new Cls_MovieData();
 		String dataFormat = "";
@@ -65,6 +68,8 @@ public class Frm_PopularMovies {
 		Popular.getContentPane().add(scrollPane);
 		
 		JTextArea results = new JTextArea();
+		results.setWrapStyleWord(true);
+		results.setLineWrap(true);
 		scrollPane.setViewportView(results);
 		results.setColumns(100);
 		results.setTabSize(100);
