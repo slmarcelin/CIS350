@@ -8,6 +8,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import info.movito.themoviedbapi.model.MovieDb;
+import info.movito.themoviedbapi.model.tv.TvSeries;
 
 public class Frm_OnAir {
 
@@ -22,7 +23,7 @@ public class Frm_OnAir {
 			public void run() {
 				try {
 					Frm_OnAir window = new Frm_OnAir();
-					window.frame4.setVisible(true);
+					window.frame4.setLocationRelativeTo(null);
 					window.frame4.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -52,13 +53,12 @@ public class Frm_OnAir {
 		onAir = new Cls_MovieData();
 		String dataFormat = "";
 		
-		/*
+		
 		for(TvSeries md : onAir.m_getTvShowsOnAir()) {
-			dataFormat += " Movie title: " + md.getTitle() + "\n Released date: ";
-			dataFormat += md.getReleaseDate() + "\n Description: ";
+			dataFormat += " Show Title: " + md.getName() + "\n First Aired: ";
+			dataFormat += md.getFirstAirDate() + "\n Description: ";
 			dataFormat += md.getOverview() + "\n\n";
 		}
-		*/
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 11, 410, 220);

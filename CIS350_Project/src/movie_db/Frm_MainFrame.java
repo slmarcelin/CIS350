@@ -189,6 +189,12 @@ public class Frm_MainFrame extends JFrame {
 	   });
 		
 		JButton tvShows_button = new JButton("On Air");
+		tvShows_button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Frm_OnAir onAir = new Frm_OnAir();
+				onAir.onAirShows();
+			}
+		});
 		tvShows_button.setBackground(new Color(153, 204, 255));
 		tvShows_button.setBounds(63, 33, 97, 23);
 		Menu_Panel.add(tvShows_button);
