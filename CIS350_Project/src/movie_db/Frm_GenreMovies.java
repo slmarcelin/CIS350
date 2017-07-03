@@ -14,6 +14,7 @@ import javax.swing.JTextArea;
 import javax.swing.JComboBox;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
+import javax.swing.JScrollPane;
 
 public class Frm_GenreMovies {
 
@@ -22,6 +23,7 @@ public class Frm_GenreMovies {
 	private JTextArea results;
 	
 	private Cls_MovieData data;
+	private JScrollPane scrollPane;
 
 	/**
 	 * Launch the application.
@@ -97,14 +99,16 @@ public class Frm_GenreMovies {
 		
 		movie_Genre.getContentPane().add(cmb_GenreComboBox);
 		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 11, 410, 198);
+		movie_Genre.getContentPane().add(scrollPane);
+		
 		results = new JTextArea();
+		scrollPane.setViewportView(results);
 		results.setColumns(100);
 		results.setTabSize(100);
 		results.setRows(100);
-		results.setBounds(10, 11, 410, 198);
 		results.setText(dataFormat);
-		
-		movie_Genre.getContentPane().add(results);
 		
 	}
 }

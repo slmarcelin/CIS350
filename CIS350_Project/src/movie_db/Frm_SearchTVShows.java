@@ -12,6 +12,7 @@ import info.movito.themoviedbapi.model.people.Person;
 import info.movito.themoviedbapi.model.tv.TvSeries;
 
 import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
 
 public class Frm_SearchTVShows {
 
@@ -60,12 +61,6 @@ public class Frm_SearchTVShows {
 		data = new Cls_MovieData();
 		String dataFormat = "";
 		
-		JTextArea results = new JTextArea();
-		results.setColumns(100);
-		results.setTabSize(100);
-		results.setRows(100);
-		results.setBounds(10, 11, 420, 220);
-		
 		for(TvSeries tvd : data.m_getSearchTVShows(str_SearchValue)) {
 			dataFormat += tvd.getName() + "\n   ";
 			dataFormat += tvd.getFirstAirDate() + " - " + tvd.getLastAirDate() + "\n   ";
@@ -73,9 +68,17 @@ public class Frm_SearchTVShows {
 			dataFormat += tvd.getId() + "\n\n";
 		}
 		
-		results.setText(dataFormat);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 11, 410, 231);
+		tv_search.getContentPane().add(scrollPane);
 		
-		tv_search.getContentPane().add(results);
+		JTextArea results = new JTextArea();
+		scrollPane.setViewportView(results);
+		results.setColumns(100);
+		results.setTabSize(100);
+		results.setRows(100);
+		
+		results.setText(dataFormat);
 		
 	}
 }

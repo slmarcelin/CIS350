@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 import info.movito.themoviedbapi.model.MovieDb;
 
 import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
 
 public class Frm_SearchMovies {
 
@@ -58,21 +59,23 @@ public class Frm_SearchMovies {
 		data = new Cls_MovieData();
 		String dataFormat = "";
 		
-		JTextArea results = new JTextArea();
-		results.setColumns(100);
-		results.setTabSize(100);
-		results.setRows(100);
-		results.setBounds(10, 11, 420, 220);
-		
 		for(MovieDb md : data.m_getSearchMovies(str_SearchValue)) {
 			dataFormat += md.getTitle() + "\n   ";
 			dataFormat += md.getReleaseDate() + "\n   ";
 			dataFormat += md.getOverview() + "\n\n";
 		}
 		
-		results.setText(dataFormat);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 11, 410, 231);
+		movies_search.getContentPane().add(scrollPane);
 		
-		movies_search.getContentPane().add(results);
+		JTextArea results = new JTextArea();
+		scrollPane.setViewportView(results);
+		results.setColumns(100);
+		results.setTabSize(100);
+		results.setRows(100);
+		
+		results.setText(dataFormat);
 		
 	}
 }

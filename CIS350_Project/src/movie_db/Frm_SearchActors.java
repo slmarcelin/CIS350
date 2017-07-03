@@ -11,6 +11,7 @@ import info.movito.themoviedbapi.model.MovieDb;
 import info.movito.themoviedbapi.model.people.Person;
 
 import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
 
 public class Frm_SearchActors {
 
@@ -59,20 +60,22 @@ public class Frm_SearchActors {
 		data = new Cls_MovieData();
 		String dataFormat = "";
 		
-		JTextArea results = new JTextArea();
-		results.setColumns(100);
-		results.setTabSize(100);
-		results.setRows(100);
-		results.setBounds(10, 11, 420, 220);
-		
 		for(Person pd : data.m_getSearchActors(str_SearchValue)) {
 			dataFormat += pd.getName() + "\n   ";
 			dataFormat += pd.getId() + "\n\n";
 		}
 		
-		results.setText(dataFormat);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 11, 410, 231);
+		actors_search.getContentPane().add(scrollPane);
 		
-		actors_search.getContentPane().add(results);
+		JTextArea results = new JTextArea();
+		scrollPane.setViewportView(results);
+		results.setColumns(100);
+		results.setTabSize(100);
+		results.setRows(100);
+		
+		results.setText(dataFormat);
 		
 	}
 }
