@@ -13,7 +13,6 @@ public class Frm_popularShows {
 
 	private JFrame frame6;
 	private Cls_MovieData popShow;
-	private JScrollPane scrollPane;
 	/**
 	 * Launch the application.
 	 */
@@ -44,7 +43,6 @@ public class Frm_popularShows {
 		frame6 = new JFrame();
 		frame6.setBounds(100, 100, 450, 300);
 		frame6.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame6.getContentPane().setLayout(new BorderLayout());
 		frame6.getContentPane().setLayout(new BorderLayout());
 		
 		popShow = new Cls_MovieData();

@@ -6,8 +6,6 @@ import javax.swing.JFrame;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Window.Type;
-import javax.swing.JTextField;
 
 import info.movito.themoviedbapi.model.Genre;
 import info.movito.themoviedbapi.model.MovieDb;
@@ -21,7 +19,6 @@ import javax.swing.JScrollPane;
 public class Frm_GenreMovies {
 
 	private JFrame movie_Genre;
-	private JTextField textField;
 	private JTextArea results;
 	
 	private Cls_MovieData data;

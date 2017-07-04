@@ -6,15 +6,12 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-
-import info.movito.themoviedbapi.model.MovieDb;
 import info.movito.themoviedbapi.model.tv.TvSeries;
 
 public class Frm_topShow {
 
 	private JFrame frame5;
 	private Cls_MovieData topShow;
-	private JScrollPane scrollPane;
 
 	/**
 	 * Launch the application.

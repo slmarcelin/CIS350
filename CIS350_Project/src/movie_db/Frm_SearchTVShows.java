@@ -3,12 +3,9 @@ package movie_db;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import java.awt.Color;
-import java.awt.Window.Type;
-import javax.swing.JTextField;
 
-import info.movito.themoviedbapi.model.MovieDb;
-import info.movito.themoviedbapi.model.people.Person;
+import java.awt.BorderLayout;
+import java.awt.Color;
 import info.movito.themoviedbapi.model.tv.TvSeries;
 
 import javax.swing.JTextArea;
@@ -17,7 +14,6 @@ import javax.swing.JScrollPane;
 public class Frm_SearchTVShows {
 
 	private JFrame tv_search;
-	private JTextField textField;
 	
 	private Cls_MovieData data;
 	private String str_SearchValue;
@@ -56,16 +52,16 @@ public class Frm_SearchTVShows {
 		tv_search.getContentPane().setBackground(new Color(250, 235, 215));
 		tv_search.setBounds(100, 100, 450, 300);
 		tv_search.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		tv_search.getContentPane().setLayout(null);
+		tv_search.getContentPane().setLayout(new BorderLayout());
 		
 		data = new Cls_MovieData();
 		String dataFormat = "";
 		
 		for(TvSeries tvd : data.m_getSearchTVShows(str_SearchValue)) {
-			dataFormat += tvd.getName() + "\n   ";
-			dataFormat += tvd.getFirstAirDate() + " - " + tvd.getLastAirDate() + "\n   ";
-			dataFormat += tvd.getOverview() + "\n   ";
-			dataFormat += tvd.getId() + "\n\n";
+			dataFormat += "TV Show Title: "+ tvd.getName() + "\n   ";
+			dataFormat += "First Air Date: " + tvd.getFirstAirDate() + "\n";
+			dataFormat +="Last Air Date: "+ tvd.getLastAirDate() + "\n   ";
+			dataFormat +="TV Show description: "+ tvd.getOverview() + "\n   ";
 		}
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -74,6 +70,8 @@ public class Frm_SearchTVShows {
 		
 		JTextArea results = new JTextArea();
 		scrollPane.setViewportView(results);
+		results.setWrapStyleWord(true);
+		results.setLineWrap(true);
 		results.setColumns(100);
 		results.setTabSize(100);
 		results.setRows(100);

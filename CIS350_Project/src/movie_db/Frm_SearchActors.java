@@ -3,6 +3,8 @@ package movie_db;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Window.Type;
 import javax.swing.JTextField;
@@ -55,15 +57,16 @@ public class Frm_SearchActors {
 		actors_search.getContentPane().setBackground(new Color(250, 235, 215));
 		actors_search.setBounds(100, 100, 450, 300);
 		actors_search.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		actors_search.getContentPane().setLayout(null);
+		actors_search.getContentPane().setLayout(new BorderLayout());
 		
 		data = new Cls_MovieData();
 		String dataFormat = "";
 		
 		for(Person pd : data.m_getSearchActors(str_SearchValue)) {
-			dataFormat += pd.getName() + "\n   ";
-			dataFormat += pd.getId() + "\n\n";
+			dataFormat += "Actor's name: "+ pd.getName() + "\n";
+			dataFormat += "Actor's Id Number: "+ pd.getId()+"\n\n";
 		}
+		
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 11, 410, 231);
@@ -71,6 +74,8 @@ public class Frm_SearchActors {
 		
 		JTextArea results = new JTextArea();
 		scrollPane.setViewportView(results);
+		results.setWrapStyleWord(true);
+		results.setLineWrap(true);
 		results.setColumns(100);
 		results.setTabSize(100);
 		results.setRows(100);

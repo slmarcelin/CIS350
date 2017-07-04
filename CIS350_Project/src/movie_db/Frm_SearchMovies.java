@@ -3,9 +3,10 @@ package movie_db;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+
+import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Window.Type;
-import javax.swing.JTextField;
+
 
 import info.movito.themoviedbapi.model.MovieDb;
 
@@ -15,7 +16,6 @@ import javax.swing.JScrollPane;
 public class Frm_SearchMovies {
 
 	private JFrame movies_search;
-	private JTextField textField;
 	
 	private Cls_MovieData data;
 	private String str_SearchValue;
@@ -54,14 +54,14 @@ public class Frm_SearchMovies {
 		movies_search.getContentPane().setBackground(new Color(250, 235, 215));
 		movies_search.setBounds(100, 100, 450, 300);
 		movies_search.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		movies_search.getContentPane().setLayout(null);
+		movies_search.getContentPane().setLayout(new BorderLayout());
 		
 		data = new Cls_MovieData();
 		String dataFormat = "";
 		
 		for(MovieDb md : data.m_getSearchMovies(str_SearchValue)) {
-			dataFormat += md.getTitle() + "\n   ";
-			dataFormat += md.getReleaseDate() + "\n   ";
+			dataFormat += "Movie Title: "+md.getTitle() + "\n Released Date: ";
+			dataFormat += md.getReleaseDate() + "\n Description: ";
 			dataFormat += md.getOverview() + "\n\n";
 		}
 		
@@ -71,6 +71,8 @@ public class Frm_SearchMovies {
 		
 		JTextArea results = new JTextArea();
 		scrollPane.setViewportView(results);
+		results.setWrapStyleWord(true);
+		results.setLineWrap(true);
 		results.setColumns(100);
 		results.setTabSize(100);
 		results.setRows(100);

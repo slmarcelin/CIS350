@@ -4,12 +4,9 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.JTextArea;
 
 import info.movito.themoviedbapi.model.MovieDb;
-
-import java.awt.BorderLayout;
 import java.awt.Color;
 
 public class Frm_NewMovies {
@@ -20,7 +17,7 @@ public class Frm_NewMovies {
 	/**
 	 * Launch the application.
 	 */
-	public static void movies_new() {
+	public void movies_new() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
