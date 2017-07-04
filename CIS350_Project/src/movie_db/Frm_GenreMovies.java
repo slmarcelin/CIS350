@@ -92,7 +92,7 @@ public class Frm_GenreMovies {
 		Genre temp = (Genre)cmb_GenreComboBox.getSelectedItem();
 		
 		for(MovieDb md : data.m_getMoviesByGenre(temp.getId())) {
-			dataFormat += "Movie Title: "+ md.getTitle() + "\nReleased Date: ";
+			dataFormat += "Movie Title: "+ md.getTitle() + "\n\nReleased Date: ";
 			dataFormat += md.getReleaseDate() + "\nDescription: ";
 			dataFormat += md.getOverview() + "\n\n";
 		}

@@ -20,10 +20,7 @@ import java.awt.Dialog.ModalExclusionType;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
+
 public class Frm_MainFrame extends JFrame {
 	//private final Action action = new SwingAction();
 	//private final Action action_1 = new SwingAction_1();

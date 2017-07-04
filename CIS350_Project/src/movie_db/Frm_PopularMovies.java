@@ -58,7 +58,7 @@ public class Frm_PopularMovies {
 		String dataFormat = "";
 		
 		for(MovieDb md : popular_movies.m_getPopularMovies()) {
-			dataFormat += " Movie title: " + md.getTitle() + "\n Released date: ";
+			dataFormat += " Movie title: " + md.getTitle() + "\n\n Released date: ";
 			dataFormat += md.getReleaseDate() + "\n Description: ";
 			dataFormat += md.getOverview() + "\n\n";
 		}
