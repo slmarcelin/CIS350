@@ -48,7 +48,7 @@ public class Frm_SearchTVShows {
 	 */
 	private void initialize() {
 		tv_search = new JFrame();
-		tv_search.setTitle("Movie List");
+		tv_search.setTitle("Your TV Show Search results");
 		tv_search.getContentPane().setBackground(new Color(250, 235, 215));
 		tv_search.setBounds(100, 100, 450, 300);
 		tv_search.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

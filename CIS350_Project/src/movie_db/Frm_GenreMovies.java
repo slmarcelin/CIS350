@@ -53,7 +53,7 @@ public class Frm_GenreMovies {
 	 */
 	private void initialize() {
 		movie_Genre = new JFrame();
-		movie_Genre.setTitle("Movie List");
+		movie_Genre.setTitle("Movie Genres");
 		movie_Genre.getContentPane().setBackground(new Color(250, 235, 215));
 		movie_Genre.setBounds(100, 100, 450, 300);
 		movie_Genre.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

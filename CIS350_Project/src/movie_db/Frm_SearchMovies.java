@@ -50,7 +50,7 @@ public class Frm_SearchMovies {
 	 */
 	private void initialize() {
 		movies_search = new JFrame();
-		movies_search.setTitle("Movie List");
+		movies_search.setTitle("Your Movie Search results");
 		movies_search.getContentPane().setBackground(new Color(250, 235, 215));
 		movies_search.setBounds(100, 100, 450, 300);
 		movies_search.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

@@ -41,6 +41,7 @@ public class Frm_topShow {
 	 */
 	private void initialize() {
 		frame5 = new JFrame();
+		frame5.setTitle("Top rated TV Shows");
 		frame5.setBounds(100, 100, 450, 300);
 		frame5.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame5.getContentPane().setLayout(new BorderLayout());

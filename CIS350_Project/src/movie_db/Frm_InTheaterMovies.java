@@ -6,9 +6,6 @@ import javax.swing.JFrame;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Window.Type;
-import javax.swing.JTextField;
-
 import info.movito.themoviedbapi.model.MovieDb;
 
 import javax.swing.JTextArea;
@@ -17,7 +14,7 @@ import javax.swing.JScrollPane;
 public class Frm_InTheaterMovies {
 
 	private JFrame Movie_list;
-	private JTextField textField;
+
 	
 	private Cls_MovieData data;
 
@@ -50,7 +47,7 @@ public class Frm_InTheaterMovies {
 	 */
 	private void initialize() {
 		Movie_list = new JFrame();
-		Movie_list.setTitle("Movie List");
+		Movie_list.setTitle("Movies In Theaters");
 		Movie_list.getContentPane().setBackground(new Color(0, 204, 204));
 		Movie_list.setBounds(100, 100, 450, 300);
 		Movie_list.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

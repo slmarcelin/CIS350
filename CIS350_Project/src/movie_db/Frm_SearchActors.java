@@ -6,10 +6,6 @@ import javax.swing.JFrame;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Window.Type;
-import javax.swing.JTextField;
-
-import info.movito.themoviedbapi.model.MovieDb;
 import info.movito.themoviedbapi.model.people.Person;
 
 import javax.swing.JTextArea;
@@ -18,7 +14,6 @@ import javax.swing.JScrollPane;
 public class Frm_SearchActors {
 
 	private JFrame actors_search;
-	private JTextField textField;
 	
 	private Cls_MovieData data;
 	private String str_SearchValue;
@@ -53,7 +48,7 @@ public class Frm_SearchActors {
 	 */
 	private void initialize() {
 		actors_search = new JFrame();
-		actors_search.setTitle("Movie List");
+		actors_search.setTitle("Your Actor Search results");
 		actors_search.getContentPane().setBackground(new Color(250, 235, 215));
 		actors_search.setBounds(100, 100, 450, 300);
 		actors_search.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
