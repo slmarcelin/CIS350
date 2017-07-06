@@ -52,19 +52,20 @@ public class Frm_MainFrame extends JFrame {
 		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
 		setBackground(new Color(153, 204, 255));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 459, 353);
 		
 		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBackground(new Color(245, 222, 179));
 		setJMenuBar(menuBar);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("                                     Menu");
 		mntmNewMenuItem_1.setForeground(new Color(0, 0, 0));
-		mntmNewMenuItem_1.setBackground(new Color(0, 204, 204));
+		mntmNewMenuItem_1.setBackground(new Color(244, 164, 96));
 		mntmNewMenuItem_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 21));
 		menuBar.add(mntmNewMenuItem_1);
 		
 		JPanel Menu_Panel = new JPanel();
-		Menu_Panel.setBackground(new Color(0, 204, 204));
+		Menu_Panel.setBackground(new Color(244, 164, 96));
 		getContentPane().add(Menu_Panel, BorderLayout.CENTER);
 		
 		//this will display an image when user hovers over a choice
@@ -310,6 +311,15 @@ public class Frm_MainFrame extends JFrame {
 		showsSearch.setBackground(new Color(153, 204, 255));
 		showsSearch.setBounds(228, 136, 80, 21);
 		Menu_Panel.add(showsSearch);
+		
+		JLabel movie_Trivia = new JLabel("Actor Trivia Game");
+		movie_Trivia.setFont(new Font("Times New Roman", Font.BOLD, 16));
+		movie_Trivia.setBounds(8, 170, 152, 14);
+		Menu_Panel.add(movie_Trivia);
+		
+		JButton btnNewButton = new JButton("Play Now");
+		btnNewButton.setBounds(144, 169, 100, 21);
+		Menu_Panel.add(btnNewButton);
 		
 		
 		

@@ -3,6 +3,7 @@ package movie_db;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -41,8 +42,15 @@ public class Frm_SearchMovies {
 	 * Create the application.
 	 */
 	public Frm_SearchMovies(String str_SearchValue) {
-		this.str_SearchValue = str_SearchValue;
-		initialize();
+		if(str_SearchValue.length()<3)
+		{
+		  JOptionPane.showMessageDialog(null,"You should at least enter 3 letters!!"
+					,"ALERT", JOptionPane.ERROR_MESSAGE);
+		}
+		else{
+		   this.str_SearchValue = str_SearchValue;
+		   initialize();
+		}
 	}
 
 	/**

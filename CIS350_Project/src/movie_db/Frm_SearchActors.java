@@ -10,7 +10,7 @@ import info.movito.themoviedbapi.model.people.Person;
 
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
-
+import javax.swing.JOptionPane;
 public class Frm_SearchActors {
 
 	private JFrame actors_search;
@@ -39,8 +39,17 @@ public class Frm_SearchActors {
 	 * Create the application.
 	 */
 	public Frm_SearchActors(String str_SearchValue) {
-		this.str_SearchValue = str_SearchValue;
-		initialize();
+		
+		if(str_SearchValue.length()<3)
+		{
+		  JOptionPane.showMessageDialog(null,"You should at least enter 3 letters!!"
+					,"ALERT", JOptionPane.ERROR_MESSAGE);
+		}
+		else{
+		   this.str_SearchValue = str_SearchValue;
+		   initialize();
+		}
+		
 	}
 
 	/**

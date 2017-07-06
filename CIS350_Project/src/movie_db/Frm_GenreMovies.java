@@ -40,6 +40,7 @@ public class Frm_GenreMovies {
 			}
 		});
 	}
+	
 
 	/**
 	 * Create the application.

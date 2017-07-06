@@ -3,6 +3,7 @@ package movie_db;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
@@ -52,10 +53,13 @@ public class Frm_NewMovies {
 		new_movies = new Cls_MovieData();
 		String dataFormat = "";
 		
+		JLabel imageLabel = new JLabel(" ");
+		imageLabel.setBounds(345, 70, 100, 95);
+		
 		for(MovieDb md : new_movies.m_getNewMovies()) {
 			dataFormat += " Movie Title: " + md.getTitle() + "\n Released Date: ";
 			dataFormat += md.getReleaseDate() + "\n Description: ";
-			dataFormat += md.getOverview() + "\n\n";
+			dataFormat += md.getOverview()+"\n\n";
 		}
 		
 		
