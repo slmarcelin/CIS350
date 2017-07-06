@@ -1,5 +1,4 @@
 package movie_db;
-
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -61,7 +60,7 @@ public class Frm_SearchMovies {
 		movies_search.setTitle("Your Movie Search results");
 		movies_search.getContentPane().setBackground(new Color(250, 235, 215));
 		movies_search.setBounds(100, 100, 450, 300);
-		movies_search.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		movies_search.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		movies_search.getContentPane().setLayout(new BorderLayout());
 		
 		data = new Cls_MovieData();
