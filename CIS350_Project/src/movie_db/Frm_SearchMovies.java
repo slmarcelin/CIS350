@@ -36,6 +36,7 @@ public class Frm_SearchMovies {
 
 	public Frm_SearchMovies(String str_SearchValue) {
 		this.str_SearchValue = str_SearchValue;
+		
 		initialize();
 	}
 

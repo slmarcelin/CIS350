@@ -40,6 +40,7 @@ public class Frm_SearchActors {
 	 */
 	public Frm_SearchActors(String str_SearchValue) {
 		   this.str_SearchValue = str_SearchValue;
+		   
 		   initialize();
 		
 	}

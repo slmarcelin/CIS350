@@ -41,6 +41,7 @@ public class Frm_SearchTVShows {
 	 */
 	public Frm_SearchTVShows(String str_SearchValue) {
 		   this.str_SearchValue = str_SearchValue;
+		   
 		   initialize();
 	}
 
