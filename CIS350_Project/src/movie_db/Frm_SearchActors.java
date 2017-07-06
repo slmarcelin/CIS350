@@ -60,7 +60,7 @@ public class Frm_SearchActors {
 		actors_search.setTitle("Your Actor Search results");
 		actors_search.getContentPane().setBackground(new Color(250, 235, 215));
 		actors_search.setBounds(100, 100, 450, 300);
-		actors_search.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		actors_search.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		actors_search.getContentPane().setLayout(new BorderLayout());
 		
 		data = new Cls_MovieData();
