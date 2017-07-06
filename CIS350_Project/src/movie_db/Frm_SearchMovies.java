@@ -21,9 +21,6 @@ public class Frm_SearchMovies {
 	private Cls_MovieData data;
 	private String str_SearchValue;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void movieSearch(String str_SearchValue) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -38,24 +35,11 @@ public class Frm_SearchMovies {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
 	public Frm_SearchMovies(String str_SearchValue) {
-		if(str_SearchValue.length()<3)
-		{
-		  JOptionPane.showMessageDialog(null,"You should at least enter 3 letters!!"
-					,"ALERT", JOptionPane.ERROR_MESSAGE);
-		}
-		else{
-		   this.str_SearchValue = str_SearchValue;
-		   initialize();
-		}
+		this.str_SearchValue = str_SearchValue;
+		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		movies_search = new JFrame();
 		movies_search.setTitle("Your Movie Search results");

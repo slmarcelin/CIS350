@@ -40,15 +40,8 @@ public class Frm_SearchTVShows {
 	 * Create the application.
 	 */
 	public Frm_SearchTVShows(String str_SearchValue) {
-		if(str_SearchValue.length()<3)
-		{
-		  JOptionPane.showMessageDialog(null,"You should at least enter 3 letters!!"
-					,"ALERT", JOptionPane.ERROR_MESSAGE);
-		}
-		else{
 		   this.str_SearchValue = str_SearchValue;
 		   initialize();
-		}
 	}
 
 	/**

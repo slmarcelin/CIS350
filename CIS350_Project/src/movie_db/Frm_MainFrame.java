@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -253,6 +255,12 @@ public class Frm_MainFrame extends JFrame {
 		JButton actorsSearch = new JButton("Search");
 		actorsSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if(shows_textField.getText().length() < 3) {
+					JOptionPane.showMessageDialog(null,"You should at least enter 3 letters!!"
+							,"ALERT", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
 				Frm_SearchActors searchActors = new Frm_SearchActors(actors_textField.getText());
 				searchActors.actorSearch(actors_textField.getText());
 			}
@@ -283,6 +291,12 @@ public class Frm_MainFrame extends JFrame {
 		JButton moviesSearch = new JButton("Search");
 		moviesSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(movies_textField.getText().length() < 3) {
+					JOptionPane.showMessageDialog(null,"You should at least enter 3 letters!!"
+							,"ALERT", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
 				Frm_SearchMovies searchMovies = new Frm_SearchMovies(movies_textField.getText());
 				searchMovies.movieSearch(movies_textField.getText());
 			}
@@ -304,6 +318,12 @@ public class Frm_MainFrame extends JFrame {
 		JButton showsSearch = new JButton("Search");
 		showsSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(shows_textField.getText().length() < 3) {
+					JOptionPane.showMessageDialog(null,"You should at least enter 3 letters!!"
+							,"ALERT", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
 				Frm_SearchTVShows searchShows = new Frm_SearchTVShows(shows_textField.getText());
 				searchShows.tvSearch(shows_textField.getText());
 			}
