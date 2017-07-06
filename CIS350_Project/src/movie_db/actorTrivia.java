@@ -145,7 +145,7 @@ public class actorTrivia {
 		Question3_textField.setBounds(269, 131, 176, 28);
 		actorTrivia.add(Question3_textField);
 		
-		JLabel Question4Lb1 = new JLabel("He played 'Beast' in the film adapation of");
+		JLabel Question4Lb1 = new JLabel("4- He played 'Beast' in the film adapation of");
 		Question4Lb1.setForeground(new Color(178, 34, 34));
 		Question4Lb1.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		Question4Lb1.setBounds(10, 186, 224, 15);
@@ -164,7 +164,7 @@ public class actorTrivia {
 		Question4_textField.setBounds(269, 184, 176, 28);
 		actorTrivia.add(Question4_textField);
 		
-		JLabel Question5Lb1 = new JLabel("Who always plays captain Jack Sparrow?");
+		JLabel Question5Lb1 = new JLabel("5- Who always plays captain Jack Sparrow?");
 		Question5Lb1.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		Question5Lb1.setForeground(new Color(178, 34, 34));
 		Question5Lb1.setBounds(10, 238, 220, 15);
