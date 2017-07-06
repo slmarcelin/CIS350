@@ -45,15 +45,15 @@ public class actorTrivia {
     public int results()
     {
     	int points=0;
-    	if(this.Question1_textField.equals("War Machine"))
+    	if(this.Question1_textField.getText().toLowerCase().equals("war machine"))
     		points++;
-    	if(this.Question2_textField.equals("Dwayne Johnson"))
+    	if(this.Question2_textField.getText().toLowerCase().equals("dwayne johnson"))
     		points++;
-    	if(this.Question3_textField.equals("Logan"))
+    	if(this.Question3_textField.getText().toLowerCase().equals("logan"))
     		points++;
-    	if(this.Question4_textField.equals("Dan Stevens"))
+    	if(this.Question4_textField.getText().toLowerCase().equals("dan stevens"))
     		points++;
-    	if(this.Question5_textField.equals("Gal Gadot"))
+    	if(this.Question5_textField.getText().toLowerCase().equals("johnny depp"))
     		points++;	
     	
     	return points;
