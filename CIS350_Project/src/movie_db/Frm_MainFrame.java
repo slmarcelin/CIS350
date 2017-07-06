@@ -22,6 +22,7 @@ import java.awt.Dialog.ModalExclusionType;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
+import javax.swing.JSeparator;
 
 public class Frm_MainFrame extends JFrame {
 	//private final Action action = new SwingAction();
@@ -83,9 +84,10 @@ public class Frm_MainFrame extends JFrame {
 
 		
 		JButton Theaters_button = new JButton("In theaters");
+		Theaters_button.setFont(new Font("Tahoma", Font.BOLD, 11));
 		Theaters_button.setForeground(new Color(0, 0, 0));
 		Theaters_button.setBackground(new Color(153, 204, 255));
-		Theaters_button.setBounds(8, 5, 97, 23);
+		Theaters_button.setBounds(3, 5, 105, 23);
 		Theaters_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Frm_InTheaterMovies listMovies= new Frm_InTheaterMovies();
@@ -109,6 +111,7 @@ public class Frm_MainFrame extends JFrame {
 		Menu_Panel.add(Theaters_button);
 		
 		JButton newMovies_button = new JButton("New Movies");
+		newMovies_button.setFont(new Font("Tahoma", Font.BOLD, 11));
 		newMovies_button.setBackground(new Color(153, 204, 255));
 		newMovies_button.setBounds(105, 5, 110, 23);
 		newMovies_button.addActionListener(new ActionListener() {
@@ -134,6 +137,7 @@ public class Frm_MainFrame extends JFrame {
 		Menu_Panel.add(newMovies_button);
 		
 		JButton btnPopularMovies = new JButton("Popular Movies");
+		btnPopularMovies.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnPopularMovies.setBackground(new Color(153, 204, 255));
 		btnPopularMovies.setBounds(215, 5, 121, 23);
 		Menu_Panel.add(btnPopularMovies);
@@ -158,6 +162,7 @@ public class Frm_MainFrame extends JFrame {
 	   });
 		
 		JButton btnTopRated = new JButton("Top rated ");
+		btnTopRated.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnTopRated.setBackground(new Color(153, 204, 255));
 		btnTopRated.setBounds(281, 33, 110, 23);
 		Menu_Panel.add(btnTopRated);
@@ -182,6 +187,7 @@ public class Frm_MainFrame extends JFrame {
 	   });
 		
 		JButton tvShows_button = new JButton("On Air");
+		tvShows_button.setFont(new Font("Tahoma", Font.BOLD, 11));
 		tvShows_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Frm_OnAir onAir = new Frm_OnAir();
@@ -205,6 +211,7 @@ public class Frm_MainFrame extends JFrame {
 	   });
 		
 		JButton newTvShows_button = new JButton("Pop. TV Shows");
+		newTvShows_button.setFont(new Font("Tahoma", Font.BOLD, 11));
 		newTvShows_button.setBackground(new Color(153, 204, 255));
 		newTvShows_button.setBounds(160, 33, 121, 23);
 		Menu_Panel.add(newTvShows_button);
@@ -228,6 +235,7 @@ public class Frm_MainFrame extends JFrame {
 	   });
 		
 		JButton btnGenres = new JButton("Genres");
+		btnGenres.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnGenres.setBackground(new Color(153, 204, 255));
 		btnGenres.setBounds(336, 5, 89, 23);
 		Menu_Panel.add(btnGenres);
@@ -332,19 +340,26 @@ public class Frm_MainFrame extends JFrame {
 		showsSearch.setBounds(228, 136, 80, 21);
 		Menu_Panel.add(showsSearch);
 		
-		JLabel movie_Trivia = new JLabel("Actor Trivia Game");
+		JLabel movie_Trivia = new JLabel("Actor Trivia");
 		movie_Trivia.setFont(new Font("Times New Roman", Font.BOLD, 16));
-		movie_Trivia.setBounds(8, 170, 152, 14);
+		movie_Trivia.setBounds(8, 170, 81, 19);
 		Menu_Panel.add(movie_Trivia);
 		
 		JButton PlayBtn = new JButton("Play Now");
+		PlayBtn.setBackground(new Color(135, 206, 235));
 		PlayBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				actorTrivia playGame = new actorTrivia();
 				playGame.play();
 			}
 		});
-		PlayBtn.setBounds(144, 169, 100, 21);
+		PlayBtn.setBounds(92, 171, 100, 21);
 		Menu_Panel.add(PlayBtn);	
+		
+		JSeparator separator = new JSeparator();
+		separator.setBackground(new Color(178, 34, 34));
+		separator.setForeground(new Color(244, 164, 96));
+		separator.setBounds(-11, 201, 482, 2);
+		Menu_Panel.add(separator);
 	}
 }

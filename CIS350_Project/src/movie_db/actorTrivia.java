@@ -166,7 +166,7 @@ public class actorTrivia {
 		JLabel Question5Lb1 = new JLabel("5- Who always plays captain Jack Sparrow?");
 		Question5Lb1.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		Question5Lb1.setForeground(new Color(178, 34, 34));
-		Question5Lb1.setBounds(10, 238, 220, 15);
+		Question5Lb1.setBounds(10, 238, 235, 15);
 		actorTrivia.add(Question5Lb1);
 		
 		Question5_textField = new JTextField();

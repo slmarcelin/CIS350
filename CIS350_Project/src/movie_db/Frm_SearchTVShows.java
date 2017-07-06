@@ -3,7 +3,6 @@ package movie_db;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -22,7 +21,7 @@ public class Frm_SearchTVShows {
 	/**
 	 * Launch the application.
 	 */
-	public static void tvSearch(String str_SearchValue) {
+	public void tvSearch(String str_SearchValue) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

@@ -82,6 +82,8 @@ public class Cls_MovieData {
 		return eachShow;
 	}
 	
+	
+	
 	public ArrayList<MovieDb> m_getInTheaterMovies(){
 		TmdbMovies tmdbMovie = tmdbApi.getMovies();
 		ArrayList<MovieDb> eachMovie = new ArrayList<MovieDb>();
@@ -151,6 +153,8 @@ public class Cls_MovieData {
 		}
 		return eachSeries;
 	}
+	
+	//public ArrayList<TvSeries> m
 	
 	public ArrayList<TvSeries> m_getTvShowsPopular(){
 		TmdbTV tmdbTv = tmdbApi.getTvSeries();
