@@ -6,11 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JMenuBar;
 import javax.swing.JSeparator;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -35,6 +32,7 @@ public class actorTrivia {
 				try {
 					actorTrivia window = new actorTrivia();
 					window.frame.setVisible(true);
+					frame.setResizable(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -70,8 +68,9 @@ public class actorTrivia {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setResizable(false);
 		frame.setBounds(100, 100, 479, 358);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JPanel actorTrivia = new JPanel();
 		actorTrivia.setBackground(new Color(245, 222, 179));
