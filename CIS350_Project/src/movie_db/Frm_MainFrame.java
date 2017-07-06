@@ -317,11 +317,14 @@ public class Frm_MainFrame extends JFrame {
 		movie_Trivia.setBounds(8, 170, 152, 14);
 		Menu_Panel.add(movie_Trivia);
 		
-		JButton btnNewButton = new JButton("Play Now");
-		btnNewButton.setBounds(144, 169, 100, 21);
-		Menu_Panel.add(btnNewButton);
-		
-		
-		
+		JButton PlayBtn = new JButton("Play Now");
+		PlayBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				actorTrivia playGame = new actorTrivia();
+				playGame.play();
+			}
+		});
+		PlayBtn.setBounds(144, 169, 100, 21);
+		Menu_Panel.add(PlayBtn);	
 	}
 }

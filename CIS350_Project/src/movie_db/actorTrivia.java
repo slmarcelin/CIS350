@@ -29,7 +29,7 @@ public class actorTrivia {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public void play() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
