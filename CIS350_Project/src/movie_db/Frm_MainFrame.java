@@ -263,7 +263,7 @@ public class Frm_MainFrame extends JFrame {
 		JButton actorsSearch = new JButton("Search");
 		actorsSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(shows_textField.getText().length() < 3) {
+				if(actors_textField.getText().length() < 3) {
 					JOptionPane.showMessageDialog(null,"You should at least enter 3 letters!!"
 							,"ALERT", JOptionPane.ERROR_MESSAGE);
 					return;

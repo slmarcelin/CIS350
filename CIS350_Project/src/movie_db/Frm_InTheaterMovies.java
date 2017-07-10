@@ -1,8 +1,17 @@
 package movie_db;
 
 import java.awt.EventQueue;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.net.URL;
 
+import javax.imageio.ImageIO;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -14,6 +23,7 @@ import javax.swing.JScrollPane;
 public class Frm_InTheaterMovies {
 
 	private JFrame Movie_list;
+	private JPanel totalResults;
 
 	
 	private Cls_MovieData data;
@@ -51,31 +61,42 @@ public class Frm_InTheaterMovies {
 		Movie_list.getContentPane().setBackground(new Color(0, 204, 204));
 		Movie_list.setBounds(100, 100, 450, 300);
 		Movie_list.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		Movie_list.getContentPane().setLayout(null);
 		Movie_list.getContentPane().setLayout(new BorderLayout());
+		
+		//JScrollPane scrollPane = new JScrollPane();
+		//scrollPane.setBounds(10, 11, 410, 220);
+		//Movie_list.getContentPane().add(scrollPane);
+		
+		totalResults = new JPanel();
+		totalResults.setLayout(new BoxLayout(totalResults, BoxLayout.Y_AXIS));
 		
 		data = new Cls_MovieData();
 		String dataFormat = "";
 		
 		for(MovieDb md : data.m_getInTheaterMovies()) {
-			dataFormat += " Movie title: " + md.getTitle() + "\n Released date: ";
+			dataFormat = " Movie title: " + md.getTitle() + "\n Released date: ";
 			dataFormat += md.getReleaseDate() + "\n Description: ";
 			dataFormat += md.getOverview() + "\n\n";
+			
+			Pnl_ArtworkPanel a = new Pnl_ArtworkPanel("http://image.tmdb.org/t/p/w92/" + md.getPosterPath(), dataFormat);
+			totalResults.add(a);
 		}
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 11, 410, 220);
-		Movie_list.getContentPane().add(scrollPane);
+		Movie_list.add(totalResults, BorderLayout.CENTER);
 		
-		JTextArea results = new JTextArea();
-		results.setWrapStyleWord(true);
-		results.setLineWrap(true);
-		scrollPane.setViewportView(results);
-		results.setColumns(100);
-		results.setTabSize(100);
-		results.setRows(100);
+		//JTextArea results = new JTextArea();
+		//results.setWrapStyleWord(true);
+		//results.setLineWrap(true);
+		//scrollPane.setViewportView(totalResults);
+		//results.setColumns(100);
+		//results.setTabSize(100);
+		//results.setRows(100);
 		
-		results.setText(dataFormat);
+		//results.setText(dataFormat);
+		
+		//totalResults.add(results, BorderLayout.CENTER);
+		//totalResults.add(resultsPic, BorderLayout.WEST);
+		totalResults.repaint();
 		
 	}
 }
