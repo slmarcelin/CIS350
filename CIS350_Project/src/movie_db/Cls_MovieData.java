@@ -7,6 +7,7 @@ import info.movito.themoviedbapi.TmdbApi;
 import info.movito.themoviedbapi.TmdbAuthentication;
 import info.movito.themoviedbapi.TmdbGenre;
 import info.movito.themoviedbapi.TmdbMovies;
+import info.movito.themoviedbapi.TmdbPeople;
 import info.movito.themoviedbapi.TmdbPeople.PersonResultsPage;
 import info.movito.themoviedbapi.TmdbSearch;
 import info.movito.themoviedbapi.TmdbTV;
@@ -180,5 +181,44 @@ public class Cls_MovieData {
 			eachSeries.add(tv);
 		}
 		return eachSeries;
+	}
+	
+	public MovieDb m_getRandMovie(int movie) {
+		int count = 0;
+		TmdbMovies tmdbMovies = tmdbApi.getMovies();
+		MovieResultsPage results = tmdbMovies.getPopularMovies("en", 5);
+		Iterator<MovieDb> iterator = results.iterator();
+		MovieDb m = null;
+		while (iterator.hasNext() && movie > count) {
+			m = iterator.next();
+			count++;
+		}
+		return m;
+	}
+	
+	public TvSeries m_getRandShow(int show) {
+		int count = 0;
+		TmdbTV tmdbTV = tmdbApi.getTvSeries();
+		TvResultsPage results = tmdbTV.getPopular("en", 5);
+		Iterator<TvSeries> iterator = results.iterator();
+		TvSeries tv = null;
+		while (iterator.hasNext() && show > count) {
+			tv = iterator.next();
+			count++;
+		}
+		return tv;
+	}
+	
+	public Person m_getRandActor(int person) {
+		int count = 0;
+		TmdbPeople tmdbPeople = tmdbApi.getPeople();
+		PersonResultsPage results = tmdbPeople.getPersonPopular(5);
+		Iterator<Person> iterator = results.iterator();
+		Person p = null;
+		while (iterator.hasNext() && person > count) {
+			p = iterator.next();
+			count++;
+		}
+		return p;
 	}
 }

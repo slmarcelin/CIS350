@@ -35,6 +35,17 @@ public class movie_test {
 		Frm_MainFrame frm = new Frm_MainFrame();
 		frm.setLocationRelativeTo(null);
 		frm.setVisible(true);
+		int count = 0;
+		Cls_Hangman h = new Cls_Hangman();
+		System.out.println(h.getGuess());
+		Scanner scan = new Scanner(System.in);
+		while(h.getState() == 0) {
+			if(!h.isWithin(scan.next()))
+				count ++;
+			System.out.println(h.getGuess() + "Count: " + count);
+		}
+		if(h.getState() == 1)
+			System.out.println(h.getWord());
 	}
 
 	private static SessionToken getSessionToken() {
