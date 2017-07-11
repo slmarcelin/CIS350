@@ -39,6 +39,10 @@ public class Cls_Hangman {
 		return state;
 	}
 	
+	public int getIncorrect() {
+		return turns;
+	}
+	
 	public boolean isWithin(String letter)
 	{
 		

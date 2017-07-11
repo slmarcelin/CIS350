@@ -340,26 +340,37 @@ public class Frm_MainFrame extends JFrame {
 		showsSearch.setBounds(228, 136, 80, 21);
 		Menu_Panel.add(showsSearch);
 		
-		JLabel movie_Trivia = new JLabel("Actor Trivia");
-		movie_Trivia.setFont(new Font("Times New Roman", Font.BOLD, 16));
-		movie_Trivia.setBounds(8, 170, 81, 19);
-		Menu_Panel.add(movie_Trivia);
+		JLabel movie_Games = new JLabel("Games");
+		movie_Games.setFont(new Font("Times New Roman", Font.BOLD, 16));
+		movie_Games.setBounds(8, 170, 81, 19);
+		Menu_Panel.add(movie_Games);
 		
-		JButton PlayBtn = new JButton("Play Now");
-		PlayBtn.setBackground(new Color(135, 206, 235));
-		PlayBtn.addActionListener(new ActionListener() {
+		JButton TriviaBtn = new JButton("Trivia");
+		TriviaBtn.setBackground(new Color(135, 206, 235));
+		TriviaBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				actorTrivia playGame = new actorTrivia();
 				playGame.play();
 			}
 		});
-		PlayBtn.setBounds(92, 171, 100, 21);
-		Menu_Panel.add(PlayBtn);	
+		TriviaBtn.setBounds(92, 171, 100, 21);
+		Menu_Panel.add(TriviaBtn);	
 		
 		JSeparator separator = new JSeparator();
 		separator.setBackground(new Color(178, 34, 34));
 		separator.setForeground(new Color(244, 164, 96));
 		separator.setBounds(-11, 201, 482, 2);
 		Menu_Panel.add(separator);
+		
+		JButton movieHangman = new JButton("Hangman");
+		movieHangman.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Frm_Hangman playGame = new Frm_Hangman();
+				playGame.play();
+			}
+		});
+		movieHangman.setBackground(new Color(135, 206, 235));
+		movieHangman.setBounds(192, 171, 100, 21);
+		Menu_Panel.add(movieHangman);
 	}
 }
