@@ -63,10 +63,6 @@ public class Frm_InTheaterMovies {
 		Movie_list.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		Movie_list.getContentPane().setLayout(new BorderLayout());
 		
-		//JScrollPane scrollPane = new JScrollPane();
-		//scrollPane.setBounds(10, 11, 410, 220);
-		//Movie_list.getContentPane().add(scrollPane);
-		
 		totalResults = new JPanel();
 		totalResults.setLayout(new BoxLayout(totalResults, BoxLayout.Y_AXIS));
 		
@@ -74,8 +70,8 @@ public class Frm_InTheaterMovies {
 		String dataFormat = "";
 		
 		for(MovieDb md : data.m_getInTheaterMovies()) {
-			dataFormat = " Movie title: " + md.getTitle() + "\n Released date: ";
-			dataFormat += md.getReleaseDate() + "\n Description: ";
+			dataFormat = " Movie Title: " + md.getTitle() + "\n   Released Date: ";
+			dataFormat += md.getReleaseDate() + "\n   Description: ";
 			dataFormat += md.getOverview() + "\n\n";
 			
 			Pnl_ArtworkPanel a = new Pnl_ArtworkPanel("http://image.tmdb.org/t/p/w92/" + md.getPosterPath(), dataFormat);
@@ -84,18 +80,6 @@ public class Frm_InTheaterMovies {
 		
 		Movie_list.add(totalResults, BorderLayout.CENTER);
 		
-		//JTextArea results = new JTextArea();
-		//results.setWrapStyleWord(true);
-		//results.setLineWrap(true);
-		//scrollPane.setViewportView(totalResults);
-		//results.setColumns(100);
-		//results.setTabSize(100);
-		//results.setRows(100);
-		
-		//results.setText(dataFormat);
-		
-		//totalResults.add(results, BorderLayout.CENTER);
-		//totalResults.add(resultsPic, BorderLayout.WEST);
 		totalResults.repaint();
 		
 	}

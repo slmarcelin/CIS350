@@ -3,6 +3,7 @@ package movie_db;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -11,6 +12,7 @@ import info.movito.themoviedbapi.model.Genre;
 import info.movito.themoviedbapi.model.MovieDb;
 
 import javax.swing.JTextArea;
+import javax.swing.BoxLayout;
 import javax.swing.JComboBox;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
@@ -20,7 +22,7 @@ public class Frm_GenreMovies {
 
 	private JFrame movie_Genre;
 	private JTextArea results;
-	
+	private JPanel totalResults;
 	private Cls_MovieData data;
 	private JScrollPane scrollPane;
 
@@ -59,9 +61,8 @@ public class Frm_GenreMovies {
 		movie_Genre.setBounds(100, 100, 450, 300);
 		movie_Genre.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		movie_Genre.getContentPane().setLayout(new BorderLayout());
-		
+	
 		data = new Cls_MovieData();
-		String dataFormat = "";
 		
 		JComboBox cmb_GenreComboBox = new JComboBox();
 		cmb_GenreComboBox.addItemListener(new ItemListener() {
@@ -92,26 +93,23 @@ public class Frm_GenreMovies {
 		
 		Genre temp = (Genre)cmb_GenreComboBox.getSelectedItem();
 		
+		totalResults = new JPanel();
+		totalResults.setLayout(new BoxLayout(totalResults, BoxLayout.Y_AXIS));
+		
+		String dataFormat = "";
+		
 		for(MovieDb md : data.m_getMoviesByGenre(temp.getId())) {
-			dataFormat += "Movie Title: "+ md.getTitle() + "\n\nReleased Date: ";
-			dataFormat += md.getReleaseDate() + "\nDescription: ";
+			dataFormat = " Movie title: " + md.getTitle() + "\n   Released Date: ";
+			dataFormat += md.getReleaseDate() + "\n   Description: ";
 			dataFormat += md.getOverview() + "\n\n";
+			
+			Pnl_ArtworkPanel a = new Pnl_ArtworkPanel("http://image.tmdb.org/t/p/w92/" + md.getPosterPath(), dataFormat);
+			totalResults.add(a);
 		}
 		
-		movie_Genre.getContentPane().add(cmb_GenreComboBox, BorderLayout.NORTH);
+		movie_Genre.add(totalResults, BorderLayout.CENTER);
 		
-		scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 11, 410, 198);
-		movie_Genre.getContentPane().add(scrollPane, BorderLayout.CENTER);
-		
-		results = new JTextArea();
-		results.setWrapStyleWord(true);
-		results.setLineWrap(true);
-		scrollPane.setViewportView(results);
-		results.setColumns(100);
-		results.setTabSize(100);
-		results.setRows(100);
-		results.setText(dataFormat);
+		totalResults.repaint();
 		
 	}
 }

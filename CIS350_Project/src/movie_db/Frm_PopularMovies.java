@@ -2,7 +2,9 @@ package movie_db;
 
 import java.awt.EventQueue;
 
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
@@ -14,8 +16,8 @@ import java.awt.Color;
 public class Frm_PopularMovies {
 
 	private JFrame Popular;
-	
-	private Cls_MovieData popular_movies;
+	private JPanel totalResults;
+	private Cls_MovieData data;
 
 	/**
 	 * Launch the application.
@@ -54,28 +56,24 @@ public class Frm_PopularMovies {
 		Popular.getContentPane().setLayout(new BorderLayout());
 		Popular.getContentPane().setLayout(new BorderLayout());
 		
-		popular_movies = new Cls_MovieData();
+		totalResults = new JPanel();
+		totalResults.setLayout(new BoxLayout(totalResults, BoxLayout.Y_AXIS));
+		
+		data = new Cls_MovieData();
 		String dataFormat = "";
 		
-		for(MovieDb md : popular_movies.m_getPopularMovies()) {
-			dataFormat += " Movie title: " + md.getTitle() + "\n\n Released date: ";
-			dataFormat += md.getReleaseDate() + "\n Description: ";
+		for(MovieDb md : data.m_getPopularMovies()) {
+			dataFormat = " Movie title: " + md.getTitle() + "\n   Released Date: ";
+			dataFormat += md.getReleaseDate() + "\n   Description: ";
 			dataFormat += md.getOverview() + "\n\n";
+			
+			Pnl_ArtworkPanel a = new Pnl_ArtworkPanel("http://image.tmdb.org/t/p/w92/" + md.getPosterPath(), dataFormat);
+			totalResults.add(a);
 		}
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 11, 410, 220);
-		Popular.getContentPane().add(scrollPane);
+		Popular.add(totalResults, BorderLayout.CENTER);
 		
-		JTextArea results = new JTextArea();
-		results.setWrapStyleWord(true);
-		results.setLineWrap(true);
-		scrollPane.setViewportView(results);
-		results.setColumns(100);
-		results.setTabSize(100);
-		results.setRows(100);
-		
-		results.setText(dataFormat);
+		totalResults.repaint();
 	}
 
 }

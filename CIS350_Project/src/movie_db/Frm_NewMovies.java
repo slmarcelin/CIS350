@@ -2,18 +2,23 @@ package movie_db;
 
 import java.awt.EventQueue;
 
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import info.movito.themoviedbapi.model.MovieDb;
+
+import java.awt.BorderLayout;
 import java.awt.Color;
 
 public class Frm_NewMovies {
 
 	private JFrame frame3;
-	private Cls_MovieData new_movies;
+	private JPanel totalResults;
+	private Cls_MovieData data;
 
 	/**
 	 * Launch the application.
@@ -47,34 +52,26 @@ public class Frm_NewMovies {
 		frame3.getContentPane().setBackground(new Color(250, 235, 215));
 		frame3.setTitle("New Movies");
 		frame3.setBounds(100, 100, 450, 300);
-		frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame3.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		
-		new_movies = new Cls_MovieData();
+		totalResults = new JPanel();
+		totalResults.setLayout(new BoxLayout(totalResults, BoxLayout.Y_AXIS));
+		
+		data = new Cls_MovieData();
 		String dataFormat = "";
 		
-		JLabel imageLabel = new JLabel(" ");
-		imageLabel.setBounds(345, 70, 100, 95);
-		
-		for(MovieDb md : new_movies.m_getNewMovies()) {
-			dataFormat += " Movie Title: " + md.getTitle() + "\n Released Date: ";
-			dataFormat += md.getReleaseDate() + "\n Description: ";
-			dataFormat += md.getOverview()+"\n\n";
+		for(MovieDb md : data.m_getNewMovies()) {
+			dataFormat = " Movie title: " + md.getTitle() + "\n   Released Date: ";
+			dataFormat += md.getReleaseDate() + "\n   Description: ";
+			dataFormat += md.getOverview() + "\n\n";
+			
+			Pnl_ArtworkPanel a = new Pnl_ArtworkPanel("http://image.tmdb.org/t/p/w92/" + md.getPosterPath(), dataFormat);
+			totalResults.add(a);
 		}
 		
+		frame3.add(totalResults, BorderLayout.CENTER);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 11, 410, 220);
-		frame3.getContentPane().add(scrollPane);
-		
-		JTextArea results = new JTextArea();
-		results.setWrapStyleWord(true);
-		results.setLineWrap(true);
-		scrollPane.setViewportView(results);
-		results.setColumns(100);
-		results.setTabSize(100);
-		results.setRows(100);
-		
-		results.setText(dataFormat);
+		totalResults.repaint();
 	}
 }
