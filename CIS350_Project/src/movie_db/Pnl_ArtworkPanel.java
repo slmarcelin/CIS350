@@ -25,16 +25,21 @@ public class Pnl_ArtworkPanel extends Container {
 		setBounds(100, 100, 450, 300);
 
 		BufferedImage img = null;
+		ImageIcon i;
 		try {
 			img = ImageIO.read(new URL(str_PosterLoc));
+			i = new ImageIcon(img);
 		} catch (MalformedURLException e) {
 			//Red image
-			e.printStackTrace();
+			i = new ImageIcon(getClass().getResource("tmdb.png"));
 		} catch (IOException e) {
 			//Red image
-			e.printStackTrace();
+			i = new ImageIcon(getClass().getResource("tmdb.png"));
 		}
-		ImageIcon i = new ImageIcon(img);
+		catch(Exception e) {
+			i = new ImageIcon(getClass().getResource("tmdb.png"));
+		}
+
 		poster = new JLabel(i);
 		poster.setBorder(LineBorder.createBlackLineBorder());
 		

@@ -3,7 +3,9 @@ package movie_db;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
@@ -12,7 +14,8 @@ import info.movito.themoviedbapi.model.tv.TvSeries;
 public class Frm_popularShows {
 
 	private JFrame frame6;
-	private Cls_MovieData popShow;
+	private JPanel totalResults;
+	private Cls_MovieData data;
 	/**
 	 * Launch the application.
 	 */
@@ -21,6 +24,7 @@ public class Frm_popularShows {
 			public void run() {
 				try {
 					Frm_popularShows window = new Frm_popularShows();
+					window.frame6.setLocationRelativeTo(null);
 					window.frame6.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,28 +50,24 @@ public class Frm_popularShows {
 		frame6.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame6.getContentPane().setLayout(new BorderLayout());
 		
-		popShow = new Cls_MovieData();
+		totalResults = new JPanel();
+		totalResults.setLayout(new BoxLayout(totalResults, BoxLayout.Y_AXIS));
+		
+		data = new Cls_MovieData();
 		String dataFormat = "";
 		
-		for(TvSeries md : popShow.m_getTvShowsPopular()) {
-			dataFormat += " Show Title: " + md.getName() + "\n First Aired: ";
-			dataFormat += md.getFirstAirDate() + "\n Description: ";
+		for(TvSeries md : data.m_getTvShowsOnAir()) {
+			dataFormat = " Show Title: " + md.getName() + "\n   First Aired: ";
+			dataFormat += md.getFirstAirDate() + "\n   Description: ";
 			dataFormat += md.getOverview() + "\n\n";
+			
+			Pnl_ArtworkPanel a = new Pnl_ArtworkPanel("http://image.tmdb.org/t/p/w92/" + md.getPosterPath(), dataFormat);
+			totalResults.add(a);
 		}
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 11, 410, 220);
-		frame6.getContentPane().add(scrollPane);
+		frame6.add(totalResults, BorderLayout.CENTER);
 		
-		JTextArea results = new JTextArea();
-		results.setWrapStyleWord(true);
-		results.setLineWrap(true);
-		scrollPane.setViewportView(results);
-		results.setColumns(100);
-		results.setTabSize(100);
-		results.setRows(100);
-		
-		results.setText(dataFormat);
+		totalResults.repaint();
 	}
 
 }

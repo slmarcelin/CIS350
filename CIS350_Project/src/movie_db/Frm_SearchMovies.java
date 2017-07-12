@@ -1,8 +1,10 @@
 package movie_db;
 import java.awt.EventQueue;
 
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -16,7 +18,7 @@ import javax.swing.JScrollPane;
 public class Frm_SearchMovies {
 
 	private JFrame movies_search;
-	
+	private JPanel totalResults;
 	private Cls_MovieData data;
 	private String str_SearchValue;
 
@@ -48,28 +50,24 @@ public class Frm_SearchMovies {
 		movies_search.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		movies_search.getContentPane().setLayout(new BorderLayout());
 		
+		totalResults = new JPanel();
+		totalResults.setLayout(new BoxLayout(totalResults, BoxLayout.Y_AXIS));
+		
 		data = new Cls_MovieData();
 		String dataFormat = "";
 		
 		for(MovieDb md : data.m_getSearchMovies(str_SearchValue)) {
-			dataFormat += "Movie Title: "+md.getTitle() + "\n Released Date: ";
-			dataFormat += md.getReleaseDate() + "\n Description: ";
+			dataFormat = " Movie Title: " + md.getTitle() + "\n   Released Date: ";
+			dataFormat += md.getReleaseDate() + "\n   Description: ";
 			dataFormat += md.getOverview() + "\n\n";
+			
+			Pnl_ArtworkPanel a = new Pnl_ArtworkPanel("http://image.tmdb.org/t/p/w92/" + md.getPosterPath(), dataFormat);
+			totalResults.add(a);
 		}
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 11, 410, 231);
-		movies_search.getContentPane().add(scrollPane);
+		movies_search.add(totalResults, BorderLayout.CENTER);
 		
-		JTextArea results = new JTextArea();
-		scrollPane.setViewportView(results);
-		results.setWrapStyleWord(true);
-		results.setLineWrap(true);
-		results.setColumns(100);
-		results.setTabSize(100);
-		results.setRows(100);
-		
-		results.setText(dataFormat);
+		totalResults.repaint();
 		
 	}
 }

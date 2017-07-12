@@ -2,19 +2,22 @@ package movie_db;
 
 import java.awt.EventQueue;
 
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import info.movito.themoviedbapi.model.people.Person;
+import info.movito.themoviedbapi.model.tv.TvSeries;
 
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 public class Frm_SearchActors {
 
 	private JFrame actors_search;
-	
+	private JPanel totalResults;
 	private Cls_MovieData data;
 	private String str_SearchValue;
 
@@ -56,28 +59,23 @@ public class Frm_SearchActors {
 		actors_search.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		actors_search.getContentPane().setLayout(new BorderLayout());
 		
+		totalResults = new JPanel();
+		totalResults.setLayout(new BoxLayout(totalResults, BoxLayout.Y_AXIS));
+		
 		data = new Cls_MovieData();
 		String dataFormat = "";
 		
 		for(Person pd : data.m_getSearchActors(str_SearchValue)) {
-			dataFormat += "Actor's name: "+ pd.getName() + "\n";
+			dataFormat = "Actor's name: "+ pd.getName() + "\n";
 			dataFormat += "Actor's Id Number: "+ pd.getId()+"\n\n";
+			
+			Pnl_ArtworkPanel a = new Pnl_ArtworkPanel("http://image.tmdb.org/t/p/w92/" + pd.getProfilePath(), dataFormat);
+			totalResults.add(a);
 		}
 		
+		actors_search.add(totalResults, BorderLayout.CENTER);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 11, 410, 231);
-		actors_search.getContentPane().add(scrollPane);
-		
-		JTextArea results = new JTextArea();
-		scrollPane.setViewportView(results);
-		results.setWrapStyleWord(true);
-		results.setLineWrap(true);
-		results.setColumns(100);
-		results.setTabSize(100);
-		results.setRows(100);
-		
-		results.setText(dataFormat);
+		totalResults.repaint();
 		
 	}
 }
