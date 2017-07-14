@@ -13,6 +13,7 @@ import java.awt.Color;
 import info.movito.themoviedbapi.model.MovieDb;
 
 import javax.swing.JTextArea;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.JScrollPane;
 
 public class Frm_SearchMovies {
@@ -65,7 +66,12 @@ public class Frm_SearchMovies {
 			totalResults.add(a);
 		}
 		
-		movies_search.add(totalResults, BorderLayout.CENTER);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setBounds(100, 100, 450, 300);
+		scrollPane.setViewportView(totalResults);
+		movies_search.getContentPane().add(scrollPane);
+		
 		
 		totalResults.repaint();
 		

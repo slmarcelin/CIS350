@@ -11,6 +11,7 @@ import info.movito.themoviedbapi.model.people.Person;
 import info.movito.themoviedbapi.model.tv.TvSeries;
 
 import javax.swing.JTextArea;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.JScrollPane;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -73,7 +74,12 @@ public class Frm_SearchActors {
 			totalResults.add(a);
 		}
 		
-		actors_search.add(totalResults, BorderLayout.CENTER);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setBounds(100, 100, 450, 300);
+		scrollPane.setViewportView(totalResults);
+		actors_search.getContentPane().add(scrollPane);
+		
 		
 		totalResults.repaint();
 		

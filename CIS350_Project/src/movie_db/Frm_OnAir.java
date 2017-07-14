@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.ScrollPaneConstants;
 
 import info.movito.themoviedbapi.model.MovieDb;
 import info.movito.themoviedbapi.model.tv.TvSeries;
@@ -70,7 +71,11 @@ public class Frm_OnAir {
 			totalResults.add(a);
 		}
 		
-		frame4.add(totalResults, BorderLayout.CENTER);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setBounds(100, 100, 450, 300);
+		scrollPane.setViewportView(totalResults);
+		frame4.getContentPane().add(scrollPane);
 		
 		totalResults.repaint();
 	}

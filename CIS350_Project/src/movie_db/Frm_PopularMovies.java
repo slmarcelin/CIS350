@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.ScrollPaneConstants;
 
 import info.movito.themoviedbapi.model.MovieDb;
 
@@ -71,7 +72,11 @@ public class Frm_PopularMovies {
 			totalResults.add(a);
 		}
 		
-		Popular.add(totalResults, BorderLayout.CENTER);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setBounds(100, 100, 450, 300);
+		scrollPane.setViewportView(totalResults);
+		Popular.getContentPane().add(scrollPane);
 		
 		totalResults.repaint();
 	}
