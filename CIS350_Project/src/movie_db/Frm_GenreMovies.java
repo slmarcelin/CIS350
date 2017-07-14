@@ -70,7 +70,7 @@ public class Frm_GenreMovies {
 				
 				totalResults.removeAll();
 				
-				for(MovieDb md : Cls_MovieData.m_getMoviesByGenre(temp.getId())) {					
+				for(MovieDb md : Cls_MovieData.m_getMoviesByGenre(temp.getId(), 0)) {					
 					totalResults.add(new Pnl_ArtworkPanel(Cls_MovieData.m_getMoviePoster(md), new Pnl_MoviePanel(md)));
 				}
 			}
@@ -86,7 +86,7 @@ public class Frm_GenreMovies {
 		totalResults.setLayout(new BoxLayout(totalResults, BoxLayout.Y_AXIS));
 		totalResults.setBounds(100, 100, 450, 300);
 		
-		for(MovieDb md : Cls_MovieData.m_getMoviesByGenre(temp.getId())) {
+		for(MovieDb md : Cls_MovieData.m_getMoviesByGenre(temp.getId(), 0)) {
 			totalResults.add(new Pnl_ArtworkPanel(Cls_MovieData.m_getMoviePoster(md), new Pnl_MoviePanel(md)));
 		}
 		

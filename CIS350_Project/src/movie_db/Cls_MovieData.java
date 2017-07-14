@@ -51,11 +51,11 @@ public class Cls_MovieData {
 		return sessionToken;
 	}
 	
-	public static ArrayList<MovieDb> m_getSearchMovies(String str_SearchValue) {
+	public static ArrayList<MovieDb> m_getSearchMovies(String str_SearchValue, int page) {
 		TmdbSearch tmdbSearch = tmdbApi.getSearch();
 		ArrayList<MovieDb> eachMovie = new ArrayList<MovieDb>();
 		
-		MovieResultsPage results = tmdbSearch.searchMovie(str_SearchValue, 0, "en", true, 0);
+		MovieResultsPage results = tmdbSearch.searchMovie(str_SearchValue, 0, "en", true, page);
 		Iterator<MovieDb> iterator = results.iterator();
 		while (iterator.hasNext()) {
 			MovieDb movie = iterator.next();
@@ -64,11 +64,11 @@ public class Cls_MovieData {
 		return eachMovie;
 	}
 	
-	public static ArrayList<Person> m_getSearchActors(String str_SearchValue) {
+	public static ArrayList<Person> m_getSearchActors(String str_SearchValue, int page) {
 		TmdbSearch tmdbSearch = tmdbApi.getSearch();
 		ArrayList<Person> eachActor = new ArrayList<Person>();
 		
-		PersonResultsPage results = tmdbSearch.searchPerson(str_SearchValue, true, 0);
+		PersonResultsPage results = tmdbSearch.searchPerson(str_SearchValue, true, page);
 		Iterator<Person> iterator = results.iterator();
 		while (iterator.hasNext()) {
 			Person person = iterator.next();
@@ -77,11 +77,11 @@ public class Cls_MovieData {
 		return eachActor;
 	}
 	
-	public static ArrayList<TvSeries> m_getSearchTVShows(String str_SearchValue) {
+	public static ArrayList<TvSeries> m_getSearchTVShows(String str_SearchValue, int page) {
 		TmdbSearch tmdbSearch = tmdbApi.getSearch();
 		ArrayList<TvSeries> eachShow = new ArrayList<TvSeries>();
 		
-		TvResultsPage results = tmdbSearch.searchTv(str_SearchValue, "en", 0);
+		TvResultsPage results = tmdbSearch.searchTv(str_SearchValue, "en", page);
 		Iterator<TvSeries> iterator = results.iterator();
 		while (iterator.hasNext()) {
 			TvSeries tv = iterator.next();
@@ -105,11 +105,11 @@ public class Cls_MovieData {
 		return eachMovie;
 	}
 	
-	public static ArrayList<MovieDb> m_getNewMovies(){
+	public static ArrayList<MovieDb> m_getNewMovies(int page){
 		TmdbMovies tmdbMovie = tmdbApi.getMovies();
 		ArrayList<MovieDb> eachMovie = new ArrayList<MovieDb>();
 		
-		MovieResultsPage results = tmdbMovie.getUpcoming("en", 0);
+		MovieResultsPage results = tmdbMovie.getUpcoming("en", page);
 		Iterator<MovieDb> iterator = results.iterator();
 		while (iterator.hasNext()) {
 			MovieDb movie = iterator.next();
@@ -118,11 +118,11 @@ public class Cls_MovieData {
 		return eachMovie;
 	}
 	
-	public static ArrayList<MovieDb> m_getPopularMovies(){
+	public static ArrayList<MovieDb> m_getPopularMovies(int page){
 		TmdbMovies tmdbMovie = tmdbApi.getMovies();
 		ArrayList<MovieDb> eachMovie = new ArrayList<MovieDb>();
 		
-		MovieResultsPage results = tmdbMovie.getPopularMovies("en", 0);
+		MovieResultsPage results = tmdbMovie.getPopularMovies("en", page);
 		Iterator<MovieDb> iterator = results.iterator();
 		while (iterator.hasNext()) {
 			MovieDb movie = iterator.next();
@@ -136,11 +136,11 @@ public class Cls_MovieData {
 		return (ArrayList<Genre>)tmdbGenre.getGenreList("en");
 	}
 	
-	public static ArrayList<MovieDb> m_getMoviesByGenre(int int_GenreID){
+	public static ArrayList<MovieDb> m_getMoviesByGenre(int int_GenreID, int page){
 		TmdbGenre tmdbGenre = tmdbApi.getGenre();
 		ArrayList<MovieDb> eachMovie = new ArrayList<MovieDb>();
 		
-		MovieResultsPage results = tmdbGenre.getGenreMovies(int_GenreID, "en", 0, true);
+		MovieResultsPage results = tmdbGenre.getGenreMovies(int_GenreID, "en", page, true);
 		Iterator<MovieDb> iterator = results.iterator();
 		while (iterator.hasNext()) {
 			MovieDb movie = iterator.next();
@@ -149,11 +149,11 @@ public class Cls_MovieData {
 		return eachMovie;
 	}
 	
-	public static ArrayList<TvSeries> m_getTvShowsOnAir(){
+	public static ArrayList<TvSeries> m_getTvShowsOnAir(int page){
 		TmdbTV tmdbTv = tmdbApi.getTvSeries();
 		ArrayList<TvSeries> eachSeries = new ArrayList<TvSeries>();
 		
-		TvResultsPage results = tmdbTv.getOnTheAir("en", 0);
+		TvResultsPage results = tmdbTv.getOnTheAir("en", page);
 		Iterator<TvSeries> iterator = results.iterator();
 		while (iterator.hasNext()) {
 			TvSeries tv = iterator.next();
@@ -164,11 +164,11 @@ public class Cls_MovieData {
 	
 	//public ArrayList<TvSeries> m
 	
-	public static ArrayList<TvSeries> m_getTvShowsPopular(){
+	public static ArrayList<TvSeries> m_getTvShowsPopular(int page){
 		TmdbTV tmdbTv = tmdbApi.getTvSeries();
 		ArrayList<TvSeries> eachSeries = new ArrayList<TvSeries>();
 		
-		TvResultsPage results = tmdbTv.getPopular("en", 0);
+		TvResultsPage results = tmdbTv.getPopular("en", page);
 		Iterator<TvSeries> iterator = results.iterator();
 		while (iterator.hasNext()) {
 			TvSeries tv = iterator.next();
@@ -177,11 +177,11 @@ public class Cls_MovieData {
 		return eachSeries;
 	}
 	
-	public static ArrayList<TvSeries> m_getTvShowsTopRated(){
+	public static ArrayList<TvSeries> m_getTvShowsTopRated(int page){
 		TmdbTV tmdbTv = tmdbApi.getTvSeries();
 		ArrayList<TvSeries> eachSeries = new ArrayList<TvSeries>();
 		
-		TvResultsPage results = tmdbTv.getPopular("en", 0);
+		TvResultsPage results = tmdbTv.getPopular("en", page);
 		Iterator<TvSeries> iterator = results.iterator();
 		while (iterator.hasNext()) {
 			TvSeries tv = iterator.next();

@@ -95,8 +95,7 @@ public class Frm_MainFrame extends JFrame {
 		Theaters_button.setBounds(3, 5, 105, 23);
 		Theaters_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Frm_InTheaterMovies listMovies= new Frm_InTheaterMovies();
-				listMovies.movieList();
+				Frm_DisplayResults.displayMovies("Movies in Theaters", Cls_MovieData::m_getInTheaterMovies);
 			}
 		});
 		Theaters_button.addMouseListener(new MouseAdapter()
@@ -121,7 +120,7 @@ public class Frm_MainFrame extends JFrame {
 		newMovies_button.setBounds(105, 5, 110, 23);
 		newMovies_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Frm_DisplayResults.displayMovies("New Movies", Cls_MovieData.m_getNewMovies());
+				Frm_DisplayResults.displayMovies("New Movies", Cls_MovieData::m_getNewMovies);
 			}
 		});
 		
@@ -147,7 +146,7 @@ public class Frm_MainFrame extends JFrame {
 		Menu_Panel.add(btnPopularMovies);
 		btnPopularMovies.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Frm_DisplayResults.displayMovies("Popular Movies", Cls_MovieData.m_getPopularMovies());
+				Frm_DisplayResults.displayMovies("Popular Movies", Cls_MovieData::m_getPopularMovies);
 			}
 		});
 		btnPopularMovies.addMouseListener(new MouseAdapter()
@@ -171,7 +170,7 @@ public class Frm_MainFrame extends JFrame {
 		Menu_Panel.add(btnTopRated);
 		btnTopRated.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Frm_DisplayResults.displayTvSeries("Top Rated TV Shows", Cls_MovieData.m_getTvShowsTopRated());
+				Frm_DisplayResults.displayTvSeries("Top Rated TV Shows", Cls_MovieData::m_getTvShowsTopRated);
 			}
 		});
 		btnTopRated.addMouseListener(new MouseAdapter()
@@ -192,7 +191,7 @@ public class Frm_MainFrame extends JFrame {
 		tvShows_button.setFont(new Font("Tahoma", Font.BOLD, 11));
 		tvShows_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Frm_DisplayResults.displayTvSeries("TV Series on Air", Cls_MovieData.m_getTvShowsOnAir());
+				Frm_DisplayResults.displayTvSeries("TV Series on Air", Cls_MovieData::m_getTvShowsOnAir);
 			}
 		});
 		tvShows_button.setBackground(new Color(153, 204, 255));
@@ -218,7 +217,7 @@ public class Frm_MainFrame extends JFrame {
 		Menu_Panel.add(newTvShows_button);
 		newTvShows_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Frm_DisplayResults.displayTvSeries("Popular TV Shows", Cls_MovieData.m_getTvShowsPopular());
+				Frm_DisplayResults.displayTvSeries("Popular TV Shows", Cls_MovieData::m_getTvShowsPopular);
 			}
 		});
 		newTvShows_button.addMouseListener(new MouseAdapter()
@@ -269,7 +268,7 @@ public class Frm_MainFrame extends JFrame {
 					return;
 				}
 				
-				Frm_DisplayResults.displayPeople("Actor Search Results", Cls_MovieData.m_getSearchActors(actors_textField.getText()));
+				Frm_DisplayResults.displayPeople("Actor Search Results", (page) -> Cls_MovieData.m_getSearchActors(actors_textField.getText(), page));
 			}
 		});
 		actorsSearch.setBackground(new Color(153, 204, 255));
@@ -304,7 +303,7 @@ public class Frm_MainFrame extends JFrame {
 					return;
 				}
 				
-				Frm_DisplayResults.displayMovies("Movie Search Results", Cls_MovieData.m_getSearchMovies(movies_textField.getText()));
+				Frm_DisplayResults.displayMovies("Movie Search Results", (page) -> Cls_MovieData.m_getSearchMovies(movies_textField.getText(), page));
 			}
 		});
 		moviesSearch.setBackground(new Color(153, 204, 255));
@@ -330,7 +329,7 @@ public class Frm_MainFrame extends JFrame {
 					return;
 				}
 				
-				Frm_DisplayResults.displayTvSeries("TV Series Search Results", Cls_MovieData.m_getSearchTVShows(shows_textField.getText()));
+				Frm_DisplayResults.displayTvSeries("TV Series Search Results", (page) -> Cls_MovieData.m_getSearchTVShows(shows_textField.getText(), page));
 			}
 		});
 		showsSearch.setBackground(new Color(153, 204, 255));
