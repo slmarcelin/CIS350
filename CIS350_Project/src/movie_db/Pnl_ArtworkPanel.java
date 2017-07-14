@@ -22,7 +22,7 @@ public class Pnl_ArtworkPanel extends Container {
 	
 	Pnl_ArtworkPanel(String str_PosterLoc, String str_results){
 		setLayout(new BorderLayout());
-		setBounds(100, 100, 450, 300);
+		this.setPreferredSize(new Dimension(200,140));
 
 		BufferedImage img = null;
 		ImageIcon i;

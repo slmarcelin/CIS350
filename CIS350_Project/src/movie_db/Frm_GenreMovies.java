@@ -17,6 +17,7 @@ import javax.swing.JComboBox;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 
 public class Frm_GenreMovies {
 
@@ -95,6 +96,7 @@ public class Frm_GenreMovies {
 		
 		totalResults = new JPanel();
 		totalResults.setLayout(new BoxLayout(totalResults, BoxLayout.Y_AXIS));
+		totalResults.setBounds(100, 100, 450, 300);
 		
 		String dataFormat = "";
 		
@@ -107,7 +109,11 @@ public class Frm_GenreMovies {
 			totalResults.add(a);
 		}
 		
-		movie_Genre.add(totalResults, BorderLayout.CENTER);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setBounds(100, 100, 450, 300);
+		scrollPane.setViewportView(totalResults);
+		movie_Genre.getContentPane().add(scrollPane);
 		
 		totalResults.repaint();
 		
