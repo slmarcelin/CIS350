@@ -15,7 +15,8 @@ import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JOptionPane;
 public class actorTrivia {
-
+   
+	/*Declare variables*/
 	private JFrame frame;
 	private JTextField Question1_textField;
 	private JTextField Question2_textField;
@@ -23,9 +24,9 @@ public class actorTrivia {
 	private JTextField Question4_textField;
 	private JTextField Question5_textField;
 
-	/**
-	 * Launch the application.
-	 */
+	/*********************************************************************************
+	 * Launch the play application
+	 *********************************************************************************/
 	public void play() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -39,7 +40,10 @@ public class actorTrivia {
 			}
 		});
 	}
-
+    /*********************************************************************************
+     * Determine the user's points
+     * @return: points the number of
+     **********************************************************************************/
     public int results()
     {
     	int points=0;
@@ -56,16 +60,17 @@ public class actorTrivia {
     	
     	return points;
     }
-	/**
-	 * Create the application.
-	 */
+    
+    /*********************************************************************************
+	 * Initialize the application
+	 *********************************************************************************/
 	public actorTrivia() {
 		initialize();
 	}
 
-	/**
+	/*********************************************************************************
 	 * Initialize the contents of the frame.
-	 */
+	 *********************************************************************************/
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
@@ -111,7 +116,7 @@ public class actorTrivia {
 		Question2Lb2.setBounds(10, 105, 212, 15);
 		actorTrivia.add(Question2Lb2);
 		
-		JLabel Question3Lb1 = new JLabel("3- The character played by Hugh Jackman in");
+		JLabel Question3Lb1 = new JLabel("3- The character played by Hugh Jackman in");                                           
 		Question3Lb1.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		Question3Lb1.setForeground(new Color(178, 34, 34));
 		Question3Lb1.setBounds(10, 137, 244, 15);

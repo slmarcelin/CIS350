@@ -26,11 +26,11 @@ public class Frm_DisplayResults extends JFrame{
 	private Runnable refreshPage;
 	private int page = 1;
 	
-	/**
-	 * Creates a JFrame to display movies
-	 * @param title the title of the JFrame
-	 * @param movies the movies to display on the JFrame
-	 */
+	/*********************************************************************************
+	  Creates a JFrame to display movies
+	  @param title the title of the JFrame
+	  @param movies the movies to display on the JFrame
+	 *********************************************************************************/
 	public static void displayMovies(String title, Function<Integer, ArrayList<MovieDb>> fetch_movies) {
 		Frm_DisplayResults display = new Frm_DisplayResults(title, (p) -> {
 			try {

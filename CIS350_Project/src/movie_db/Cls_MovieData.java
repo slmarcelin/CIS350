@@ -38,19 +38,25 @@ public class Cls_MovieData {
 	
 	private Cls_MovieData() {}
 	
+	/*********************************************************************************
+	Generate a new session token
+	*********************************************************************************/
 	private static SessionToken getNewSessionToken() {
-		// There are two ways to generate a session id
-		
-		// Method 1: Generating session id using API calls (requires username and password)
-		
 		TmdbAuthentication tmdbAuth = tmdbApi.getAuthentication();
 		TokenSession tokenSession = tmdbAuth.getSessionLogin("slmarcelin","Slmarcelin2013");
 		System.out.println("Session ID: " + tokenSession.getSessionId());
 		SessionToken sessionToken = new SessionToken(tokenSession.getSessionId());
-		
 		return sessionToken;
 	}
 	
+	/*********************************************************************************
+	  Returns the list of the searched 
+	  movies
+	  @param page the current display page
+	  @param str_SeachValue of type string
+	  @return the MovieDb arraylist of 
+	          searched movies
+	*********************************************************************************/
 	public static ArrayList<MovieDb> m_getSearchMovies(String str_SearchValue, int page) {
 		TmdbSearch tmdbSearch = tmdbApi.getSearch();
 		ArrayList<MovieDb> eachMovie = new ArrayList<MovieDb>();
@@ -64,6 +70,14 @@ public class Cls_MovieData {
 		return eachMovie;
 	}
 	
+	/*********************************************************************************
+	  Returns the list of the searched 
+	  actors
+	  @param page the current display page
+	  @param str_SeachValue of type string
+	  @return the Person arraylist of 
+	          searched actors
+	*********************************************************************************/
 	public static ArrayList<Person> m_getSearchActors(String str_SearchValue, int page) {
 		TmdbSearch tmdbSearch = tmdbApi.getSearch();
 		ArrayList<Person> eachActor = new ArrayList<Person>();
@@ -77,6 +91,14 @@ public class Cls_MovieData {
 		return eachActor;
 	}
 	
+	/*********************************************************************************
+	  Returns the list of the searched 
+	  TV show
+	  @param page the current display page
+	  @param str_SeachValue of type string
+	  @return the TvSeries arraylist of 
+	          searched shows
+	*********************************************************************************/
 	public static ArrayList<TvSeries> m_getSearchTVShows(String str_SearchValue, int page) {
 		TmdbSearch tmdbSearch = tmdbApi.getSearch();
 		ArrayList<TvSeries> eachShow = new ArrayList<TvSeries>();
@@ -90,8 +112,12 @@ public class Cls_MovieData {
 		return eachShow;
 	}
 	
-	
-	
+	/*********************************************************************************
+	  Returns the list of moves in theater
+	  @param page the current display page
+	  @return the MovieDb arraylist of movies
+	          in theater
+	*********************************************************************************/
 	public static ArrayList<MovieDb> m_getInTheaterMovies(int page){
 		TmdbMovies tmdbMovie = tmdbApi.getMovies();
 		ArrayList<MovieDb> eachMovie = new ArrayList<MovieDb>();
@@ -105,6 +131,12 @@ public class Cls_MovieData {
 		return eachMovie;
 	}
 	
+	/*********************************************************************************
+	  Returns the list of new movies
+	  @param page the current display page
+	  @return the MovieDb arraylist of new
+	           movies
+	*********************************************************************************/
 	public static ArrayList<MovieDb> m_getNewMovies(int page){
 		TmdbMovies tmdbMovie = tmdbApi.getMovies();
 		ArrayList<MovieDb> eachMovie = new ArrayList<MovieDb>();
@@ -118,6 +150,12 @@ public class Cls_MovieData {
 		return eachMovie;
 	}
 	
+	/*********************************************************************************
+	  Returns the list popular movies
+	  @param page the current display page
+	  @return the array list of popular
+	          movies
+	*********************************************************************************/
 	public static ArrayList<MovieDb> m_getPopularMovies(int page){
 		TmdbMovies tmdbMovie = tmdbApi.getMovies();
 		ArrayList<MovieDb> eachMovie = new ArrayList<MovieDb>();
@@ -131,11 +169,24 @@ public class Cls_MovieData {
 		return eachMovie;
 	}
 	
+	/*********************************************************************************
+	  Returns the list of top rated shows
+	  @param page the current display page
+	  @return the array list of top rated
+	          shows
+	*********************************************************************************/	
 	public static ArrayList<Genre> m_getGenres(){
 		TmdbGenre tmdbGenre = tmdbApi.getGenre();
 		return (ArrayList<Genre>)tmdbGenre.getGenreList("en");
 	}
 	
+	/*********************************************************************************
+	  Returns the list of movies by genre
+	  @param page the current display page
+	  @param int_GenreId the genre id
+	  @return the array list of movies
+	          by genre
+	*********************************************************************************/
 	public static ArrayList<MovieDb> m_getMoviesByGenre(int int_GenreID, int page){
 		TmdbGenre tmdbGenre = tmdbApi.getGenre();
 		ArrayList<MovieDb> eachMovie = new ArrayList<MovieDb>();
@@ -149,6 +200,12 @@ public class Cls_MovieData {
 		return eachMovie;
 	}
 	
+	/*********************************************************************************
+	  Returns the list of shows on Air
+	  @param page the current display page
+	  @return the array list of shows on
+	          Air
+	*********************************************************************************/
 	public static ArrayList<TvSeries> m_getTvShowsOnAir(int page){
 		TmdbTV tmdbTv = tmdbApi.getTvSeries();
 		ArrayList<TvSeries> eachSeries = new ArrayList<TvSeries>();
@@ -162,8 +219,12 @@ public class Cls_MovieData {
 		return eachSeries;
 	}
 	
-	//public ArrayList<TvSeries> m
-	
+	/*********************************************************************************
+	  Returns the list of popular shows
+	  @param page the current display page
+	  @return the array list of popular
+	          shows
+	*********************************************************************************/
 	public static ArrayList<TvSeries> m_getTvShowsPopular(int page){
 		TmdbTV tmdbTv = tmdbApi.getTvSeries();
 		ArrayList<TvSeries> eachSeries = new ArrayList<TvSeries>();
@@ -177,6 +238,12 @@ public class Cls_MovieData {
 		return eachSeries;
 	}
 	
+	/*********************************************************************************
+	  Returns the list of top rated shows
+	  @param page the current display page
+	  @return the array list of top rated
+	          shows
+	*********************************************************************************/
 	public static ArrayList<TvSeries> m_getTvShowsTopRated(int page){
 		TmdbTV tmdbTv = tmdbApi.getTvSeries();
 		ArrayList<TvSeries> eachSeries = new ArrayList<TvSeries>();
@@ -190,6 +257,11 @@ public class Cls_MovieData {
 		return eachSeries;
 	}
 	
+	/*********************************************************************************
+	  Find a random movie
+	  @param person the id of a movie
+	  @return MovieDb the selected movie
+	*********************************************************************************/
 	public static MovieDb m_getRandMovie(int movie) {
 		int count = 0;
 		TmdbMovies tmdbMovies = tmdbApi.getMovies();
@@ -203,6 +275,11 @@ public class Cls_MovieData {
 		return m;
 	}
 	
+	/*********************************************************************************
+	  Find a random show
+	  @param show the id of a show
+	  @return TvSeries the selected show
+	*********************************************************************************/
 	public static TvSeries m_getRandShow(int show) {
 		int count = 0;
 		TmdbTV tmdbTV = tmdbApi.getTvSeries();
@@ -216,6 +293,11 @@ public class Cls_MovieData {
 		return tv;
 	}
 	
+	/*********************************************************************************
+	  Find a random actor
+	  @param person the id of an actor
+	  @return Person the selected actor
+	*********************************************************************************/
 	public static Person m_getRandActor(int person) {
 		int count = 0;
 		TmdbPeople tmdbPeople = tmdbApi.getPeople();
@@ -229,6 +311,11 @@ public class Cls_MovieData {
 		return p;
 	}
 	
+	/*********************************************************************************
+	  Find the poster image of the movie
+	  @param movie of type MOvieDb
+	  @return ImageIcon the image 
+	*********************************************************************************/
 	public static ImageIcon m_getMoviePoster(MovieDb movie) {
 		try {
 			BufferedImage img = ImageIO.read(new URL(IMAGE_ROOT_URL + movie.getPosterPath()));
@@ -239,6 +326,11 @@ public class Cls_MovieData {
 		}
 	}
 	
+	/*********************************************************************************
+	  Find the poster image of the show
+	  @param tv of TvSeries
+	  @return ImageIcon the image 
+	*********************************************************************************/
 	public static ImageIcon m_getTvPoster(TvSeries tv) {
 		try {
 			BufferedImage img = ImageIO.read(new URL(IMAGE_ROOT_URL + tv.getPosterPath()));
@@ -249,6 +341,11 @@ public class Cls_MovieData {
 		}
 	}
 	
+	/*********************************************************************************
+	  Find the profile image of an actor
+	  @param p of type Person
+	  @return ImageIcon the image 
+	*********************************************************************************/
 	public static ImageIcon m_getPersonProfile(Person p) {
 		try {
 			BufferedImage img = ImageIO.read(new URL(IMAGE_ROOT_URL + p.getProfilePath()));
