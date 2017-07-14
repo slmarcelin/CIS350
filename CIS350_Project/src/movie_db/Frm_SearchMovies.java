@@ -46,8 +46,7 @@ public class Frm_SearchMovies {
 	private void initialize() {
 		movies_search = new JFrame();
 		movies_search.setTitle("Your Movie Search results");
-		movies_search.getContentPane().setBackground(new Color(250, 235, 215));
-		movies_search.setBounds(100, 100, 450, 300);
+		movies_search.setBounds(100, 100, 900, 600);
 		movies_search.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		movies_search.getContentPane().setLayout(new BorderLayout());
 		
@@ -55,25 +54,14 @@ public class Frm_SearchMovies {
 		totalResults.setLayout(new BoxLayout(totalResults, BoxLayout.Y_AXIS));
 		
 		data = new Cls_MovieData();
-		String dataFormat = "";
 		
 		for(MovieDb md : data.m_getSearchMovies(str_SearchValue)) {
-			dataFormat = " Movie Title: " + md.getTitle() + "\n   Released Date: ";
-			dataFormat += md.getReleaseDate() + "\n   Description: ";
-			dataFormat += md.getOverview() + "\n\n";
-			
-			Pnl_ArtworkPanel a = new Pnl_ArtworkPanel("http://image.tmdb.org/t/p/w92/" + md.getPosterPath(), dataFormat);
-			totalResults.add(a);
+			//TODO: Pnl_ArtworkPanel a = new Pnl_ArtworkPanel("http://image.tmdb.org/t/p/w92/" + md.getPosterPath(), dataFormat);
+			totalResults.add(new Pnl_MoviePanel(md));
 		}
 		
-		JScrollPane scrollPane = new JScrollPane();
+		JScrollPane scrollPane = new JScrollPane(totalResults);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.setBounds(100, 100, 450, 300);
-		scrollPane.setViewportView(totalResults);
 		movies_search.getContentPane().add(scrollPane);
-		
-		
-		totalResults.repaint();
-		
 	}
 }
