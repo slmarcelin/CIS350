@@ -85,11 +85,11 @@ public class Cls_MovieData {
 	
 	
 	
-	public ArrayList<MovieDb> m_getInTheaterMovies(){
+	public ArrayList<MovieDb> m_getInTheaterMovies(int page){
 		TmdbMovies tmdbMovie = tmdbApi.getMovies();
 		ArrayList<MovieDb> eachMovie = new ArrayList<MovieDb>();
 		
-		MovieResultsPage results = tmdbMovie.getNowPlayingMovies("en", 0);
+		MovieResultsPage results = tmdbMovie.getNowPlayingMovies("en", page);
 		Iterator<MovieDb> iterator = results.iterator();
 		while (iterator.hasNext()) {
 			MovieDb movie = iterator.next();
