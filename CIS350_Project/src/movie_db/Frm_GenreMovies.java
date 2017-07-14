@@ -1,6 +1,7 @@
 package movie_db;
 
 import java.awt.EventQueue;
+import java.awt.Point;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -64,6 +65,9 @@ public class Frm_GenreMovies {
 		movie_Genre.getContentPane().setLayout(new BorderLayout());
 	
 		data = new Cls_MovieData();
+		String dataFormat = "";
+		totalResults = new JPanel();
+		JScrollPane scrollPane = new JScrollPane();
 		
 		JComboBox cmb_GenreComboBox = new JComboBox();
 		cmb_GenreComboBox.addItemListener(new ItemListener() {
@@ -71,19 +75,16 @@ public class Frm_GenreMovies {
 				String dataFormat = "";
 				Genre temp = (Genre)arg0.getItem();
 				
-				for(MovieDb md : data.m_getMoviesByGenre(temp.getId())) {
-					dataFormat += "Movie Title: "+ md.getTitle() + "\nReleased Date: ";
-					dataFormat += md.getReleaseDate() + "\nDescription: ";
-					dataFormat += md.getOverview() + "\n\n";
-				}
+				totalResults.removeAll();
 				
-				try {
-					results.setText(dataFormat);
-					results.repaint();
+				for(MovieDb md : data.m_getMoviesByGenre(temp.getId())) {
+					dataFormat = " Movie title: " + md.getTitle() + "\n   Released Date: ";
+					dataFormat += md.getReleaseDate() + "\n   Description: ";
+					dataFormat += md.getOverview() + "\n\n";
+					
+					Pnl_ArtworkPanel a = new Pnl_ArtworkPanel("http://image.tmdb.org/t/p/w92/" + md.getPosterPath(), dataFormat);
+					totalResults.add(a);
 				}
-				catch(Exception e)
-				{ return; }
-		
 			}
 		});
 		cmb_GenreComboBox.setBounds(10, 222, 410, 22);
@@ -94,11 +95,8 @@ public class Frm_GenreMovies {
 		
 		Genre temp = (Genre)cmb_GenreComboBox.getSelectedItem();
 		
-		totalResults = new JPanel();
 		totalResults.setLayout(new BoxLayout(totalResults, BoxLayout.Y_AXIS));
 		totalResults.setBounds(100, 100, 450, 300);
-		
-		String dataFormat = "";
 		
 		for(MovieDb md : data.m_getMoviesByGenre(temp.getId())) {
 			dataFormat = " Movie title: " + md.getTitle() + "\n   Released Date: ";
@@ -109,11 +107,11 @@ public class Frm_GenreMovies {
 			totalResults.add(a);
 		}
 		
-		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.setBounds(100, 100, 450, 300);
 		scrollPane.setViewportView(totalResults);
 		movie_Genre.getContentPane().add(scrollPane);
+		movie_Genre.add(cmb_GenreComboBox, BorderLayout.NORTH);
 		
 		totalResults.repaint();
 		
