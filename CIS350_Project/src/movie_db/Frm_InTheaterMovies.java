@@ -92,13 +92,7 @@ public class Frm_InTheaterMovies {
 		totalResults.removeAll();
 		
 		for(MovieDb md : Cls_MovieData.m_getInTheaterMovies(page)) {
-			String dataFormat = "";
-			dataFormat = " Movie Title: " + md.getTitle() + "\n   Released Date: ";
-			dataFormat += md.getReleaseDate() + "\n   Description: ";
-			dataFormat += md.getOverview() + "\n\n";
-			
-			Pnl_ArtworkPanel a = new Pnl_ArtworkPanel("http://image.tmdb.org/t/p/w92/" + md.getPosterPath(), dataFormat);
-			totalResults.add(a);
+			totalResults.add(new Pnl_ArtworkPanel(Cls_MovieData.m_getMoviePoster(md), new Pnl_MoviePanel(md)));
 		}
 		
 		totalResults.repaint();

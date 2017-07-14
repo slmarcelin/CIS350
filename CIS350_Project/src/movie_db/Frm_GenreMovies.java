@@ -23,9 +23,6 @@ import javax.swing.ScrollPaneConstants;
 public class Frm_GenreMovies {
 
 	private JFrame movie_Genre;
-	private JTextArea results;
-	private JPanel totalResults;
-	private JScrollPane scrollPane;
 
 	/**
 	 * Launch the application.
@@ -63,25 +60,18 @@ public class Frm_GenreMovies {
 		movie_Genre.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		movie_Genre.getContentPane().setLayout(new BorderLayout());
 	
-		String dataFormat = "";
-		totalResults = new JPanel();
+		JPanel totalResults = new JPanel();
 		JScrollPane scrollPane = new JScrollPane();
 		
-		JComboBox cmb_GenreComboBox = new JComboBox();
+		JComboBox<Genre> cmb_GenreComboBox = new JComboBox<Genre>();
 		cmb_GenreComboBox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
-				String dataFormat = "";
 				Genre temp = (Genre)arg0.getItem();
 				
 				totalResults.removeAll();
 				
-				for(MovieDb md : Cls_MovieData.m_getMoviesByGenre(temp.getId())) {
-					dataFormat = " Movie title: " + md.getTitle() + "\n   Released Date: ";
-					dataFormat += md.getReleaseDate() + "\n   Description: ";
-					dataFormat += md.getOverview() + "\n\n";
-					
-					Pnl_ArtworkPanel a = new Pnl_ArtworkPanel("http://image.tmdb.org/t/p/w92/" + md.getPosterPath(), dataFormat);
-					totalResults.add(a);
+				for(MovieDb md : Cls_MovieData.m_getMoviesByGenre(temp.getId())) {					
+					totalResults.add(new Pnl_ArtworkPanel(Cls_MovieData.m_getMoviePoster(md), new Pnl_MoviePanel(md)));
 				}
 			}
 		});
@@ -97,12 +87,7 @@ public class Frm_GenreMovies {
 		totalResults.setBounds(100, 100, 450, 300);
 		
 		for(MovieDb md : Cls_MovieData.m_getMoviesByGenre(temp.getId())) {
-			dataFormat = " Movie title: " + md.getTitle() + "\n   Released Date: ";
-			dataFormat += md.getReleaseDate() + "\n   Description: ";
-			dataFormat += md.getOverview() + "\n\n";
-			
-			Pnl_ArtworkPanel a = new Pnl_ArtworkPanel("http://image.tmdb.org/t/p/w92/" + md.getPosterPath(), dataFormat);
-			totalResults.add(a);
+			totalResults.add(new Pnl_ArtworkPanel(Cls_MovieData.m_getMoviePoster(md), new Pnl_MoviePanel(md)));
 		}
 		
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);

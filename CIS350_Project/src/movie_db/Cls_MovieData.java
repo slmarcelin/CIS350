@@ -1,7 +1,12 @@
 package movie_db;
 
+import java.awt.image.BufferedImage;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 import info.movito.themoviedbapi.TmdbApi;
 import info.movito.themoviedbapi.TmdbAuthentication;
@@ -24,6 +29,7 @@ public class Cls_MovieData {
 	
 	private static TmdbApi tmdbApi;
 	private static SessionToken sessionToken;
+	private static final String IMAGE_ROOT_URL = "http://image.tmdb.org/t/p/w92/";
 	
 	static {
 		tmdbApi = new TmdbApi("d69cd7f2a6f9624840bee0c1fc2a9ee0");
@@ -221,5 +227,35 @@ public class Cls_MovieData {
 			count++;
 		}
 		return p;
+	}
+	
+	public static ImageIcon m_getMoviePoster(MovieDb movie) {
+		try {
+			BufferedImage img = ImageIO.read(new URL(IMAGE_ROOT_URL + movie.getPosterPath()));
+			return new ImageIcon(img);
+		} catch(Exception e) {
+			// Red image
+			return new ImageIcon(Cls_MovieData.class.getResource("tmdb.png"));
+		}
+	}
+	
+	public static ImageIcon m_getTvPoster(TvSeries tv) {
+		try {
+			BufferedImage img = ImageIO.read(new URL(IMAGE_ROOT_URL + tv.getPosterPath()));
+			return new ImageIcon(img);
+		} catch(Exception e) {
+			// Red image
+			return new ImageIcon(Cls_MovieData.class.getResource("tmdb.png"));
+		}
+	}
+	
+	public static ImageIcon m_getPersonProfile(Person p) {
+		try {
+			BufferedImage img = ImageIO.read(new URL(IMAGE_ROOT_URL + p.getProfilePath()));
+			return new ImageIcon(img);
+		} catch(Exception e) {
+			// Red image
+			return new ImageIcon(Cls_MovieData.class.getResource("tmdb.png"));
+		}
 	}
 }
