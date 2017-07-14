@@ -19,7 +19,6 @@ public class Frm_SearchActors {
 
 	private JFrame actors_search;
 	private JPanel totalResults;
-	private Cls_MovieData data;
 	private String str_SearchValue;
 
 	/**
@@ -63,10 +62,9 @@ public class Frm_SearchActors {
 		totalResults = new JPanel();
 		totalResults.setLayout(new BoxLayout(totalResults, BoxLayout.Y_AXIS));
 		
-		data = new Cls_MovieData();
 		String dataFormat = "";
 		
-		for(Person pd : data.m_getSearchActors(str_SearchValue)) {
+		for(Person pd : Cls_MovieData.m_getSearchActors(str_SearchValue)) {
 			dataFormat = "Actor's name: "+ pd.getName() + "\n";
 			dataFormat += "Actor's Id Number: "+ pd.getId()+"\n\n";
 			

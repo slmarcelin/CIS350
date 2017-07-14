@@ -25,7 +25,6 @@ public class Frm_GenreMovies {
 	private JFrame movie_Genre;
 	private JTextArea results;
 	private JPanel totalResults;
-	private Cls_MovieData data;
 	private JScrollPane scrollPane;
 
 	/**
@@ -64,7 +63,6 @@ public class Frm_GenreMovies {
 		movie_Genre.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		movie_Genre.getContentPane().setLayout(new BorderLayout());
 	
-		data = new Cls_MovieData();
 		String dataFormat = "";
 		totalResults = new JPanel();
 		JScrollPane scrollPane = new JScrollPane();
@@ -77,7 +75,7 @@ public class Frm_GenreMovies {
 				
 				totalResults.removeAll();
 				
-				for(MovieDb md : data.m_getMoviesByGenre(temp.getId())) {
+				for(MovieDb md : Cls_MovieData.m_getMoviesByGenre(temp.getId())) {
 					dataFormat = " Movie title: " + md.getTitle() + "\n   Released Date: ";
 					dataFormat += md.getReleaseDate() + "\n   Description: ";
 					dataFormat += md.getOverview() + "\n\n";
@@ -89,7 +87,7 @@ public class Frm_GenreMovies {
 		});
 		cmb_GenreComboBox.setBounds(10, 222, 410, 22);
 		
-		for(Genre g : data.m_getGenres()) {
+		for(Genre g : Cls_MovieData.m_getGenres()) {
 			cmb_GenreComboBox.addItem(g);
 		}
 		
@@ -98,7 +96,7 @@ public class Frm_GenreMovies {
 		totalResults.setLayout(new BoxLayout(totalResults, BoxLayout.Y_AXIS));
 		totalResults.setBounds(100, 100, 450, 300);
 		
-		for(MovieDb md : data.m_getMoviesByGenre(temp.getId())) {
+		for(MovieDb md : Cls_MovieData.m_getMoviesByGenre(temp.getId())) {
 			dataFormat = " Movie title: " + md.getTitle() + "\n   Released Date: ";
 			dataFormat += md.getReleaseDate() + "\n   Description: ";
 			dataFormat += md.getOverview() + "\n\n";

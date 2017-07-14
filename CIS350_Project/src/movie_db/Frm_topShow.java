@@ -16,7 +16,6 @@ public class Frm_topShow {
 
 	private JFrame frame5;
 	private JPanel totalResults;
-	private Cls_MovieData data;
 
 	/**
 	 * Launch the application.
@@ -56,10 +55,9 @@ public class Frm_topShow {
 		totalResults = new JPanel();
 		totalResults.setLayout(new BoxLayout(totalResults, BoxLayout.Y_AXIS));
 		
-		data = new Cls_MovieData();
 		String dataFormat = "";
 		
-		for(TvSeries md : data.m_getTvShowsTopRated()) {
+		for(TvSeries md : Cls_MovieData.m_getTvShowsTopRated()) {
 			dataFormat = " Show Title: " + md.getName() + "\n   First Aired: ";
 			dataFormat += md.getFirstAirDate() + "\n   Description: ";
 			dataFormat += md.getOverview() + "\n\n";

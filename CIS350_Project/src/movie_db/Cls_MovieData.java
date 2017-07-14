@@ -25,13 +25,14 @@ public class Cls_MovieData {
 	private static TmdbApi tmdbApi;
 	private static SessionToken sessionToken;
 	
-	Cls_MovieData(){
+	static {
 		tmdbApi = new TmdbApi("d69cd7f2a6f9624840bee0c1fc2a9ee0");
-		
-		sessionToken = getSessionToken();
+		sessionToken = getNewSessionToken();
 	}
 	
-	private static SessionToken getSessionToken() {
+	private Cls_MovieData() {}
+	
+	private static SessionToken getNewSessionToken() {
 		// There are two ways to generate a session id
 		
 		// Method 1: Generating session id using API calls (requires username and password)
@@ -44,7 +45,7 @@ public class Cls_MovieData {
 		return sessionToken;
 	}
 	
-	public ArrayList<MovieDb> m_getSearchMovies(String str_SearchValue) {
+	public static ArrayList<MovieDb> m_getSearchMovies(String str_SearchValue) {
 		TmdbSearch tmdbSearch = tmdbApi.getSearch();
 		ArrayList<MovieDb> eachMovie = new ArrayList<MovieDb>();
 		
@@ -57,7 +58,7 @@ public class Cls_MovieData {
 		return eachMovie;
 	}
 	
-	public ArrayList<Person> m_getSearchActors(String str_SearchValue) {
+	public static ArrayList<Person> m_getSearchActors(String str_SearchValue) {
 		TmdbSearch tmdbSearch = tmdbApi.getSearch();
 		ArrayList<Person> eachActor = new ArrayList<Person>();
 		
@@ -70,7 +71,7 @@ public class Cls_MovieData {
 		return eachActor;
 	}
 	
-	public ArrayList<TvSeries> m_getSearchTVShows(String str_SearchValue) {
+	public static ArrayList<TvSeries> m_getSearchTVShows(String str_SearchValue) {
 		TmdbSearch tmdbSearch = tmdbApi.getSearch();
 		ArrayList<TvSeries> eachShow = new ArrayList<TvSeries>();
 		
@@ -85,7 +86,7 @@ public class Cls_MovieData {
 	
 	
 	
-	public ArrayList<MovieDb> m_getInTheaterMovies(int page){
+	public static ArrayList<MovieDb> m_getInTheaterMovies(int page){
 		TmdbMovies tmdbMovie = tmdbApi.getMovies();
 		ArrayList<MovieDb> eachMovie = new ArrayList<MovieDb>();
 		
@@ -98,7 +99,7 @@ public class Cls_MovieData {
 		return eachMovie;
 	}
 	
-	public ArrayList<MovieDb> m_getNewMovies(){
+	public static ArrayList<MovieDb> m_getNewMovies(){
 		TmdbMovies tmdbMovie = tmdbApi.getMovies();
 		ArrayList<MovieDb> eachMovie = new ArrayList<MovieDb>();
 		
@@ -111,7 +112,7 @@ public class Cls_MovieData {
 		return eachMovie;
 	}
 	
-	public ArrayList<MovieDb> m_getPopularMovies(){
+	public static ArrayList<MovieDb> m_getPopularMovies(){
 		TmdbMovies tmdbMovie = tmdbApi.getMovies();
 		ArrayList<MovieDb> eachMovie = new ArrayList<MovieDb>();
 		
@@ -124,12 +125,12 @@ public class Cls_MovieData {
 		return eachMovie;
 	}
 	
-	public ArrayList<Genre> m_getGenres(){
+	public static ArrayList<Genre> m_getGenres(){
 		TmdbGenre tmdbGenre = tmdbApi.getGenre();
 		return (ArrayList<Genre>)tmdbGenre.getGenreList("en");
 	}
 	
-	public ArrayList<MovieDb> m_getMoviesByGenre(int int_GenreID){
+	public static ArrayList<MovieDb> m_getMoviesByGenre(int int_GenreID){
 		TmdbGenre tmdbGenre = tmdbApi.getGenre();
 		ArrayList<MovieDb> eachMovie = new ArrayList<MovieDb>();
 		
@@ -142,7 +143,7 @@ public class Cls_MovieData {
 		return eachMovie;
 	}
 	
-	public ArrayList<TvSeries> m_getTvShowsOnAir(){
+	public static ArrayList<TvSeries> m_getTvShowsOnAir(){
 		TmdbTV tmdbTv = tmdbApi.getTvSeries();
 		ArrayList<TvSeries> eachSeries = new ArrayList<TvSeries>();
 		
@@ -157,7 +158,7 @@ public class Cls_MovieData {
 	
 	//public ArrayList<TvSeries> m
 	
-	public ArrayList<TvSeries> m_getTvShowsPopular(){
+	public static ArrayList<TvSeries> m_getTvShowsPopular(){
 		TmdbTV tmdbTv = tmdbApi.getTvSeries();
 		ArrayList<TvSeries> eachSeries = new ArrayList<TvSeries>();
 		
@@ -170,7 +171,7 @@ public class Cls_MovieData {
 		return eachSeries;
 	}
 	
-	public ArrayList<TvSeries> m_getTvShowsTopRated(){
+	public static ArrayList<TvSeries> m_getTvShowsTopRated(){
 		TmdbTV tmdbTv = tmdbApi.getTvSeries();
 		ArrayList<TvSeries> eachSeries = new ArrayList<TvSeries>();
 		
@@ -183,7 +184,7 @@ public class Cls_MovieData {
 		return eachSeries;
 	}
 	
-	public MovieDb m_getRandMovie(int movie) {
+	public static MovieDb m_getRandMovie(int movie) {
 		int count = 0;
 		TmdbMovies tmdbMovies = tmdbApi.getMovies();
 		MovieResultsPage results = tmdbMovies.getPopularMovies("en", 5);
@@ -196,7 +197,7 @@ public class Cls_MovieData {
 		return m;
 	}
 	
-	public TvSeries m_getRandShow(int show) {
+	public static TvSeries m_getRandShow(int show) {
 		int count = 0;
 		TmdbTV tmdbTV = tmdbApi.getTvSeries();
 		TvResultsPage results = tmdbTV.getPopular("en", 5);
@@ -209,7 +210,7 @@ public class Cls_MovieData {
 		return tv;
 	}
 	
-	public Person m_getRandActor(int person) {
+	public static Person m_getRandActor(int person) {
 		int count = 0;
 		TmdbPeople tmdbPeople = tmdbApi.getPeople();
 		PersonResultsPage results = tmdbPeople.getPersonPopular(5);

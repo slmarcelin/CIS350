@@ -36,8 +36,6 @@ public class Frm_InTheaterMovies {
 
 	private int page = 0;
 	
-	private Cls_MovieData data;
-
 	/**
 	 * Launch the application.
 	 */
@@ -76,7 +74,6 @@ public class Frm_InTheaterMovies {
 		totalResults = new JPanel();
 		totalResults.setLayout(new BoxLayout(totalResults, BoxLayout.Y_AXIS));
 		pagePnl = new Pnl_PrevNext();
-		data = new Cls_MovieData();
 		
 		dataSetup();
 		
@@ -94,7 +91,7 @@ public class Frm_InTheaterMovies {
 	private void dataSetup() {
 		totalResults.removeAll();
 		
-		for(MovieDb md : data.m_getInTheaterMovies(page)) {
+		for(MovieDb md : Cls_MovieData.m_getInTheaterMovies(page)) {
 			String dataFormat = "";
 			dataFormat = " Movie Title: " + md.getTitle() + "\n   Released Date: ";
 			dataFormat += md.getReleaseDate() + "\n   Description: ";

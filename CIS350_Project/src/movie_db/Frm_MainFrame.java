@@ -11,16 +11,21 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
 import java.awt.event.ActionEvent;
+
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
+
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.Panel;
 import java.awt.Dialog.ModalExclusionType;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import javax.swing.ImageIcon;
 import javax.swing.JSeparator;
 
@@ -116,8 +121,7 @@ public class Frm_MainFrame extends JFrame {
 		newMovies_button.setBounds(105, 5, 110, 23);
 		newMovies_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Frm_NewMovies newMovie= new Frm_NewMovies();
-				newMovie.movies_new();
+				new Frm_DisplayMovies("New Movies", Cls_MovieData.m_getNewMovies());
 			}
 		});
 		
@@ -143,8 +147,7 @@ public class Frm_MainFrame extends JFrame {
 		Menu_Panel.add(btnPopularMovies);
 		btnPopularMovies.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Frm_PopularMovies popularMovie= new Frm_PopularMovies();
-				popularMovie.popular();
+				new Frm_DisplayMovies("Popular Movies", Cls_MovieData.m_getPopularMovies());
 			}
 		});
 		btnPopularMovies.addMouseListener(new MouseAdapter()
@@ -305,8 +308,7 @@ public class Frm_MainFrame extends JFrame {
 					return;
 				}
 				
-				Frm_SearchMovies searchMovies = new Frm_SearchMovies(movies_textField.getText());
-				searchMovies.movieSearch(movies_textField.getText());
+				new Frm_DisplayMovies("Movie Search Results", Cls_MovieData.m_getSearchMovies(movies_textField.getText()));
 			}
 		});
 		moviesSearch.setBackground(new Color(153, 204, 255));

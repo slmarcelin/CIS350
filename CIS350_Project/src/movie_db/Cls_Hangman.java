@@ -3,7 +3,6 @@ package movie_db;
 import java.util.Random;
 
 public class Cls_Hangman {
-	private Cls_MovieData data;
 	private String word;
 	private String userGuess;
 	private int state = 0;
@@ -12,7 +11,6 @@ public class Cls_Hangman {
 	private int source;
 	
 	Cls_Hangman(){
-		data = new Cls_MovieData();
 		Random r = new Random();
 		rand = r.nextInt(100);
 		source = r.nextInt(20);
@@ -69,11 +67,11 @@ public class Cls_Hangman {
 	
 	private void generateWord() {
 		if(rand < 33)
-			word = data.m_getRandMovie(source).getTitle();
+			word = Cls_MovieData.m_getRandMovie(source).getTitle();
 		else if(rand > 33 && rand < 66)
-			word = data.m_getRandShow(source).getName();
+			word = Cls_MovieData.m_getRandShow(source).getName();
 		else
-			word = data.m_getRandActor(source).getName();
+			word = Cls_MovieData.m_getRandActor(source).getName();
 		
 		word = word.toUpperCase();
 	}

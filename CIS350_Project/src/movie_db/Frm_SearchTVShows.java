@@ -18,7 +18,6 @@ public class Frm_SearchTVShows {
 
 	private JFrame tv_search;
 	private JPanel totalResults;
-	private Cls_MovieData data;
 	private String str_SearchValue;
 
 	/**
@@ -61,10 +60,9 @@ public class Frm_SearchTVShows {
 		totalResults = new JPanel();
 		totalResults.setLayout(new BoxLayout(totalResults, BoxLayout.Y_AXIS));
 		
-		data = new Cls_MovieData();
 		String dataFormat = "";
 		
-		for(TvSeries md : data.m_getSearchTVShows(str_SearchValue)) {
+		for(TvSeries md : Cls_MovieData.m_getSearchTVShows(str_SearchValue)) {
 			dataFormat = " Show Title: " + md.getName() + "\n   First Aired: ";
 			dataFormat += md.getFirstAirDate() + "\n   Description: ";
 			dataFormat += md.getOverview() + "\n\n";
