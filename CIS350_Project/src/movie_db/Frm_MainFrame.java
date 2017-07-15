@@ -81,9 +81,9 @@ public class Frm_MainFrame extends JFrame {
 		panel.setBounds(320, 70, 100, 95);
 		Menu_Panel.add(panel);
 		
-		JLabel imageLabel = new JLabel(" ");
+		final JLabel imageLabel = new JLabel(" ");
 		imageLabel.setBounds(320, 70, 100, 95);
-		ImageIcon movies=new ImageIcon(getClass().getResource("movies.png"));
+		final ImageIcon movies=new ImageIcon(getClass().getResource("movies.png"));
 		imageLabel.setIcon(movies);
 		panel.add(imageLabel);
 
@@ -95,7 +95,7 @@ public class Frm_MainFrame extends JFrame {
 		Theaters_button.setBounds(3, 5, 105, 23);
 		Theaters_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Frm_DisplayResults.displayMovies("Movies in Theaters", Cls_MovieData::m_getInTheaterMovies);
+	//			Frm_DisplayResults.displayMovies("Movies in Theaters", Cls_MovieData::m_getInTheaterMovies);
 			}
 		});
 		Theaters_button.addMouseListener(new MouseAdapter()
@@ -115,12 +115,13 @@ public class Frm_MainFrame extends JFrame {
 		Menu_Panel.add(Theaters_button);
 		
 		JButton newMovies_button = new JButton("New Movies");
+		newMovies_button.setForeground(Color.BLACK);
 		newMovies_button.setFont(new Font("Tahoma", Font.BOLD, 11));
 		newMovies_button.setBackground(new Color(153, 204, 255));
-		newMovies_button.setBounds(105, 5, 110, 23);
+		newMovies_button.setBounds(105, 5, 121, 23);
 		newMovies_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Frm_DisplayResults.displayMovies("New Movies", Cls_MovieData::m_getNewMovies);
+		//		Frm_DisplayResults.displayMovies("New Movies", Cls_MovieData::m_getNewMovies);
 			}
 		});
 		
@@ -140,13 +141,14 @@ public class Frm_MainFrame extends JFrame {
 		Menu_Panel.add(newMovies_button);
 		
 		JButton btnPopularMovies = new JButton("Popular Movies");
+		btnPopularMovies.setForeground(Color.BLACK);
 		btnPopularMovies.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnPopularMovies.setBackground(new Color(153, 204, 255));
-		btnPopularMovies.setBounds(215, 5, 121, 23);
+		btnPopularMovies.setBounds(224, 5, 141, 23);
 		Menu_Panel.add(btnPopularMovies);
 		btnPopularMovies.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Frm_DisplayResults.displayMovies("Popular Movies", Cls_MovieData::m_getPopularMovies);
+		//		Frm_DisplayResults.displayMovies("Popular Movies", Cls_MovieData::m_getPopularMovies);
 			}
 		});
 		btnPopularMovies.addMouseListener(new MouseAdapter()
@@ -166,11 +168,11 @@ public class Frm_MainFrame extends JFrame {
 		JButton btnTopRated = new JButton("Top rated ");
 		btnTopRated.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnTopRated.setBackground(new Color(153, 204, 255));
-		btnTopRated.setBounds(281, 33, 110, 23);
+		btnTopRated.setBounds(288, 33, 110, 23);
 		Menu_Panel.add(btnTopRated);
 		btnTopRated.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Frm_DisplayResults.displayTvSeries("Top Rated TV Shows", Cls_MovieData::m_getTvShowsTopRated);
+			//	Frm_DisplayResults.displayTvSeries("Top Rated TV Shows", Cls_MovieData::m_getTvShowsTopRated);
 			}
 		});
 		btnTopRated.addMouseListener(new MouseAdapter()
@@ -188,14 +190,15 @@ public class Frm_MainFrame extends JFrame {
 	   });
 		
 		JButton tvShows_button = new JButton("On Air");
+		tvShows_button.setForeground(Color.BLACK);
 		tvShows_button.setFont(new Font("Tahoma", Font.BOLD, 11));
 		tvShows_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Frm_DisplayResults.displayTvSeries("TV Series on Air", Cls_MovieData::m_getTvShowsOnAir);
+			//	Frm_DisplayResults.displayTvSeries("TV Series on Air", Cls_MovieData::m_getTvShowsOnAir);
 			}
 		});
 		tvShows_button.setBackground(new Color(153, 204, 255));
-		tvShows_button.setBounds(63, 33, 97, 23);
+		tvShows_button.setBounds(72, 33, 97, 23);
 		Menu_Panel.add(tvShows_button);
 		tvShows_button.addMouseListener(new MouseAdapter()
         {
@@ -211,13 +214,14 @@ public class Frm_MainFrame extends JFrame {
 	   });
 		
 		JButton newTvShows_button = new JButton("Pop. TV Shows");
+		newTvShows_button.setForeground(Color.BLACK);
 		newTvShows_button.setFont(new Font("Tahoma", Font.BOLD, 11));
 		newTvShows_button.setBackground(new Color(153, 204, 255));
-		newTvShows_button.setBounds(160, 33, 121, 23);
+		newTvShows_button.setBounds(160, 33, 132, 23);
 		Menu_Panel.add(newTvShows_button);
 		newTvShows_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Frm_DisplayResults.displayTvSeries("Popular TV Shows", Cls_MovieData::m_getTvShowsPopular);
+			//	Frm_DisplayResults.displayTvSeries("Popular TV Shows", Cls_MovieData::m_getTvShowsPopular);
 			}
 		});
 		newTvShows_button.addMouseListener(new MouseAdapter()
@@ -234,9 +238,10 @@ public class Frm_MainFrame extends JFrame {
 	   });
 		
 		JButton btnGenres = new JButton("Genres");
+		btnGenres.setForeground(Color.BLACK);
 		btnGenres.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnGenres.setBackground(new Color(153, 204, 255));
-		btnGenres.setBounds(336, 5, 89, 23);
+		btnGenres.setBounds(358, 5, 89, 23);
 		Menu_Panel.add(btnGenres);
 		btnGenres.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -260,6 +265,8 @@ public class Frm_MainFrame extends JFrame {
 		System.out.println();
 		System.out.println();
 		JButton actorsSearch = new JButton("Search");
+		actorsSearch.setForeground(Color.BLACK);
+		actorsSearch.setFont(new Font("Dialog", Font.BOLD, 11));
 		actorsSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(actors_textField.getText().length() < 3) {
@@ -268,7 +275,7 @@ public class Frm_MainFrame extends JFrame {
 					return;
 				}
 				
-				Frm_DisplayResults.displayPeople("Actor Search Results", (page) -> Cls_MovieData.m_getSearchActors(actors_textField.getText(), page));
+			//	Frm_DisplayResults.displayPeople("Actor Search Results", (page) -> Cls_MovieData.m_getSearchActors(actors_textField.getText(), page));
 			}
 		});
 		actorsSearch.setBackground(new Color(153, 204, 255));
@@ -280,8 +287,9 @@ public class Frm_MainFrame extends JFrame {
 		actors_textField.setColumns(20);
 		
 		JLabel actorsLabel = new JLabel("Actors");
-		actorsLabel.setBounds(3, 72, 50, 21);
-		actorsLabel.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		actorsLabel.setForeground(Color.BLACK);
+		actorsLabel.setBounds(3, 72, 64, 21);
+		actorsLabel.setFont(new Font("Dialog", Font.BOLD, 15));
 		Menu_Panel.add(actorsLabel);
 		
 		movies_textField = new JTextField();
@@ -290,11 +298,14 @@ public class Frm_MainFrame extends JFrame {
 		movies_textField.setColumns(20);
 		
 		JLabel moviesLabel = new JLabel("Movies");
-		moviesLabel.setBounds(3, 103, 50, 22);
-		moviesLabel.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		moviesLabel.setForeground(Color.BLACK);
+		moviesLabel.setBounds(3, 103, 64, 22);
+		moviesLabel.setFont(new Font("Dialog", Font.BOLD, 15));
 		Menu_Panel.add(moviesLabel);
 		
 		JButton moviesSearch = new JButton("Search");
+		moviesSearch.setForeground(Color.BLACK);
+		moviesSearch.setFont(new Font("Dialog", Font.BOLD, 11));
 		moviesSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(movies_textField.getText().length() < 3) {
@@ -303,7 +314,7 @@ public class Frm_MainFrame extends JFrame {
 					return;
 				}
 				
-				Frm_DisplayResults.displayMovies("Movie Search Results", (page) -> Cls_MovieData.m_getSearchMovies(movies_textField.getText(), page));
+			//	Frm_DisplayResults.displayMovies("Movie Search Results", (page) -> Cls_MovieData.m_getSearchMovies(movies_textField.getText(), page));
 			}
 		});
 		moviesSearch.setBackground(new Color(153, 204, 255));
@@ -316,11 +327,13 @@ public class Frm_MainFrame extends JFrame {
 		shows_textField.setColumns(20);
 		
 		JLabel showsLabel = new JLabel("Shows");
-		showsLabel.setBounds(3, 139, 44, 17);
-		showsLabel.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		showsLabel.setBounds(3, 139, 64, 17);
+		showsLabel.setFont(new Font("Dialog", Font.BOLD, 15));
 		Menu_Panel.add(showsLabel);
 		
 		JButton showsSearch = new JButton("Search");
+		showsSearch.setForeground(Color.BLACK);
+		showsSearch.setFont(new Font("Dialog", Font.BOLD, 11));
 		showsSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(shows_textField.getText().length() < 3) {
@@ -329,7 +342,7 @@ public class Frm_MainFrame extends JFrame {
 					return;
 				}
 				
-				Frm_DisplayResults.displayTvSeries("TV Series Search Results", (page) -> Cls_MovieData.m_getSearchTVShows(shows_textField.getText(), page));
+	//			Frm_DisplayResults.displayTvSeries("TV Series Search Results", (page) -> Cls_MovieData.m_getSearchTVShows(shows_textField.getText(), page));
 			}
 		});
 		showsSearch.setBackground(new Color(153, 204, 255));
@@ -337,11 +350,13 @@ public class Frm_MainFrame extends JFrame {
 		Menu_Panel.add(showsSearch);
 		
 		JLabel movie_Games = new JLabel("Games");
-		movie_Games.setFont(new Font("Times New Roman", Font.BOLD, 16));
+		movie_Games.setForeground(Color.BLACK);
+		movie_Games.setFont(new Font("Dialog", Font.BOLD, 15));
 		movie_Games.setBounds(8, 170, 81, 19);
 		Menu_Panel.add(movie_Games);
 		
 		JButton TriviaBtn = new JButton("Trivia");
+		TriviaBtn.setForeground(Color.BLACK);
 		TriviaBtn.setBackground(new Color(135, 206, 235));
 		TriviaBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -359,6 +374,7 @@ public class Frm_MainFrame extends JFrame {
 		Menu_Panel.add(separator);
 		
 		JButton movieHangman = new JButton("Hangman");
+		movieHangman.setForeground(Color.BLACK);
 		movieHangman.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Frm_Hangman playGame = new Frm_Hangman();
@@ -366,7 +382,7 @@ public class Frm_MainFrame extends JFrame {
 			}
 		});
 		movieHangman.setBackground(new Color(135, 206, 235));
-		movieHangman.setBounds(192, 171, 100, 21);
+		movieHangman.setBounds(192, 171, 115, 21);
 		Menu_Panel.add(movieHangman);
 	}
 }
