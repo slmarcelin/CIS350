@@ -16,16 +16,21 @@ import javax.swing.JTextField;
 import javax.swing.JOptionPane;
 public class actorTrivia {
    
-	/*Declare variables*/
+	/*Declare JFrame.*/
 	private JFrame frame;
-	private JTextField Question1_textField;
-	private JTextField Question2_textField;
-	private JTextField Question3_textField;
-	private JTextField Question4_textField;
-	private JTextField Question5_textField;
+	/*Question 1 TextField.*/
+	private JTextField question1;
+	/*Question 2 TextField.*/
+	private JTextField question2;
+	/*Question 3 TextField.*/
+	private JTextField question3;
+	/*Question 4 TextField.*/
+	private JTextField question4;
+	/*Question 5 TextField.*/
+	private JTextField question5;
 
 	/*********************************************************************************
-	 * Launch the play application
+	 * Launch the play application.
 	 *********************************************************************************/
 	public void play() {
 		EventQueue.invokeLater(new Runnable() {
@@ -42,27 +47,31 @@ public class actorTrivia {
 	}
     /*********************************************************************************
      * Determine the user's points
-     * @return: points the number of
+     * @return: points the number of points earned by user
      **********************************************************************************/
     public int results()
     {
     	int points=0;
-    	if(this.Question1_textField.getText().toLowerCase().equals("war machine"))
+    	if(this.question1.getText().toLowerCase().equals("war machine")){
     		points++;
-    	if(this.Question2_textField.getText().toLowerCase().equals("dwayne johnson"))
+    	}
+    	if(this.question2.getText().toLowerCase().equals("dwayne johnson")){
     		points++;
-    	if(this.Question3_textField.getText().toLowerCase().equals("logan"))
+    	}
+    	if(this.question3.getText().toLowerCase().equals("logan")){
     		points++;
-    	if(this.Question4_textField.getText().toLowerCase().equals("dan stevens"))
+    	}
+    	if(this.question4.getText().toLowerCase().equals("dan stevens")){
     		points++;
-    	if(this.Question5_textField.getText().toLowerCase().equals("johnny depp"))
-    		points++;	
-    	
+    	}
+    	if(this.question5.getText().toLowerCase().equals("johnny depp")){
+    		points++;
+    	}
     	return points;
     }
     
     /*********************************************************************************
-	 * Initialize the application
+	 * Initialize the application.
 	 *********************************************************************************/
 	public actorTrivia() {
 		initialize();
@@ -86,100 +95,100 @@ public class actorTrivia {
 		separator.setBounds(28, 28, 391, 2);
 		actorTrivia.add(separator);
 		
-		JLabel lblNewLabel = new JLabel("Questions");
+		JLabel lblNewLabel = new JLabel("questions");
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 16));
-		lblNewLabel.setBounds(172, 3, 74, 14);
+		lblNewLabel.setBounds(172, 3, 100, 30);
 		actorTrivia.add(lblNewLabel);
 		
-		JLabel Question1Lb1 = new JLabel("1- Brad Pitt plays General Glen McMahon ");
-		Question1Lb1.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		Question1Lb1.setBackground(new Color(255, 222, 173));
-		Question1Lb1.setForeground(new Color(178, 34, 34));
-		Question1Lb1.setBounds(10, 41, 224, 15);
-		actorTrivia.add(Question1Lb1);
+		JLabel question1Lb1 = new JLabel("1- Brad Pitt plays General Glen McMahon ");
+		question1Lb1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		question1Lb1.setBackground(new Color(255, 222, 173));
+		question1Lb1.setForeground(new Color(178, 34, 34));
+		question1Lb1.setBounds(10, 41, 224, 15);
+		actorTrivia.add(question1Lb1);
 		
-		JLabel Question1Lb2 = new JLabel(" in which film directed by David Michod?");
-		Question1Lb2.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		Question1Lb2.setForeground(new Color(178, 34, 34));
-		Question1Lb2.setBounds(10, 55, 218, 15);
-		actorTrivia.add(Question1Lb2);
+		JLabel question1Lb2 = new JLabel(" in which film directed by David Michod?");
+		question1Lb2.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		question1Lb2.setForeground(new Color(178, 34, 34));
+		question1Lb2.setBounds(10, 55, 218, 15);
+		actorTrivia.add(question1Lb2);
 		
-		JLabel Question2Lb1 = new JLabel("2- Which star plays Mitch Buchannon in");
-		Question2Lb1.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		Question2Lb1.setForeground(new Color(178, 34, 34));
-		Question2Lb1.setBounds(10, 89, 214, 15);
-		actorTrivia.add(Question2Lb1);
+		JLabel question2Lb1 = new JLabel("2- Which star plays Mitch Buchannon in");
+		question2Lb1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		question2Lb1.setForeground(new Color(178, 34, 34));
+		question2Lb1.setBounds(10, 89, 214, 15);
+		actorTrivia.add(question2Lb1);
 		
-		JLabel Question2Lb2 = new JLabel("the Baywatch movie released in 2017?");
-		Question2Lb2.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		Question2Lb2.setForeground(new Color(178, 34, 34));
-		Question2Lb2.setBounds(10, 105, 212, 15);
-		actorTrivia.add(Question2Lb2);
+		JLabel question2Lb2 = new JLabel("the Baywatch movie released in 2017?");
+		question2Lb2.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		question2Lb2.setForeground(new Color(178, 34, 34));
+		question2Lb2.setBounds(10, 105, 212, 15);
+		actorTrivia.add(question2Lb2);
 		
-		JLabel Question3Lb1 = new JLabel("3- The character played by Hugh Jackman in");                                           
-		Question3Lb1.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		Question3Lb1.setForeground(new Color(178, 34, 34));
-		Question3Lb1.setBounds(10, 137, 244, 15);
-		actorTrivia.add(Question3Lb1);
+		JLabel question3Lb1 = new JLabel("3- The character played by Hugh Jackman in");                                           
+		question3Lb1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		question3Lb1.setForeground(new Color(178, 34, 34));
+		question3Lb1.setBounds(10, 137, 244, 15);
+		actorTrivia.add(question3Lb1);
 		
-		JLabel Question3Lb2 = new JLabel("nine of the ten X-Men movie franchise films?");
-		Question3Lb2.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		Question3Lb2.setForeground(new Color(178, 34, 34));
-		Question3Lb2.setBounds(10, 153, 243, 15);
-		actorTrivia.add(Question3Lb2);
+		JLabel question3Lb2 = new JLabel("nine of the ten X-Men movie franchise films?");
+		question3Lb2.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		question3Lb2.setForeground(new Color(178, 34, 34));
+		question3Lb2.setBounds(10, 153, 243, 15);
+		actorTrivia.add(question3Lb2);
 		
-		Question1_textField = new JTextField();
-		Question1_textField.setBackground(new Color(255, 228, 181));
-		Question1_textField.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		Question1_textField.setBounds(269, 41, 176, 28);
-		actorTrivia.add(Question1_textField);
-		Question1_textField.setColumns(10);
+		question1 = new JTextField();
+		question1.setBackground(new Color(255, 228, 181));
+		question1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		question1.setBounds(269, 41, 176, 28);
+		actorTrivia.add(question1);
+		question1.setColumns(10);
 		
-		Question2_textField = new JTextField();
-		Question2_textField.setBackground(new Color(255, 228, 181));
-		Question2_textField.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		Question2_textField.setColumns(10);
-		Question2_textField.setBounds(269, 83, 176, 28);
-		actorTrivia.add(Question2_textField);
+		question2 = new JTextField();
+		question2.setBackground(new Color(255, 228, 181));
+		question2.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		question2.setColumns(10);
+		question2.setBounds(269, 83, 176, 28);
+		actorTrivia.add(question2);
 		
-		Question3_textField = new JTextField();
-		Question3_textField.setBackground(new Color(255, 228, 181));
-		Question3_textField.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		Question3_textField.setColumns(10);
-		Question3_textField.setBounds(269, 131, 176, 28);
-		actorTrivia.add(Question3_textField);
+		question3 = new JTextField();
+		question3.setBackground(new Color(255, 228, 181));
+		question3.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		question3.setColumns(10);
+		question3.setBounds(269, 131, 176, 28);
+		actorTrivia.add(question3);
 		
-		JLabel Question4Lb1 = new JLabel("4- He played 'Beast' in the film adapation of");
-		Question4Lb1.setForeground(new Color(178, 34, 34));
-		Question4Lb1.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		Question4Lb1.setBounds(10, 186, 224, 15);
-		actorTrivia.add(Question4Lb1);
+		JLabel question4Lb1 = new JLabel("4- He played 'Beast' in the film adapation of");
+		question4Lb1.setForeground(new Color(178, 34, 34));
+		question4Lb1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		question4Lb1.setBounds(10, 186, 224, 15);
+		actorTrivia.add(question4Lb1);
 		
-		JLabel Question4Lb2 = new JLabel(" the fairy tale 'Beauty and the Beast'?");
-		Question4Lb2.setForeground(new Color(178, 34, 34));
-		Question4Lb2.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		Question4Lb2.setBounds(10, 203, 208, 15);
-		actorTrivia.add(Question4Lb2);
+		JLabel question4Lb2 = new JLabel(" the fairy tale 'Beauty and the Beast'?");
+		question4Lb2.setForeground(new Color(178, 34, 34));
+		question4Lb2.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		question4Lb2.setBounds(10, 203, 208, 15);
+		actorTrivia.add(question4Lb2);
 		
-		Question4_textField = new JTextField();
-		Question4_textField.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		Question4_textField.setColumns(10);
-		Question4_textField.setBackground(new Color(255, 228, 181));
-		Question4_textField.setBounds(269, 184, 176, 28);
-		actorTrivia.add(Question4_textField);
+		question4 = new JTextField();
+		question4.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		question4.setColumns(10);
+		question4.setBackground(new Color(255, 228, 181));
+		question4.setBounds(269, 184, 176, 28);
+		actorTrivia.add(question4);
 		
-		JLabel Question5Lb1 = new JLabel("5- Who always plays captain Jack Sparrow?");
-		Question5Lb1.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		Question5Lb1.setForeground(new Color(178, 34, 34));
-		Question5Lb1.setBounds(10, 238, 235, 15);
-		actorTrivia.add(Question5Lb1);
+		JLabel question5Lb1 = new JLabel("5- Who always plays captain Jack Sparrow?");
+		question5Lb1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		question5Lb1.setForeground(new Color(178, 34, 34));
+		question5Lb1.setBounds(10, 238, 235, 15);
+		actorTrivia.add(question5Lb1);
 		
-		Question5_textField = new JTextField();
-		Question5_textField.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		Question5_textField.setColumns(10);
-		Question5_textField.setBackground(new Color(255, 228, 181));
-		Question5_textField.setBounds(269, 236, 176, 28);
-		actorTrivia.add(Question5_textField);
+		question5 = new JTextField();
+		question5.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		question5.setColumns(10);
+		question5.setBackground(new Color(255, 228, 181));
+		question5.setBounds(269, 236, 176, 28);
+		actorTrivia.add(question5);
 		
 		JButton submitBtn = new JButton("Submit");
 		submitBtn.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -192,11 +201,11 @@ public class actorTrivia {
 				JOptionPane.showMessageDialog(frame,"You have scored "+
 			       results+" points"
 						,"The results", JOptionPane.INFORMATION_MESSAGE);
-				Question1_textField.setText(" ");
-				Question2_textField.setText(" ");
-				Question3_textField.setText(" ");
-				Question4_textField.setText(" ");
-				Question5_textField.setText(" ");
+				question1.setText(" ");
+				question2.setText(" ");
+				question3.setText(" ");
+				question4.setText(" ");
+				question5.setText(" ");
 			}
 		});
 	}

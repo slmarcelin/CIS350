@@ -9,7 +9,16 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+/*
+ * Pnl_ArtworkPanel class
+ */
 public class Pnl_ArtworkPanel extends JPanel {
+	
+	/**
+	 * Pn_ArtworkPanel construction.
+	 * @param i of type ImageIcon
+	 * @param component of type of Component
+	 */
 	public Pnl_ArtworkPanel(ImageIcon i, Component component){
 		setLayout(new BorderLayout());
 		setPreferredSize(new Dimension(850,150));

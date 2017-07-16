@@ -25,10 +25,16 @@ import info.movito.themoviedbapi.model.core.SessionToken;
 import info.movito.themoviedbapi.model.people.Person;
 import info.movito.themoviedbapi.model.tv.TvSeries;
 
+/*
+ * Cls_MovieData class.
+ */
 public class Cls_MovieData {
 	
+	/*A movie database API variable.*/
 	private static TmdbApi tmdbApi;
+	/*A session token.*/
 	private static SessionToken sessionToken;
+    /*the images root URL.*/
 	private static final String IMAGE_ROOT_URL = "http://image.tmdb.org/t/p/w92/";
 	
 	static {
@@ -36,10 +42,13 @@ public class Cls_MovieData {
 		sessionToken = getNewSessionToken();
 	}
 	
+	/*
+	 * Empty constructor
+	 */
 	private Cls_MovieData() {}
 	
 	/*********************************************************************************
-	Generate a new session token
+	Generate a new session token.
 	*********************************************************************************/
 	private static SessionToken getNewSessionToken() {
 		TmdbAuthentication tmdbAuth = tmdbApi.getAuthentication();
@@ -51,10 +60,10 @@ public class Cls_MovieData {
 	
 	/*********************************************************************************
 	  Returns the list of the searched 
-	  movies
+	  movies.
 	  @param page the current display page
-	  @param str_SeachValue of type string
-	  @return the MovieDb arraylist of 
+	  @param str_SearchValue of type string
+	  @return ArrayList of 
 	          searched movies
 	*********************************************************************************/
 	public static ArrayList<MovieDb> m_getSearchMovies(String str_SearchValue, int page) {
@@ -72,10 +81,10 @@ public class Cls_MovieData {
 	
 	/*********************************************************************************
 	  Returns the list of the searched 
-	  actors
+	  actors.
 	  @param page the current display page
-	  @param str_SeachValue of type string
-	  @return the Person arraylist of 
+	  @param str_SearchValue of type string
+	  @return ArrayList of 
 	          searched actors
 	*********************************************************************************/
 	public static ArrayList<Person> m_getSearchActors(String str_SearchValue, int page) {
@@ -93,10 +102,10 @@ public class Cls_MovieData {
 	
 	/*********************************************************************************
 	  Returns the list of the searched 
-	  TV show
+	  TV show.
 	  @param page the current display page
-	  @param str_SeachValue of type string
-	  @return the TvSeries arraylist of 
+	  @param str_SearchValue of type string
+	  @return ArrayList of 
 	          searched shows
 	*********************************************************************************/
 	public static ArrayList<TvSeries> m_getSearchTVShows(String str_SearchValue, int page) {
@@ -113,9 +122,9 @@ public class Cls_MovieData {
 	}
 	
 	/*********************************************************************************
-	  Returns the list of moves in theater
+	  Returns the list of moves in theater.
 	  @param page the current display page
-	  @return the MovieDb arraylist of movies
+	  @return ArrayList of movies
 	          in theater
 	*********************************************************************************/
 	public static ArrayList<MovieDb> m_getInTheaterMovies(int page){
@@ -132,9 +141,9 @@ public class Cls_MovieData {
 	}
 	
 	/*********************************************************************************
-	  Returns the list of new movies
+	  Returns the list of new movies.
 	  @param page the current display page
-	  @return the MovieDb arraylist of new
+	  @return ArrayList of new
 	           movies
 	*********************************************************************************/
 	public static ArrayList<MovieDb> m_getNewMovies(int page){
@@ -151,7 +160,7 @@ public class Cls_MovieData {
 	}
 	
 	/*********************************************************************************
-	  Returns the list popular movies
+	  Returns the list popular movies.
 	  @param page the current display page
 	  @return the array list of popular
 	          movies
@@ -170,9 +179,8 @@ public class Cls_MovieData {
 	}
 	
 	/*********************************************************************************
-	  Returns the list of top rated shows
-	  @param page the current display page
-	  @return the array list of top rated
+	  Returns the list of top rated shows.
+	  @return ArrayList of top rated
 	          shows
 	*********************************************************************************/	
 	public static ArrayList<Genre> m_getGenres(){
@@ -181,10 +189,10 @@ public class Cls_MovieData {
 	}
 	
 	/*********************************************************************************
-	  Returns the list of movies by genre
+	  Returns the list of movies by genre.
 	  @param page the current display page
-	  @param int_GenreId the genre id
-	  @return the array list of movies
+	  @param int_GenreID the genre id
+	  @return ArrayList of movies
 	          by genre
 	*********************************************************************************/
 	public static ArrayList<MovieDb> m_getMoviesByGenre(int int_GenreID, int page){
@@ -201,9 +209,9 @@ public class Cls_MovieData {
 	}
 	
 	/*********************************************************************************
-	  Returns the list of shows on Air
+	  Returns the list of shows on Air.
 	  @param page the current display page
-	  @return the array list of shows on
+	  @return ArrayList of shows on
 	          Air
 	*********************************************************************************/
 	public static ArrayList<TvSeries> m_getTvShowsOnAir(int page){
@@ -220,9 +228,9 @@ public class Cls_MovieData {
 	}
 	
 	/*********************************************************************************
-	  Returns the list of popular shows
+	  Returns the list of popular shows.
 	  @param page the current display page
-	  @return the array list of popular
+	  @return ArrayList of popular
 	          shows
 	*********************************************************************************/
 	public static ArrayList<TvSeries> m_getTvShowsPopular(int page){
@@ -239,9 +247,9 @@ public class Cls_MovieData {
 	}
 	
 	/*********************************************************************************
-	  Returns the list of top rated shows
+	  Returns the list of top rated shows.
 	  @param page the current display page
-	  @return the array list of top rated
+	  @return ArrayList of top rated
 	          shows
 	*********************************************************************************/
 	public static ArrayList<TvSeries> m_getTvShowsTopRated(int page){
@@ -258,8 +266,8 @@ public class Cls_MovieData {
 	}
 	
 	/*********************************************************************************
-	  Find a random movie
-	  @param person the id of a movie
+	  Finds and returns a random movie.
+	  @param movie the id of a movie
 	  @return MovieDb the selected movie
 	*********************************************************************************/
 	public static MovieDb m_getRandMovie(int movie) {
@@ -276,7 +284,7 @@ public class Cls_MovieData {
 	}
 	
 	/*********************************************************************************
-	  Find a random show
+	  Find a random show.
 	  @param show the id of a show
 	  @return TvSeries the selected show
 	*********************************************************************************/
@@ -294,7 +302,7 @@ public class Cls_MovieData {
 	}
 	
 	/*********************************************************************************
-	  Find a random actor
+	  Finds and returns a random actor.
 	  @param person the id of an actor
 	  @return Person the selected actor
 	*********************************************************************************/
@@ -312,7 +320,7 @@ public class Cls_MovieData {
 	}
 	
 	/*********************************************************************************
-	  Find the poster image of the movie
+	  Finds and returns the poster image of the movie.
 	  @param movie of type MOvieDb
 	  @return ImageIcon the image 
 	*********************************************************************************/
@@ -327,7 +335,7 @@ public class Cls_MovieData {
 	}
 	
 	/*********************************************************************************
-	  Find the poster image of the show
+	  Finds and returns the poster image of the show.
 	  @param tv of TvSeries
 	  @return ImageIcon the image 
 	*********************************************************************************/
@@ -342,7 +350,7 @@ public class Cls_MovieData {
 	}
 	
 	/*********************************************************************************
-	  Find the profile image of an actor
+	  Finds and returns the profile image of an actor.
 	  @param p of type Person
 	  @return ImageIcon the image 
 	*********************************************************************************/

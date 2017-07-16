@@ -10,8 +10,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+/*
+ * Pnl_MoviePanel class
+ */
 public class Pnl_MoviePanel extends JPanel {
-		
+	
+	/**
+	 * Pn_MoviePanel construction.
+	 * @param movie of type MovieDb
+	 */	
 	public Pnl_MoviePanel(MovieDb movie) {
 		setLayout((new BorderLayout()));
 		setPreferredSize(new Dimension(700, 150));

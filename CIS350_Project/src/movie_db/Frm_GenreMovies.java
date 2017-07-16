@@ -20,12 +20,14 @@ import java.awt.event.ItemEvent;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
+/*Frm_GenreMovies class.*/
 public class Frm_GenreMovies {
 
+	/*movie_Genre JFrame variable.*/
 	private JFrame movie_Genre;
 
 	/**
-	 * Launch the application.
+	 * Launches the Genres frame properties.
 	 */
 	public void movieGenres() {
 		EventQueue.invokeLater(new Runnable() {
@@ -43,7 +45,7 @@ public class Frm_GenreMovies {
 	
 
 	/**
-	 * Create the application.
+	 * Constructor call the initialize function.
 	 */
 	public Frm_GenreMovies() {
 		initialize();

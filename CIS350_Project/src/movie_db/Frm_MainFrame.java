@@ -29,6 +29,9 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JSeparator;
 
+/*
+ * Frm_MainFrame class
+ */
 public class Frm_MainFrame extends JFrame {
 	//private final Action action = new SwingAction();
 	//private final Action action_1 = new SwingAction_1();
@@ -37,7 +40,7 @@ public class Frm_MainFrame extends JFrame {
 	private JTextField shows_textField;
 
 	/**
-	 * Launch the application.
+	 * Launches the entire movie database application.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

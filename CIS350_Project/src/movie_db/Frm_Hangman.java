@@ -15,22 +15,32 @@ import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/*
+ * Frm_Hangman class
+ */
 public class Frm_Hangman extends JFrame {
 
+	/*Cls_Hangman variable*/
 	private Cls_Hangman hangman;
+	/*JPanel variable*/
 	private JPanel contentPane;
-	
+	/*JPanel variable*/
 	private JPanel enterPane;
+	/*JLabel variable*/
 	private JLabel enteredChars;
+	/*JTextField variable*/
 	private JTextField keyBox;
+	/*JButton variable*/
 	private JButton submitKeyButton;
-	
+	/*JPanel variable*/
 	private JPanel hangmanPane;
+	/*JLabel variable*/
 	private JLabel guessLabel;
+	/*JLabel variable*/
 	private JLabel man;
 
 	/**
-	 * Launch the application.
+	 * Launches the application.
 	 */
 	public void play() {
 		EventQueue.invokeLater(new Runnable() {
@@ -46,7 +56,7 @@ public class Frm_Hangman extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Creates the Hangman's game frame.
 	 */
 	public Frm_Hangman() {
 		hangman = new Cls_Hangman();
@@ -88,6 +98,10 @@ public class Frm_Hangman extends JFrame {
 		contentPane.add(enterPane, BorderLayout.EAST);
 	}
 	
+	/*********************************************************************************
+	  Finds and returns the poster image of the show.
+	  @param guess the user's guess
+	*********************************************************************************/
 	private String printGuess(String guess) {
 		int strLen = guess.length();
 		String retVal = "";
@@ -98,6 +112,9 @@ public class Frm_Hangman extends JFrame {
 			
 	}
 	
+	/*********************************************************************************
+	  Formats the Hangman game display.
+	*********************************************************************************/
 	private void enterClicked() {
 		hangman.isWithin(keyBox.getText());
 		keyBox.setText("");
@@ -108,7 +125,10 @@ public class Frm_Hangman extends JFrame {
 			hangmanPane.add(new JLabel(hangman.getWord()));
 		}
 	}
-
+	/*********************************************************************************
+	  Displays the man.
+	  @param count of type int
+	*********************************************************************************/
 	private void drawMan(int count) {
 		switch(count) {
 			case 0:

@@ -11,7 +11,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 public class Pnl_TvPanel extends JPanel {
-
+	
+	/**
+	 * Pn_TvPanel construction.
+	 * @param tv of type TvSeries
+	 */
 	public Pnl_TvPanel(TvSeries tv) {
 		setLayout((new BorderLayout()));
 		setPreferredSize(new Dimension(700, 150));

@@ -21,15 +21,22 @@ import javax.swing.ScrollPaneConstants;
 
 import com.google.common.base.Function;
 
+/*
+ * Frm_DisplayResults class.
+ */
 public class Frm_DisplayResults extends JFrame{
+	
+	/*totalResults JPanel.*/
 	private JPanel totalResults;
+    /*Runnable refreshPage variable.*/
 	private Runnable refreshPage;
+    /*current page initialized to 1.*/
 	private int page = 1;
 	
 	/*********************************************************************************
-	  Creates a JFrame to display movies
+	  Creates a JFrame to display movies.
 	  @param title the title of the JFrame
-	  @param movies the movies to display on the JFrame
+	  @param fetch_movies the movies to display on the JFrame
 	 *********************************************************************************/
 	public static void displayMovies(String title, Function<Integer, ArrayList<MovieDb>> fetch_movies) {
 		Frm_DisplayResults display = new Frm_DisplayResults(title, (p) -> {
@@ -52,7 +59,7 @@ public class Frm_DisplayResults extends JFrame{
 	/**
 	 * Creates a JFrame to display TV series
 	 * @param title the title of the JFrame
-	 * @param tvseries the TV series to display on the JFrame
+	 * @param fetch_tvseries ArrayList
 	 */
 	public static void displayTvSeries(String title, Function<Integer, ArrayList<TvSeries>> fetch_tvseries) {
 		Frm_DisplayResults display = new Frm_DisplayResults(title, (p) -> {
@@ -75,7 +82,7 @@ public class Frm_DisplayResults extends JFrame{
 	/**
 	 * Creates a JFrame to display people
 	 * @param title the title of the JFrame
-	 * @param people the people to display on the JFrame
+	 * @param fetch_people the people to display on the JFrame
 	 */
 	public static void displayPeople(String title, Function<Integer, ArrayList<Person>> fetch_people) {
 		Frm_DisplayResults display = new Frm_DisplayResults(title, (p) -> {
@@ -96,7 +103,7 @@ public class Frm_DisplayResults extends JFrame{
 	}
 	
 	/**
-	 * Constructs up the basic form
+	 * Constructs up the basic form.
 	 * @param title the title of the JFrame
 	 * @param fetch_panels a function that gets the panels corresponding to the current page of results
 	 */
@@ -135,13 +142,16 @@ public class Frm_DisplayResults extends JFrame{
 	}
 	
 	/**
-	 * Refreshes the page using the given refresh runnable
+	 * Refreshes the page using the given refresh runnable.
 	 */
 	private void refresh() {
 		refreshPage.run();
 	}
 	
-	
+	/*
+	 * Pnl_PrevNext class, sets up the status of 
+	 * either previous and next buttons.
+	 */
 	private class Pnl_PrevNext extends Container {
 		private JButton previous;
 		private JButton next;
@@ -175,14 +185,17 @@ public class Frm_DisplayResults extends JFrame{
 		}
 		
 		private void setEnabledStatus() {
-			if(page <= 1)
+			if(page <= 1){
 				previous.setEnabled(false);
-			else
+			}else{
 				previous.setEnabled(true);
-			if(page >= 9)
+			}
+			if(page >= 9){
 				next.setEnabled(false);
-			else
+			}
+			else{
 				next.setEnabled(true);
+			}
 		}
 	}
 }

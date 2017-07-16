@@ -10,8 +10,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+/*
+ * Pnl_PersonPanel class
+ */
 public class Pnl_PersonPanel extends JPanel {
-
+	
+	/**
+	 * Pn_PersonPanel construction.
+	 * @param person of type Person
+	 */
 	public Pnl_PersonPanel(Person person) {
 		setLayout((new BorderLayout()));
 		setPreferredSize(new Dimension(700, 150));
