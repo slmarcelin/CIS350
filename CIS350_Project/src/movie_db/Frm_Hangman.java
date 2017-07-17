@@ -1,158 +1,240 @@
 package movie_db;
-
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.awt.FlowLayout;
-
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
-import java.awt.event.ActionListener;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
-/*
- * Frm_Hangman class
+/**
+ * Simple hangman game with GUI
+ * Created by Rafael on 5/12/2015.
  */
 public class Frm_Hangman extends JFrame {
+    public static void main(String[] args) {
+        new Frm_Hangman();
+    }
 
-	/*Cls_Hangman variable*/
-	private Cls_Hangman hangman;
-	/*JPanel variable*/
-	private JPanel contentPane;
-	/*JPanel variable*/
-	private JPanel enterPane;
-	/*JLabel variable*/
-	private JLabel enteredChars;
-	/*JTextField variable*/
-	private JTextField keyBox;
-	/*JButton variable*/
-	private JButton submitKeyButton;
-	/*JPanel variable*/
-	private JPanel hangmanPane;
-	/*JLabel variable*/
-	private JLabel guessLabel;
-	/*JLabel variable*/
-	private JLabel man;
+    private JLabel commandTitle = new JLabel("Type in a letter to guess"), knownWordLabel = new JLabel(), wrongGuesses = new JLabel();
+    private JTextField wordTextField = new JTextField(20);
+    private BufferedImage hangmanImage = new BufferedImage(500, 500, BufferedImage.TYPE_INT_ARGB);
+    private JPanel hangmanPanel, inputPanel;
+    private String wordToGuess = null;
+    private int numOfWrongGuesses = 0;
+    private String wrongGuessesString = "Wrong Guesses: ", wordKnown = "";
+    private final JButton btnNewGame = new JButton("New Game");
+    private GridBagConstraints gridBagConstraints_1;
+    private final JLabel label = new JLabel("   ");
+    
 
-	/**
-	 * Launches the application.
-	 */
-	public void play() {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Frm_Hangman frame = new Frm_Hangman();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+    public Frm_Hangman() {
+        getContentPane().setLayout(new BorderLayout());
+        drawHangmanStand(hangmanImage);
+
+        inputPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints gridBagConstraints = new GridBagConstraints();
+        gridBagConstraints.insets = new Insets(0, 0, 5, 5);
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.ipadx = 1;
+        gridBagConstraints.gridy = 1;
+        inputPanel.add(commandTitle, gridBagConstraints);
+        gridBagConstraints_1 = new GridBagConstraints();
+        gridBagConstraints_1.insets = new Insets(0, 0, 5, 0);
+        gridBagConstraints_1.gridx = 2;
+        gridBagConstraints_1.gridy = 1;
+        inputPanel.add(wordTextField, gridBagConstraints_1);
+
+        getContentPane().add(inputPanel);
+        
+        GridBagConstraints gbc_btnNewGame = new GridBagConstraints();
+        gbc_btnNewGame.gridx = 2;
+        gbc_btnNewGame.gridy = 9;
+        btnNewGame.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent arg0) {
+        		reset();
+        	}
+        });
+        
+        GridBagConstraints gbc_label = new GridBagConstraints();
+        gbc_label.insets = new Insets(0, 0, 5, 0);
+        gbc_label.gridx = 2;
+        gbc_label.gridy = 8;
+        inputPanel.add(label, gbc_label);
+        inputPanel.add(btnNewGame, gbc_btnNewGame);
+        Initialize();
+
+        wordTextField.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //Initialize();
+
+                if (wordToGuess.toLowerCase().indexOf(wordTextField.getText().toLowerCase()) >= 0) {
+                    guessRight();
+                } else {
+                    guessWrong();
+                    wordTextField.setText("");
+                }
+                
+                String displayWord = "";
+                for (int i = 0; i < wordKnown.length(); i++) {
+                    displayWord += "  " + wordKnown.charAt(i) + "  ";
+                }
+                
+                knownWordLabel.setText(displayWord);
+            }
+        });
+
+        setSize(1000, 600);
+        setVisible(true);
+
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        showChangedHangman();
+        revalidate();
+        setLocationRelativeTo(null);
+
+    }
+    
+    private void Initialize() {
+		if (wordToGuess == null) {
+			Cls_Hangman h = new Cls_Hangman();
+         	wordToGuess = h.getWord();
+        	
+            wordTextField.setText("");
+            commandTitle.setText("Guess a letter");
+            String displayWord = "";
+            wordKnown = "";
+            for (int i = 0; i < wordToGuess.length(); i++) {
+            	if(wordToGuess.charAt(i) != ' ') {
+            		wordKnown += "_";
+                	displayWord += "  __  ";
+            	}
+            	else
+            	{
+            		wordKnown += " ";
+            		displayWord += "      ";
+            	}
+            }
+            knownWordLabel.setText(displayWord);
+            GridBagConstraints gridBagConstraints1 = new GridBagConstraints();
+            gridBagConstraints1.gridx = 1;
+            gridBagConstraints1.gridy = 2;
+            gridBagConstraints1.gridwidth = 2;
+            inputPanel.add(knownWordLabel, gridBagConstraints1);
+            gridBagConstraints1 = new GridBagConstraints();
+            gridBagConstraints1.gridx = 1;
+            gridBagConstraints1.gridy = 3;
+            gridBagConstraints1.gridwidth = 2;
+            inputPanel.add(wrongGuesses, gridBagConstraints1);
+        }
 	}
 
-	/**
-	 * Creates the Hangman's game frame.
-	 */
-	public Frm_Hangman() {
-		hangman = new Cls_Hangman();
-		
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(new BorderLayout());
-		
-		
-		enterPane = new JPanel();
-		enterPane.setLayout(new BoxLayout(enterPane, BoxLayout.Y_AXIS));
-		
-		enteredChars = new JLabel("");
-		keyBox = new JTextField("");
-		submitKeyButton = new JButton("Enter");
-		submitKeyButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				enterClicked();
-			}
-		});
-		
-		enterPane.add(enteredChars);
-		enterPane.add(keyBox);
-		enterPane.add(submitKeyButton);
-		
-		hangmanPane = new JPanel();
-		guessLabel = new JLabel(printGuess(hangman.getGuess()));
-		man = new JLabel("");
-		
-		hangmanPane.setLayout(new BoxLayout(hangmanPane, BoxLayout.Y_AXIS));
-		
-		hangmanPane.add(guessLabel);
-		hangmanPane.add(man);
-		
-		contentPane.add(hangmanPane, BorderLayout.CENTER);
-		contentPane.add(enterPane, BorderLayout.EAST);
-	}
-	
-	/*********************************************************************************
-	  Finds and returns the poster image of the show.
-	  @param guess the user's guess
-	*********************************************************************************/
-	private String printGuess(String guess) {
-		int strLen = guess.length();
-		String retVal = "";
-		for(int i = 0; i < strLen; i++)
-			retVal += guess.charAt(i) + " ";
-		
-		return retVal;
-			
-	}
-	
-	/*********************************************************************************
-	  Formats the Hangman game display.
-	*********************************************************************************/
-	private void enterClicked() {
-		hangman.isWithin(keyBox.getText());
-		keyBox.setText("");
-		guessLabel.setText(printGuess(hangman.getGuess()));
-		drawMan(hangman.getIncorrect());
-		
-		if(hangman.getState() != 0) {
-			hangmanPane.add(new JLabel(hangman.getWord()));
-		}
-	}
-	/*********************************************************************************
-	  Displays the man.
-	  @param count of type int
-	*********************************************************************************/
-	private void drawMan(int count) {
-		switch(count) {
-			case 0:
-				man.setText("<html></html>");
-				break;
-			case 1:
-				man.setText("<html> O</html>");
-				break;
-			case 2:
-				man.setText("<html> O<br>   |</html>");
-				break;
-			case 3:
-				man.setText("<html> O<br>\\|</html>");
-				break;
-			case 4:
-				man.setText("<html> O<br>\\|/</html>");
-				break;
-			case 5:
-				man.setText("<html> O<br>\\|/<br>/</html>");
-				break;
-			case 6:
-				man.setText("<html> O<br>\\|/<br>/ \\</html>");
-				break;
-		}
-				
-	}
+    private void guessRight() {
+        String guess = wordTextField.getText().toLowerCase();
+        addGuessToKnownWord(guess);
+        String displayString = "";
+        for (int i = 0; i < wordKnown.length(); i++) {
+            displayString += wordKnown.substring(i, i + 1) + " ";
+        }
+        knownWordLabel.setText(displayString);
+
+        if (wordKnown.indexOf("_") < 0) {
+            JOptionPane.showMessageDialog(this, "You Win!");
+            reset();
+        }
+        wordTextField.setText("");
+    }
+
+    private void addGuessToKnownWord(String guess) {
+        ArrayList<Integer> indexes = new ArrayList<>();
+        for (int index = wordToGuess.toLowerCase().indexOf(guess);
+             index >= 0;
+             index = wordToGuess.toLowerCase().indexOf(guess, index + 1)) {
+            indexes.add(index);
+        }
+        for (int i = 0; i < indexes.size(); i++) {
+            int index = indexes.get(i);
+            StringBuilder stringBuilder = new StringBuilder(wordKnown);
+            stringBuilder.replace(index, index + guess.length(), guess.toUpperCase());
+            wordKnown = stringBuilder.toString();
+        }
+    }
+
+    private void guessWrong() {
+        numOfWrongGuesses++;
+
+        wrongGuessesString += wordTextField.getText() + ", ";
+        wrongGuesses.setText(wrongGuessesString);
+        Graphics2D g = (Graphics2D) hangmanImage.getGraphics();
+        int x = 250, y = 200;
+        g.setStroke(new BasicStroke(2));
+        g.setColor(Color.BLACK);
+
+        switch (numOfWrongGuesses) {
+            case 1: // Head
+                g.drawOval(-20 + x, y, 40, 40);
+                break;
+            case 2: // Body
+                g.drawLine(x, y + 40, x, y + 40 + 80);
+                break;
+            case 3: // R Arm
+                g.drawLine(x, y + 40 + 20, x + 20, y + 40 + 60);
+                break;
+            case 4: // L Arm
+                g.drawLine(x, y + 40 + 20, x - 20, y + 40 + 60);
+                break;
+            case 5: // R Leg
+                g.drawLine(x, y + 40 + 80, x + 20, y + 40 + 80 + 40);
+                break;
+            case 6: // L Leg
+                g.drawLine(x, y + 40 + 80, x - 20, y + 40 + 80 + 40);
+                JOptionPane.showMessageDialog(this, "You Lose! The word was " + wordToGuess);
+                reset();
+                break;
+            default:
+                break;
+        }
+        g.dispose();
+        showChangedHangman();
+        revalidate();
+    }
+
+    private void showChangedHangman() {
+        if (hangmanPanel != null)
+            remove(hangmanPanel);
+
+        hangmanPanel = new JPanel();
+        hangmanPanel.add(new JLabel(new ImageIcon(hangmanImage)));
+        getContentPane().add(hangmanPanel, BorderLayout.WEST);
+        revalidate();
+
+    }
+    
+    private void reset() {
+    	wordToGuess = null;
+    	numOfWrongGuesses = 0;
+    	wrongGuessesString = "Wrong Guesses: ";
+    	wrongGuesses.setText("");
+    	
+    	hangmanImage = new BufferedImage(500, 500, BufferedImage.TYPE_INT_ARGB);
+    	drawHangmanStand(hangmanImage);
+    	showChangedHangman();
+    	Initialize();
+    }
+
+    private static void drawHangmanStand(BufferedImage image) {
+        Graphics2D g = (Graphics2D) image.getGraphics();
+        g.setStroke(new BasicStroke(2));
+        g.setColor(Color.BLACK);
+
+        g.drawLine(10, 475, 250, 475);
+        g.drawLine(100, 475, 100, 100);
+        g.drawLine(100, 100, 250, 100);
+        g.drawLine(250, 100, 250, 200);
+
+        g.dispose();
+    }
 }

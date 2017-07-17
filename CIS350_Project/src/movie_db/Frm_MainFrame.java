@@ -381,7 +381,7 @@ public class Frm_MainFrame extends JFrame {
 		movieHangman.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Frm_Hangman playGame = new Frm_Hangman();
-				playGame.play();
+				//playGame.play();
 			}
 		});
 		movieHangman.setBackground(new Color(135, 206, 235));
