@@ -20,12 +20,17 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Color;
 import java.awt.Panel;
+import java.awt.Toolkit;
 import java.awt.Dialog.ModalExclusionType;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JSeparator;
 
@@ -64,6 +69,9 @@ public class Frm_MainFrame extends JFrame {
 		setBackground(new Color(153, 204, 255));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 459, 353);
+		
+		ImageIcon i = new ImageIcon(getClass().getResource("movies.png"));
+		this.setIconImage(i.getImage());
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBackground(new Color(245, 222, 179));

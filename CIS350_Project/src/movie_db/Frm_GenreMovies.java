@@ -14,6 +14,7 @@ import info.movito.themoviedbapi.model.MovieDb;
 
 import javax.swing.JTextArea;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
@@ -21,7 +22,7 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
 /*Frm_GenreMovies class.*/
-public class Frm_GenreMovies {
+public class Frm_GenreMovies extends JFrame {
 
 	/*movie_Genre JFrame variable.*/
 	private JFrame movie_Genre;
@@ -58,9 +59,12 @@ public class Frm_GenreMovies {
 		movie_Genre = new JFrame();
 		movie_Genre.setTitle("Movie Genres");
 		movie_Genre.getContentPane().setBackground(new Color(250, 235, 215));
-		movie_Genre.setBounds(100, 100, 450, 300);
+		movie_Genre.setBounds(100, 100, 900, 600);
 		movie_Genre.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		movie_Genre.getContentPane().setLayout(new BorderLayout());
+		
+		ImageIcon i = new ImageIcon(getClass().getResource("movies.png"));
+		movie_Genre.setIconImage(i.getImage());
 	
 		JPanel totalResults = new JPanel();
 		JScrollPane scrollPane = new JScrollPane();

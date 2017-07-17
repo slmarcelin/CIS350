@@ -34,6 +34,9 @@ public class Frm_Hangman extends JFrame {
     public Frm_Hangman() {
         getContentPane().setLayout(new BorderLayout());
         drawHangmanStand(hangmanImage);
+        
+        ImageIcon i = new ImageIcon(getClass().getResource("movies.png"));
+		this.setIconImage(i.getImage());
 
         inputPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gridBagConstraints = new GridBagConstraints();

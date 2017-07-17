@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -112,6 +113,9 @@ public class Frm_DisplayResults extends JFrame{
 		setBounds(100, 100, 900, 600);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		getContentPane().setLayout(new BorderLayout());
+		
+		ImageIcon i = new ImageIcon(getClass().getResource("movies.png"));
+		this.setIconImage(i.getImage());
 				
 		totalResults = new JPanel();
 		totalResults.setLayout(new BoxLayout(totalResults, BoxLayout.Y_AXIS));

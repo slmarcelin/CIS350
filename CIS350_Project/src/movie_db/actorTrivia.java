@@ -3,6 +3,7 @@ package movie_db;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
@@ -14,7 +15,7 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JOptionPane;
-public class actorTrivia {
+public class actorTrivia extends JFrame {
    
 	/*Declare JFrame.*/
 	private JFrame frame;
@@ -85,6 +86,9 @@ public class actorTrivia {
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 479, 358);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		
+		ImageIcon i = new ImageIcon(getClass().getResource("movies.png"));
+		frame.setIconImage(i.getImage());
 		
 		JPanel actorTrivia = new JPanel();
 		actorTrivia.setBackground(new Color(245, 222, 179));
