@@ -108,7 +108,7 @@ public class Frm_DisplayResults extends JFrame{
 	 * @param title the title of the JFrame
 	 * @param fetch_panels a function that gets the panels corresponding to the current page of results
 	 */
-	private Frm_DisplayResults(String title, Function<Integer, JPanel[]> fetch_panels) {
+	public Frm_DisplayResults(String title, Function<Integer, JPanel[]> fetch_panels) {
 		setTitle(title);
 		setBounds(100, 100, 900, 600);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

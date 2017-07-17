@@ -65,6 +65,7 @@ public class Frm_MainFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public Frm_MainFrame() {
+		setResizable(false);
 		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
 		setBackground(new Color(153, 204, 255));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -129,7 +130,7 @@ public class Frm_MainFrame extends JFrame {
 		newMovies_button.setForeground(Color.BLACK);
 		newMovies_button.setFont(new Font("Tahoma", Font.BOLD, 11));
 		newMovies_button.setBackground(new Color(153, 204, 255));
-		newMovies_button.setBounds(105, 5, 121, 23);
+		newMovies_button.setBounds(225, 5, 121, 23);
 		newMovies_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Frm_DisplayResults.displayMovies("New Movies", Cls_MovieData::m_getNewMovies);
@@ -155,7 +156,7 @@ public class Frm_MainFrame extends JFrame {
 		btnPopularMovies.setForeground(Color.BLACK);
 		btnPopularMovies.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnPopularMovies.setBackground(new Color(153, 204, 255));
-		btnPopularMovies.setBounds(224, 5, 141, 23);
+		btnPopularMovies.setBounds(105, 5, 121, 23);
 		Menu_Panel.add(btnPopularMovies);
 		btnPopularMovies.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -252,11 +253,12 @@ public class Frm_MainFrame extends JFrame {
 		btnGenres.setForeground(Color.BLACK);
 		btnGenres.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnGenres.setBackground(new Color(153, 204, 255));
-		btnGenres.setBounds(358, 5, 89, 23);
+		btnGenres.setBounds(345, 5, 89, 23);
 		Menu_Panel.add(btnGenres);
 		btnGenres.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Frm_GenreMovies genreList= new Frm_GenreMovies();
+				//Frm_Display_GenreResults genreList = new Frm_Display_GenreResults("Movies By Genre", Cls_MovieData::m_getTvShowsPopular);
 				genreList.movieGenres();
 			}
 		});
