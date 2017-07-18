@@ -19,6 +19,8 @@ public class Cls_Hangman {
 	private int rand;
 	/*random source number.*/
 	private int source;
+	/*page.*/
+	private int page;
 	
 	/***************************************
 	  Constructor initializes variables.
@@ -27,6 +29,7 @@ public class Cls_Hangman {
 		Random r = new Random();
 		rand = r.nextInt(100);
 		source = r.nextInt(20);
+		page = r.nextInt(9) + 1;
 		generateWord();
 		userGuess = "";
 		
@@ -111,11 +114,11 @@ public class Cls_Hangman {
 	private void generateWord() {
 		//generate a word based on the rand value
 		if(rand < 33){
-			word = Cls_MovieData.m_getRandMovie(source).getTitle();
-		}else if(rand > 33 && rand < 66){
-			word = Cls_MovieData.m_getRandShow(source).getName();
+			word = Cls_MovieData.m_getRandMovie(source, page).getTitle();
+		}else if(rand >= 33 && rand < 66){
+			word = Cls_MovieData.m_getRandShow(source, page).getName();
 		}else{
-			word = Cls_MovieData.m_getRandActor(source).getName();
+			word = Cls_MovieData.m_getRandActor(source, page).getName();
 		}
 		word = word.toUpperCase();
 	}

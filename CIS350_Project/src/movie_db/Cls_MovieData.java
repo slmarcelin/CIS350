@@ -270,10 +270,10 @@ public class Cls_MovieData {
 	  @param movie the id of a movie
 	  @return MovieDb the selected movie
 	*********************************************************************************/
-	public static MovieDb m_getRandMovie(int movie) {
+	public static MovieDb m_getRandMovie(int movie, int page) {
 		int count = 0;
 		TmdbMovies tmdbMovies = tmdbApi.getMovies();
-		MovieResultsPage results = tmdbMovies.getPopularMovies("en", 5);
+		MovieResultsPage results = tmdbMovies.getPopularMovies("en", page);
 		Iterator<MovieDb> iterator = results.iterator();
 		MovieDb m = null;
 		while (iterator.hasNext() && movie > count) {
@@ -288,10 +288,10 @@ public class Cls_MovieData {
 	  @param show the id of a show
 	  @return TvSeries the selected show
 	*********************************************************************************/
-	public static TvSeries m_getRandShow(int show) {
+	public static TvSeries m_getRandShow(int show, int page) {
 		int count = 0;
 		TmdbTV tmdbTV = tmdbApi.getTvSeries();
-		TvResultsPage results = tmdbTV.getPopular("en", 5);
+		TvResultsPage results = tmdbTV.getPopular("en", page);
 		Iterator<TvSeries> iterator = results.iterator();
 		TvSeries tv = null;
 		while (iterator.hasNext() && show > count) {
@@ -306,10 +306,10 @@ public class Cls_MovieData {
 	  @param person the id of an actor
 	  @return Person the selected actor
 	*********************************************************************************/
-	public static Person m_getRandActor(int person) {
+	public static Person m_getRandActor(int person, int page) {
 		int count = 0;
 		TmdbPeople tmdbPeople = tmdbApi.getPeople();
-		PersonResultsPage results = tmdbPeople.getPersonPopular(5);
+		PersonResultsPage results = tmdbPeople.getPersonPopular(page);
 		Iterator<Person> iterator = results.iterator();
 		Person p = null;
 		while (iterator.hasNext() && person > count) {
