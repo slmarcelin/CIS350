@@ -2,7 +2,6 @@ package movie_db;
 
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
-import java.awt.Point;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -14,9 +13,7 @@ import java.awt.Dimension;
 
 import info.movito.themoviedbapi.model.Genre;
 import info.movito.themoviedbapi.model.MovieDb;
-//import movie_db.Frm_DisplayResults.Pnl_PrevNext;
 
-import javax.swing.JTextArea;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;

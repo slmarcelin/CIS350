@@ -100,7 +100,7 @@ public class Cls_Hangman {
 				}
 			}
 			
-			if(userGuess == word){
+			if(userGuess.equals(word)){
 				state = 2;
 			}
 			return true;

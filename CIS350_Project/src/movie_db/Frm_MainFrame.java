@@ -20,17 +20,12 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 
 import java.awt.Font;
-import java.awt.Image;
 import java.awt.Color;
 import java.awt.Panel;
-import java.awt.Toolkit;
 import java.awt.Dialog.ModalExclusionType;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.File;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JSeparator;
 
@@ -390,8 +385,7 @@ public class Frm_MainFrame extends JFrame {
 		movieHangman.setForeground(Color.BLACK);
 		movieHangman.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Frm_Hangman playGame = new Frm_Hangman();
-				//playGame.play();
+				new Frm_Hangman();
 			}
 		});
 		movieHangman.setBackground(new Color(135, 206, 235));
