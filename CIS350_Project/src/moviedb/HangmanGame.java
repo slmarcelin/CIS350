@@ -30,18 +30,18 @@ public class HangmanGame {
         source = r.nextInt(20);
         page = r.nextInt(9) + 1;
         generateWord();
-        userGuess = "";
-
-        int i;
-        for (i = 0; i < word.length(); i++) {
-            if (word.charAt(i) != ' ') {
-                userGuess += "_";
-            } else {
-                userGuess += " ";
-            }
-        }
+        initializeGuess();
     }
 
+    /***************************************
+      Constructor initializes variables.
+      @param w the word to use
+    ***************************************/
+    public HangmanGame(final String w) {
+        word = w.toUpperCase();
+        initializeGuess();
+    }
+    
     /***************************************
       getter returns the word.
       @return word of type string
@@ -84,7 +84,7 @@ public class HangmanGame {
         String check = checkString.toUpperCase();
         if (!word.contains(check)) {
             turns++;
-            if (turns == 6) {
+            if (turns >= 6) {
                 state = 1;
             }
             return false;
@@ -103,7 +103,22 @@ public class HangmanGame {
             return true;
         }
     }
-
+    
+    /***************************************
+     * Sets the user guess to a series of blanks.
+     **************************************/
+    private void initializeGuess() {
+        userGuess = "";
+        
+    	for (int i = 0; i < word.length(); i++) {
+            if (word.charAt(i) != ' ') {
+                userGuess += "_";
+            } else {
+                userGuess += " ";
+            }
+        }
+    }
+    
     /***************************************
       Generates a random word, this word.
       may be a movie, show or actor

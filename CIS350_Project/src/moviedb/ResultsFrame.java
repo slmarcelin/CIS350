@@ -25,6 +25,7 @@ import com.google.common.base.Function;
 /**
  * Frm_DisplayResults class.
  **/
+@SuppressWarnings("serial")
 public class ResultsFrame extends JFrame {
 
     /**totalResults JPanel.*/

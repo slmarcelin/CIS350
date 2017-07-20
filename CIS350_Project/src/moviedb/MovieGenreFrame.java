@@ -18,16 +18,19 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+
 import java.awt.event.ItemListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
+
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
 /**
  * Frm_GenreMovies class.
  **/
+@SuppressWarnings("serial")
 public class MovieGenreFrame extends JFrame {
     /**the scrollpane.*/
     private JScrollPane scrollPane;

@@ -25,6 +25,7 @@ import javax.swing.JTextField;
  * Simple hangman game with GUI.
  * Created by Rafael on 5/12/2015.
  */
+@SuppressWarnings("serial")
 public class HangmanView extends JFrame {
     /**
      * Creates a hangman window.

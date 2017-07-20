@@ -15,6 +15,7 @@ import javax.swing.JTextArea;
  * @author Zachary Ash
  *
  */
+@SuppressWarnings("serial")
 public class TvPanel extends JPanel {
     /**
      * Pn_TvPanel construction.

@@ -13,6 +13,7 @@ import javax.swing.JTextArea;
 /**
  * Pnl_PersonPanel class.
  **/
+@SuppressWarnings("serial")
 public class PersonPanel extends JPanel {
     /**
      * Pn_PersonPanel construction.

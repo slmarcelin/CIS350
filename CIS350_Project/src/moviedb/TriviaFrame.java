@@ -26,6 +26,7 @@ import javax.swing.JOptionPane;
 /**
  * The window for displaying a trivia quiz.
  */
+@SuppressWarnings("serial")
 public class TriviaFrame extends JFrame {
     /** The quiz being taken. */
     private TriviaQuiz quiz;

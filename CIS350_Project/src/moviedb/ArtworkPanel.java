@@ -12,6 +12,7 @@ import javax.swing.border.LineBorder;
 /**
  * Pnl_ArtworkPanel class.
  **/
+@SuppressWarnings("serial")
 public class ArtworkPanel extends JPanel {
     /**
      * Pn_ArtworkPanel construction.

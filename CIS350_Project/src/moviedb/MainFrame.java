@@ -32,6 +32,7 @@ import javax.swing.JSeparator;
 /**
  * Frm_MainFrame class.
  **/
+@SuppressWarnings("serial")
 public class MainFrame extends JFrame {
     /** The textfield to use for actor searches. **/
     private JTextField actorsTextField;

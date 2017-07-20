@@ -13,6 +13,7 @@ import javax.swing.JTextArea;
 /**
  * Pnl_MoviePanel class.
  **/
+@SuppressWarnings("serial")
 public class MoviePanel extends JPanel {
     /**
      * Pn_MoviePanel construction.
