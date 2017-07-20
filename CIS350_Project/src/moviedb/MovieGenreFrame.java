@@ -39,6 +39,8 @@ public class MovieGenreFrame extends JFrame {
     private int page = 1;
     /**current Genre ID.*/
     private int genreID = 0;
+    /**the panel to control the page number. */
+    private PrevNextPanel pnlPage;
 
     /**
      * Launches the Genres frame properties.
@@ -80,22 +82,29 @@ public class MovieGenreFrame extends JFrame {
 
         totalResults = new JPanel();
         scrollPane = new JScrollPane();
+        pnlPage = new PrevNextPanel();
 
+        refreshPage = () -> {
+            totalResults.removeAll();
+
+            for (MovieDb md : MovieData.getMoviesByGenre(genreID, page)) {
+                totalResults.add(new ArtworkPanel(
+                        MovieData.getMoviePoster(md), new MoviePanel(md)));
+            }
+
+            scrollPane.setViewportView(totalResults);
+            totalResults.repaint();
+        };
+        
         JComboBox<Genre> genreComboBox = new JComboBox<Genre>();
         genreComboBox.addItemListener(new ItemListener() {
             public void itemStateChanged(final ItemEvent arg0) {
                 Genre temp = (Genre) arg0.getItem();
                 genreID = temp.getId();
-
-                totalResults.removeAll();
-
-                for (MovieDb md : MovieData.getMoviesByGenre(genreID, 0)) {
-                    totalResults.add(new ArtworkPanel(
-                            MovieData.getMoviePoster(md), new MoviePanel(md)));
-                }
-
-                scrollPane.setViewportView(totalResults);
-                totalResults.repaint();
+                page = 1;
+                pnlPage.setEnabledStatus();
+                
+                refresh();
             }
         });
         genreComboBox.setBounds(10, 222, 410, 22);
@@ -109,11 +118,6 @@ public class MovieGenreFrame extends JFrame {
         totalResults.setLayout(new BoxLayout(totalResults, BoxLayout.Y_AXIS));
         totalResults.setBounds(100, 100, 450, 300);
 
-        for (MovieDb md : MovieData.getMoviesByGenre(temp.getId(), 0)) {
-            totalResults.add(new ArtworkPanel(
-                    MovieData.getMoviePoster(md), new MoviePanel(md)));
-        }
-
         scrollPane.setHorizontalScrollBarPolicy(
                 ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPane.setBounds(100, 100, 450, 300);
@@ -121,10 +125,9 @@ public class MovieGenreFrame extends JFrame {
         getContentPane().add(scrollPane);
         add(genreComboBox, BorderLayout.NORTH);
 
-        PrevNextPanel pnlPage = new PrevNextPanel();
         getContentPane().add(pnlPage, BorderLayout.SOUTH);
 
-        totalResults.repaint();
+        refresh();
     }
 
     /**
@@ -178,7 +181,7 @@ public class MovieGenreFrame extends JFrame {
         /**
          * Enables and disables the previous and next buttons.
          */
-        private void setEnabledStatus() {
+        public void setEnabledStatus() {
             if (page <= 1) {
                 previous.setEnabled(false);
             } else {
