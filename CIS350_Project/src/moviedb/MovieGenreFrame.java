@@ -113,8 +113,6 @@ public class MovieGenreFrame extends JFrame {
             genreComboBox.addItem(g);
         }
 
-        Genre temp = (Genre) genreComboBox.getSelectedItem();
-
         totalResults.setLayout(new BoxLayout(totalResults, BoxLayout.Y_AXIS));
         totalResults.setBounds(100, 100, 450, 300);
 

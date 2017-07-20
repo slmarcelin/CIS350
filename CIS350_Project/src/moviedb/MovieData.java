@@ -1,6 +1,7 @@
 package moviedb;
 
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -335,7 +336,7 @@ public final class MovieData {
             BufferedImage img = ImageIO.read(
                     new URL(IMAGE_ROOT_URL + movie.getPosterPath()));
             return new ImageIcon(img);
-        } catch (Exception e) {
+        } catch (IOException e) {
             // Red image
             return new ImageIcon(MovieData.class.getResource("tmdb.png"));
         }
@@ -351,7 +352,7 @@ public final class MovieData {
             BufferedImage img = ImageIO.read(
                     new URL(IMAGE_ROOT_URL + tv.getPosterPath()));
             return new ImageIcon(img);
-        } catch (Exception e) {
+        } catch (IOException e) {
             // Red image
             return new ImageIcon(MovieData.class.getResource("tmdb.png"));
         }
@@ -367,7 +368,7 @@ public final class MovieData {
             BufferedImage img = ImageIO.read(
                     new URL(IMAGE_ROOT_URL + p.getProfilePath()));
             return new ImageIcon(img);
-        } catch (Exception e) {
+        } catch (IOException e) {
             // Red image
             return new ImageIcon(MovieData.class.getResource("tmdb.png"));
         }

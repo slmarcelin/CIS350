@@ -129,12 +129,13 @@ public class HangmanView extends JFrame {
                     wordTextField.setText("");
                 }
                 
-                String displayWord = "";
+                StringBuilder sbDisplayWord = new StringBuilder();
                 for (int i = 0; i < wordKnown.length(); i++) {
-                    displayWord += "  " + wordKnown.charAt(i) + "  ";
+                    sbDisplayWord.append("  ").append(wordKnown.charAt(i))
+                    		.append("  ");
                 }
                 
-                knownWordLabel.setText(displayWord);
+                knownWordLabel.setText(sbDisplayWord.toString());
             }
         });
 
@@ -158,18 +159,19 @@ public class HangmanView extends JFrame {
             
             wordTextField.setText("");
             commandTitle.setText("Guess a letter");
-            String displayWord = "";
-            wordKnown = "";
+            StringBuilder sbWordKnown = new StringBuilder();
+            StringBuilder sbDisplayWord = new StringBuilder();
             for (int i = 0; i < wordToGuess.length(); i++) {
                 if (wordToGuess.charAt(i) != ' ') {
-                    wordKnown += "_";
-                    displayWord += "  __  ";
+                    sbWordKnown.append("_");
+                    sbDisplayWord.append("  __  ");
                 } else {
-                    wordKnown += " ";
-                    displayWord += "      ";
+                    sbWordKnown.append(" ");
+                    sbDisplayWord.append("      ");
                 }
             }
-            knownWordLabel.setText(displayWord);
+            wordKnown = sbWordKnown.toString();
+            knownWordLabel.setText(sbDisplayWord.toString());
             GridBagConstraints gridBagConstraints2 = new GridBagConstraints();
             gridBagConstraints2.gridx = 1;
             gridBagConstraints2.gridy = 2;
@@ -189,11 +191,11 @@ public class HangmanView extends JFrame {
     private void guessRight() {
         String guess = wordTextField.getText().toLowerCase();
         addGuessToKnownWord(guess);
-        String displayString = "";
+        StringBuilder sbDisplayString = new StringBuilder();
         for (int i = 0; i < wordKnown.length(); i++) {
-            displayString += wordKnown.substring(i, i + 1) + " ";
+            sbDisplayString.append(wordKnown.substring(i, i + 1)).append(" ");
         }
-        knownWordLabel.setText(displayString);
+        knownWordLabel.setText(sbDisplayString.toString());
 
         if (wordKnown.indexOf("_") < 0) {
             JOptionPane.showMessageDialog(this, "You Win!");
