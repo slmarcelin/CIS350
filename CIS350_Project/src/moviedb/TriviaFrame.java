@@ -210,11 +210,11 @@ public class TriviaFrame extends JFrame {
                 JOptionPane.showMessageDialog(null, "You have scored "
                    + results + " points", "The results",
                    JOptionPane.INFORMATION_MESSAGE);
-                question1.setText(" ");
-                question2.setText(" ");
-                question3.setText(" ");
-                question4.setText(" ");
-                question5.setText(" ");
+                question1.setText("");
+                question2.setText("");
+                question3.setText("");
+                question4.setText("");
+                question5.setText("");
             }
         });
     }
