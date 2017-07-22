@@ -58,6 +58,7 @@ public class MainFrame extends JFrame {
                     MainFrame frame = new MainFrame();
                     frame.setVisible(true);
                     frame.setResizable(false);
+                    frame.setLocationRelativeTo(null);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

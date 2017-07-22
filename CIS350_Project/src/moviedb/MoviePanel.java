@@ -6,9 +6,12 @@ import java.awt.Dimension;
 import java.awt.BorderLayout;
 
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 /**
  * Pnl_MoviePanel class.
@@ -37,9 +40,17 @@ public class MoviePanel extends JPanel {
         txtOverview.setWrapStyleWord(true);
         txtOverview.setLineWrap(true);
         txtOverview.setEditable(false);
+        
+        JButton btnMoreInfo = new JButton("More Movie Info");
+        btnMoreInfo.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent arg0) {
+        		MovieInfoFrame mif = new MovieInfoFrame(movie);
+        	}
+        });
 
         add(lblTitle, BorderLayout.NORTH);
         add(pnlFacts, BorderLayout.WEST);
         add(txtOverview, BorderLayout.CENTER);
+        add(btnMoreInfo, BorderLayout.SOUTH);
     }
 }
