@@ -22,7 +22,7 @@ import java.awt.Color;
 
 import javax.swing.JTextField;
 import javax.swing.JOptionPane;
-
+import java.util.Random;
 /**
  * The window for displaying a trivia quiz.
  */
@@ -93,7 +93,6 @@ public class TriviaFrame extends JFrame {
      * Initialize the contents of the frame.
      **************************************************************************/
     private void initialize() {
-        setResizable(false);
         setBounds(100, 100, 479, 358);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
@@ -109,37 +108,40 @@ public class TriviaFrame extends JFrame {
         separator.setBounds(28, 28, 391, 2);
         actorTrivia.add(separator);
         
-        JLabel lblNewLabel = new JLabel("questions");
-        lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 16));
+        JLabel lblNewLabel = new JLabel("Questions");
+        lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 17));
         lblNewLabel.setBounds(172, 3, 100, 30);
         actorTrivia.add(lblNewLabel);
         
         JTextArea question1Lb1 = new JTextArea("1- "
                 + quiz.getQuestion(0).getQuestion());
+        question1Lb1.setWrapStyleWord(true);
         question1Lb1.setFont(new Font("Tahoma", Font.PLAIN, 12));
         question1Lb1.setBackground(new Color(245, 222, 179));
         question1Lb1.setForeground(new Color(178, 34, 34));
-        question1Lb1.setBounds(10, 41, 224, 30);
+        question1Lb1.setBounds(10, 41, 250, 30);
         question1Lb1.setLineWrap(true);
         question1Lb1.setEditable(false);
         actorTrivia.add(question1Lb1);
         
         JTextArea question2Lb1 = new JTextArea("2- "
                 + quiz.getQuestion(1).getQuestion());
+        question2Lb1.setWrapStyleWord(true);
         question2Lb1.setFont(new Font("Tahoma", Font.PLAIN, 12));
         question2Lb1.setBackground(new Color(245, 222, 179));
         question2Lb1.setForeground(new Color(178, 34, 34));
-        question2Lb1.setBounds(10, 89, 214, 30);
+        question2Lb1.setBounds(10, 82, 250, 30);
         question2Lb1.setLineWrap(true);
         question2Lb1.setEditable(false);
         actorTrivia.add(question2Lb1);
         
         JTextArea question3Lb1 = new JTextArea("3- "
                 + quiz.getQuestion(2).getQuestion());
+        question3Lb1.setWrapStyleWord(true);
         question3Lb1.setFont(new Font("Tahoma", Font.PLAIN, 12));
         question3Lb1.setBackground(new Color(245, 222, 179));
         question3Lb1.setForeground(new Color(178, 34, 34));
-        question3Lb1.setBounds(10, 137, 244, 30);
+        question3Lb1.setBounds(10, 136, 244, 30);
         question3Lb1.setLineWrap(true);
         question3Lb1.setEditable(false);
         actorTrivia.add(question3Lb1);
@@ -167,10 +169,11 @@ public class TriviaFrame extends JFrame {
         
         JTextArea question4Lb1 = new JTextArea("4- "
                 + quiz.getQuestion(3).getQuestion());
+        question4Lb1.setWrapStyleWord(true);
         question4Lb1.setBackground(new Color(245, 222, 179));
         question4Lb1.setForeground(new Color(178, 34, 34));
         question4Lb1.setFont(new Font("Tahoma", Font.PLAIN, 12));
-        question4Lb1.setBounds(10, 186, 224, 30);
+        question4Lb1.setBounds(10, 178, 250, 32);
         question4Lb1.setLineWrap(true);
         question4Lb1.setEditable(false);
         actorTrivia.add(question4Lb1);
@@ -184,10 +187,11 @@ public class TriviaFrame extends JFrame {
         
         JTextArea question5Lb1 = new JTextArea("5- "
                 + quiz.getQuestion(4).getQuestion());
+        question5Lb1.setWrapStyleWord(true);
         question5Lb1.setFont(new Font("Tahoma", Font.PLAIN, 12));
         question5Lb1.setBackground(new Color(245, 222, 179));
         question5Lb1.setForeground(new Color(178, 34, 34));
-        question5Lb1.setBounds(10, 238, 235, 30);
+        question5Lb1.setBounds(10, 238, 250, 30);
         question5Lb1.setLineWrap(true);
         question5Lb1.setEditable(false);
         actorTrivia.add(question5Lb1);
@@ -208,7 +212,12 @@ public class TriviaFrame extends JFrame {
             public void actionPerformed(final ActionEvent e) {
                 int results = results();
                 JOptionPane.showMessageDialog(null, "You have scored "
-                   + results + " points", "The results",
+                   + results + " points\n"
+                   +"       Answers\n"+ "1-"+ quiz.getQuestion(0).getAnswer()
+                   +"\n2-" + quiz.getQuestion(1).getAnswer()
+                   +"\n3-" + quiz.getQuestion(2).getAnswer()
+                   +"\n4-" + quiz.getQuestion(3).getAnswer()
+                   +"\n5-" + quiz.getQuestion(4).getAnswer(),"The results",
                    JOptionPane.INFORMATION_MESSAGE);
                 question1.setText("");
                 question2.setText("");
