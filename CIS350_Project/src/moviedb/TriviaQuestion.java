@@ -1,5 +1,6 @@
 package moviedb;
 import java.util.Random;
+
 /**
  * A quiz question.
  * @author Zachary Ash
@@ -9,9 +10,11 @@ public class TriviaQuestion {
     private String question;
     /** the answer text. */
     private String answer;
-    private static int []List=new int[10];
-    private static Random rand = new Random(13);
-    private static int check=1;
+    private static int nextV=0;
+    private static int prev=2;
+    private static int[]list=new int[10];
+    private static Random rand = new Random();
+
     /**
      * Constructs a new question.
      * @param q the question text
@@ -37,23 +40,27 @@ public class TriviaQuestion {
     public String getAnswer() {
         return answer;
     }
-   
-   static public int getrandom(int val)
-    {  
-	   int i;
-	   int value=0;
-	   int value2=0;
-	   for(i=0;i<13;i++)
-	   {
-		   value=rand.nextInt(12) + 1;
-           value2=rand.nextInt(val+1) + 8;
-           if(value!=value2)
-           {
-        	  return value2; 
-           }
-	   }
-       return rand.nextInt(9) + 1;
+    
+    public static void resetList()
+    {
+    	int i;
+    	for(i=0;i<10;i++)
+    	{
+    		list[i]=0;
+    	}
     }
+   
+   public static int setrandom(int current)
+    {  
+	   int value1=0;
+	   value1=rand.nextInt((7-0)+1)+0;
+	   while(value1==current || value1==nextV || value1==prev)
+	   {
+		   value1=rand.nextInt((8-1)+1)+1;
+	   }
+	nextV=value1;   
+	return value1;
+}
     
     /**
      * Determines if the given guess is the correct answer.
@@ -72,6 +79,7 @@ public class TriviaQuestion {
      * @return a random question
      */
     public static TriviaQuestion generateRandomQuestion() {
+        resetList();
         String[] setQuestions = new String[] {
                 "Brad Pitt plays General Glen McMahon\n"
                        + "in which film directed by David Michod?",
@@ -83,21 +91,21 @@ public class TriviaQuestion {
                         +"the fairy tale 'Beauty and the Beast'?\n",
                 "Who always plays captain Jack Sparrow?",               
                  "In the Star Wars universe,"
-                             +"who is Luke Skywalker's mother?",
+                             +" who is Luke Skywalker's mother?",
                  "In the Lord of the Rings film series,"
-                              +"which actor plays the character of Saruman?",
+                              +" which actor plays the character of Saruman?",
                  "In 'The Jungle Book',"
-                                +"what is the name of the orphaned boy?",
+                                +" what is the name of the orphaned boy?",
                  "The name of the actress who plays Hermione Granger,"
-                                +"in the Harry Potter series of films?",
+                                +" in the Harry Potter series of films?",
                  "The name of the kleptomaniac monkey,"
-                                +"in the Disney movie 'Aladdin'?",
+                                +" in the Disney movie 'Aladdin'?",
                 "Which actress played identical twins in the 1998 "
-                                +"movie remake of The Parent Trap?",
+                                +" movie remake of The Parent Trap?",
                 "In the Disney movie 'Beauty and the Beast', what is"
-                                +"the name of Gaston's bumbling sidekick?",
+                                +" the name of Gaston's bumbling sidekick?",
                 "Who played James Bond in the 1969 film"
-                                + "'On Her Majesty's Secret Service'?"
+                                + " 'On Her Majesty's Secret Service'?"
         };
         String[] setAnswers = new String[]{
                 "war machine",
@@ -116,8 +124,9 @@ public class TriviaQuestion {
         };
         TriviaQuestion q = new TriviaQuestion(
          setQuestions[currQuestion], setAnswers[currQuestion]);
-         currQuestion=getrandom(check+1)+1;
-         currQuestion %=10;
+         currQuestion=setrandom(currQuestion);
+         currQuestion%=10;
+         prev=currQuestion;
         return q;
     }
 }

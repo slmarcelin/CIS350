@@ -85,7 +85,7 @@ public class TriviaFrame extends JFrame {
      * Initialize the application.
      **************************************************************************/
     public TriviaFrame() {
-        quiz = new TriviaQuiz(5);
+        quiz = new TriviaQuiz(10);
         initialize();
     }
 
@@ -219,6 +219,7 @@ public class TriviaFrame extends JFrame {
                    +"\n4-" + quiz.getQuestion(3).getAnswer()
                    +"\n5-" + quiz.getQuestion(4).getAnswer(),"The results",
                    JOptionPane.INFORMATION_MESSAGE);
+               
                 question1.setText("");
                 question2.setText("");
                 question3.setText("");
