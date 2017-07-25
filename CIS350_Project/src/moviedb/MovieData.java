@@ -37,7 +37,7 @@ public final class MovieData {
     private static SessionToken sessionToken;
     /** the images root URL. **/
     private static final String IMAGE_ROOT_URL =
-            "http://image.tmdb.org/t/p/w92/";
+            "http://image.tmdb.org/t/p/";
 
     static {
         tmdbApi = new TmdbApi("d69cd7f2a6f9624840bee0c1fc2a9ee0");
@@ -331,10 +331,10 @@ public final class MovieData {
       @param movie of type MOvieDb
       @return ImageIcon the image
     ***************************************************************************/
-    public static ImageIcon getMoviePoster(final MovieDb movie) {
+    public static ImageIcon getMoviePoster(final MovieDb movie, final String posterSize) {
         try {
             BufferedImage img = ImageIO.read(
-                    new URL(IMAGE_ROOT_URL + movie.getPosterPath()));
+                    new URL(IMAGE_ROOT_URL + posterSize + "/" + movie.getPosterPath()));
             return new ImageIcon(img);
         } catch (IOException e) {
             // Red image
@@ -347,10 +347,10 @@ public final class MovieData {
       @param tv of TvSeries
       @return ImageIcon the image
     ***************************************************************************/
-    public static ImageIcon getTvPoster(final TvSeries tv) {
+    public static ImageIcon getTvPoster(final TvSeries tv, String posterSize) {
         try {
             BufferedImage img = ImageIO.read(
-                    new URL(IMAGE_ROOT_URL + tv.getPosterPath()));
+                    new URL(IMAGE_ROOT_URL + posterSize + "/" + tv.getPosterPath()));
             return new ImageIcon(img);
         } catch (IOException e) {
             // Red image
@@ -363,10 +363,10 @@ public final class MovieData {
       @param p the actor to find an image for
       @return ImageIcon the image
     ***************************************************************************/
-    public static ImageIcon getPersonProfile(final Person p) {
+    public static ImageIcon getPersonProfile(final Person p, String posterSize) {
         try {
             BufferedImage img = ImageIO.read(
-                    new URL(IMAGE_ROOT_URL + p.getProfilePath()));
+                    new URL(IMAGE_ROOT_URL + posterSize + "/" + p.getProfilePath()));
             return new ImageIcon(img);
         } catch (IOException e) {
             // Red image

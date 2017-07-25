@@ -48,7 +48,7 @@ public class ResultsFrame extends JFrame {
                 JPanel[] panels = new JPanel[movies.size()];
                 for (int i = 0; i < movies.size(); i++) {
                     panels[i] = new ArtworkPanel(MovieData.getMoviePoster(
-                            movies.get(i)), new MoviePanel(movies.get(i)));
+                            movies.get(i), "w92"), new MoviePanel(movies.get(i)));
                 }
                 return panels;
             } catch (Exception e) {
@@ -73,7 +73,7 @@ public class ResultsFrame extends JFrame {
                 JPanel[] panels = new JPanel[tvseries.size()];
                 for (int i = 0; i < tvseries.size(); i++) {
                     panels[i] = new ArtworkPanel(MovieData.getTvPoster(
-                            tvseries.get(i)), new TvPanel(tvseries.get(i)));
+                            tvseries.get(i), "w92"), new TvPanel(tvseries.get(i)));
                 }
                 return panels;
             } catch (Exception e) {
@@ -98,7 +98,7 @@ public class ResultsFrame extends JFrame {
                 JPanel[] panels = new JPanel[people.size()];
                 for (int i = 0; i < people.size(); i++) {
                     panels[i] = new ArtworkPanel(MovieData.getPersonProfile(
-                            people.get(i)), new PersonPanel(people.get(i)));
+                            people.get(i), "w92"), new PersonPanel(people.get(i)));
                 }
                 return panels;
             } catch (Exception e) {
