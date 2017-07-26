@@ -25,6 +25,8 @@ public class MovieInfoController {
     private ImageView moviePoster;
     @FXML
     private TextArea movieDetails;
+    @FXML
+    private TextArea Cast;
     
     public MovieInfoController() {
     	
@@ -49,7 +51,19 @@ public class MovieInfoController {
     }
     
     private void setMovieDetails() {
-    	movieDetails.setText(movie.getOverview());
+      movieDetails.setText("Original Title: "+movie.getOriginalTitle()+"\nReleased date: "
+      +movie.getReleaseDate()+"\nOriginal Language: "+movie.getOriginalLanguage()+
+      "\n\nMovie Description: "+movie.getOverview());
+    	
+    }
+    
+    private void setCast()
+    {
+    	int i;
+    	for(i=0;i<movie.getCast().size();i++)
+    	{
+    		Cast.setText(movie.getCast().get(i).getCreditId()+"\n");
+    	}
     }
     
     private void setTrailerView() {

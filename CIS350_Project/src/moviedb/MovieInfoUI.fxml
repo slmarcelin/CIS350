@@ -28,6 +28,7 @@
                <children>
                   <ImageView id="moviePoster" fx:id="moviePoster" fitHeight="324.0" fitWidth="162.0" pickOnBounds="true" preserveRatio="true" />
                   <TextArea fx:id="movieDetails" editable="false" prefHeight="200.0" prefWidth="200.0" wrapText="true" />
+                  <TextArea fx:id="Cast" editable="false" prefHeight="200.0" prefWidth="200.0" wrapText="true" />
                </children>
             </VBox>
          </center>
