@@ -1,5 +1,5 @@
 package moviedb;
-
+import info.movito.themoviedbapi.model.tv.TvSeries;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -15,46 +15,46 @@ import javafx.scene.text.TextFlow;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
-public class MovieInfoController {
-	private MovieDb movie;
+public class TVInfoController {
+	private TvSeries tv;
     @FXML
-    private Label movieTitle;
+    private Label TVTitle;
     @FXML 
     private WebView trailerView;
     @FXML
-    private ImageView moviePoster;
+    private ImageView TVPoster;
     @FXML
-    private TextArea movieDetails;
+    private TextArea TVDetails;
     @FXML
     private TextArea Cast;
     
-    public MovieInfoController() {
+    public TVInfoController() {
     	
     }
     
-    public void init(MovieDb movie) {
-    	this.movie = movie;
+    public void init(TvSeries tv) {
+    	this.tv = tv;
     	
-    	setMovieTitle();
-    	setMovieImage();
-    	setMovieDetails();
+    	setTVTitle();
+    	setTVImage();
+    	setTVDetails();
     	setTrailerView();
     	setCast();
     }
     
-    private void setMovieTitle() {
-    	movieTitle.setText(movie.getTitle());
+    private void setTVTitle() {
+    	TVTitle.setText(tv.getName());
     }
     
-    private void setMovieImage() {
-    	Image imgPoster = new Image("http://image.tmdb.org/t/p/w185/" + movie.getPosterPath());
-		moviePoster.setImage(imgPoster);
+    private void setTVImage() {
+    	Image imgPoster = new Image("http://image.tmdb.org/t/p/w185/" + tv.getPosterPath());
+		TVPoster.setImage(imgPoster);
     }
     
-    private void setMovieDetails() {
-      movieDetails.setText("Original Title: "+movie.getOriginalTitle()+"\nReleased date: "
-      +movie.getReleaseDate()+"\nOriginal Language: "+movie.getOriginalLanguage()+
-      "\n\nMovie Description: "+movie.getOverview());
+    private void setTVDetails() {
+      TVDetails.setText("Original Title: "+tv.getName()+"\nReleased date: "
+      +tv.getFirstAirDate()+
+      "\n\nMovie Description: "+tv.getOverview());
     	
     }
     
@@ -64,8 +64,8 @@ public class MovieInfoController {
     }
     
     private void setTrailerView() {
-    	String youtubeKey = "http://api.themoviedb.org/3/movie/" + 
-	    		movie.getId() + "/videos?api_key=d69cd7f2a6f9624840bee0c1fc2a9ee0";
+    	String youtubeKey = "http://api.themoviedb.org/3/tv/" + 
+	    		tv.getId() + "/videos?api_key=d69cd7f2a6f9624840bee0c1fc2a9ee0";
 	    	URL urlYoutubeKey = null;
 	    	try {
 				urlYoutubeKey = new URL(youtubeKey);

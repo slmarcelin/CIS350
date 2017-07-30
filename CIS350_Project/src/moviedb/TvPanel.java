@@ -4,8 +4,11 @@ import info.movito.themoviedbapi.model.tv.TvSeries;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -39,9 +42,17 @@ public class TvPanel extends JPanel {
         txtOverview.setWrapStyleWord(true);
         txtOverview.setLineWrap(true);
         txtOverview.setEditable(false);
+        
+        JButton btnMoreInfo = new JButton("More TV Show Info");
+        btnMoreInfo.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent arg0) {
+        		TVInfoFrame tif = new TVInfoFrame(tv);
+        	}
+        });
 
         add(lblTitle, BorderLayout.NORTH);
         add(pnlFacts, BorderLayout.WEST);
         add(txtOverview, BorderLayout.CENTER);
+        add(btnMoreInfo, BorderLayout.SOUTH);
     }
 }
