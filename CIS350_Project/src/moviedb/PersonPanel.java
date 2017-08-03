@@ -32,6 +32,9 @@ public class PersonPanel extends JPanel {
         JTextArea txtId = new JTextArea(" " + person.getId());
         txtId.setEditable(false);
         pnlFacts.add(txtId);
+        
+        //TODO: Character if necessary
+        //person.get
 
         add(lblTitle, BorderLayout.NORTH);
         add(pnlFacts, BorderLayout.CENTER);

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -24,6 +25,7 @@ import info.movito.themoviedbapi.model.config.TokenSession;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.core.SessionToken;
 import info.movito.themoviedbapi.model.people.Person;
+import info.movito.themoviedbapi.model.people.PersonCast;
 import info.movito.themoviedbapi.model.tv.TvSeries;
 
 /*******************************************************************************
@@ -61,6 +63,10 @@ public final class MovieData {
         SessionToken newSessionToken =
                 new SessionToken(tokenSession.getSessionId());
         return newSessionToken;
+    }
+    
+    public static String getApiKey() {
+    	return "d69cd7f2a6f9624840bee0c1fc2a9ee0";
     }
 
     /***************************************************************************
@@ -372,5 +378,17 @@ public final class MovieData {
             // Red image
             return new ImageIcon(MovieData.class.getResource("tmdb.png"));
         }
+    }
+    
+    public static ArrayList<MovieCastMember> getMovieCast(final int movieID){
+    	//http://api.themoviedb.org/3/movie/movieID/casts?api_key=apiTolken
+    	//Example: http://api.themoviedb.org/3/movie/282035/casts?api_key=d69cd7f2a6f9624840bee0c1fc2a9ee0
+    	String WEB_KEY = "http://api.themoviedb.org/3/movie/" + 
+				movieID + "/casts?api_key="  + 
+				MovieData.getApiKey();
+    	
+    	ArrayList<MovieCastMember> cast = new ArrayList<MovieCastMember>();
+    	//TO DO: Add Movie Cast Member for each character only
+    	return cast;
     }
 }

@@ -60,7 +60,7 @@ public class MovieInfoController {
     
     private void setCast()
     {
-    		Cast.setText("Actors\n");
+    	Cast.setText("Actors\n");
     }
     
     private void setTrailerView() {
