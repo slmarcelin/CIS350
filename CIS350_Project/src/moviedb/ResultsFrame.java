@@ -21,7 +21,7 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
 import com.google.common.base.Function;
-
+import javax.swing.JPanel;
 /**
  * Frm_DisplayResults class.
  **/
@@ -59,7 +59,8 @@ public class ResultsFrame extends JFrame {
         display.setLocationRelativeTo(null);
         display.setVisible(true);
     }
-
+   
+   
     /**
      * Creates a JFrame to display TV series.
      * @param title the title of the JFrame
@@ -100,6 +101,25 @@ public class ResultsFrame extends JFrame {
                     panels[i] = new ArtworkPanel(MovieData.getPersonProfile(
                             people.get(i), "w92"), new PersonPanel(people.get(i)));
                 }
+                return panels;
+            } catch (Exception e) {
+                return new JPanel[0];
+            }
+        });
+
+        display.setLocationRelativeTo(null);
+        display.setVisible(true);
+    }
+    
+    public static void displayOnePeople(final String title,
+            final Function<Integer, ArrayList<Person>> fetchPeople) {
+        	ResultsFrame display = new ResultsFrame(title, (p) -> {
+            try {
+                ArrayList<Person> people = fetchPeople.apply(p);
+                JPanel[] panels = new JPanel[people.size()];
+                int i=0;       
+                    panels[i] = new ArtworkPanel(MovieData.getPersonProfile(
+                            people.get(i), "w92"), new PersonPanel(people.get(i)));
                 return panels;
             } catch (Exception e) {
                 return new JPanel[0];

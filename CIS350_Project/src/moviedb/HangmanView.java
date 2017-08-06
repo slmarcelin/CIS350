@@ -75,6 +75,7 @@ public class HangmanView extends JFrame {
     /** A label for messages. */
     private final JLabel label = new JLabel("   ");
     private static JLabel lblNewLabel = new JLabel("Mistery");
+    private static String theMistery="";
     
 
     /**
@@ -176,6 +177,7 @@ public class HangmanView extends JFrame {
             
             wordTextField.setText("");
             lblNewLabel.setText("Solve our mistery to find the special "+h.getMistery());
+            theMistery=h.getMistery();
             commandTitle.setText("Guess a letter");
             StringBuilder sbWordKnown = new StringBuilder();
             StringBuilder sbDisplayWord = new StringBuilder();
@@ -217,12 +219,31 @@ public class HangmanView extends JFrame {
         knownWordLabel.setText(sbDisplayString.toString());
 
         if (wordKnown.indexOf("_") < 0) {
-            JOptionPane.showMessageDialog(this, "You Win!");
+            JOptionPane.showMessageDialog(this, "Congratulations You have Won!");
+            displayResult();
             reset();
         }
         wordTextField.setText("");
     }
 
+    private void displayResult()
+    {
+    	 if(theMistery.equals("Actor"))
+         {
+         	ResultsFrame.displayOnePeople("The Mistery "+ theMistery, 
+         			(page)->MovieData.getSearchActors(wordToGuess, 0));
+         }
+         else if(theMistery.equals("Movie"))
+         {
+         	ResultsFrame.displayMovies("The Mistery "+ theMistery, 
+         			(page)->MovieData.getSearchMovies(wordToGuess, 0));
+         }
+         else
+         {
+         	ResultsFrame.displayTvSeries("The Mistery "+ theMistery, 
+         			(page)->MovieData.getSearchTVShows(wordToGuess, 0));
+         }
+    }
     /**
      * Reveals guessed letters in the word.
      * @param guess the string guessed
@@ -275,7 +296,8 @@ public class HangmanView extends JFrame {
             case 6: // L Leg
                 g.drawLine(x, y + 40 + 80, x - 20, y + 40 + 80 + 40);
                 JOptionPane.showMessageDialog(this,
-                        "You Lose! The word was " + wordToGuess);
+                        "Game over!\nThe name of the special "+ theMistery +" is: "+ wordToGuess);
+                displayResult();
                 reset();
                 break;
             default:
