@@ -146,7 +146,7 @@ public class MainFrame extends JFrame {
         setJMenuBar(menuBar);
         
         JMenuItem mntmNewMenuItem1 =
-                new JMenuItem("                                     Menu");
+                new JMenuItem("                      The Movie Database App");
         mntmNewMenuItem1.setForeground(new Color(0, 0, 0));
         mntmNewMenuItem1.setBackground(new Color(244, 164, 96));
         mntmNewMenuItem1.setFont(

@@ -85,7 +85,7 @@ public class TriviaFrame extends JFrame {
      * Initialize the application.
      **************************************************************************/
     public TriviaFrame() {
-        quiz = new TriviaQuiz(10);
+        quiz = new TriviaQuiz(12);
         initialize();
     }
 

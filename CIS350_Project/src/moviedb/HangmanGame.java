@@ -20,6 +20,7 @@ public class HangmanGame {
     private int source;
     /** The selected page.*/
     private int page;
+    private String mistery;
 
     /***************************************
       Constructor initializes variables.
@@ -48,6 +49,16 @@ public class HangmanGame {
     ***************************************/
     public String getWord() {
         return word;
+    }
+    
+    public String getMistery()
+    {
+    	return mistery;
+    }
+    
+    public void setMistery(String wow)
+    {
+       this.mistery=wow;
     }
 
     /***************************************
@@ -127,10 +138,13 @@ public class HangmanGame {
         //generate a word based on the random value
         if (rand < 33) {
             word = MovieData.getRandMovie(source, page).getTitle();
+            setMistery("Movie");
         } else if (rand >= 33 && rand < 66) {
             word = MovieData.getRandShow(source, page).getName();
+            setMistery("Show");
         } else {
             word = MovieData.getRandActor(source, page).getName();
+            setMistery("Actor");
         }
         word = word.toUpperCase();
     }

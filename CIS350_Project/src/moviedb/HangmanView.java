@@ -20,6 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import java.awt.Font;
 
 /**
  * Simple hangman game with GUI.
@@ -73,12 +74,15 @@ public class HangmanView extends JFrame {
     private GridBagConstraints gridBagConstraints1;
     /** A label for messages. */
     private final JLabel label = new JLabel("   ");
+    private static JLabel lblNewLabel = new JLabel("Mistery");
     
 
     /**
      * Constructs a new hangman window.
      */
     public HangmanView() {
+    	setResizable(false);
+    	setTitle("Hangman");
         getContentPane().setLayout(new BorderLayout());
         drawHangmanStand(hangmanImage);
         
@@ -86,23 +90,35 @@ public class HangmanView extends JFrame {
         this.setIconImage(i.getImage());
 
         inputPanel = new JPanel(new GridBagLayout());
+        inputPanel.setBackground(new Color(244, 164, 96));
+        
+        GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+        gbc_lblNewLabel.insets = new Insets(0, 0, 5, 0);
+        gbc_lblNewLabel.gridx = 2;
+        gbc_lblNewLabel.gridy = 0;
+        lblNewLabel.setForeground(new Color(255, 255, 255));
+        lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+        inputPanel.add(lblNewLabel, gbc_lblNewLabel);
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.insets = new Insets(0, 0, 5, 5);
         gridBagConstraints.gridx = 1;
         gridBagConstraints.ipadx = 1;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 4;
+        commandTitle.setForeground(new Color(255, 255, 255));
+        commandTitle.setFont(new Font("Tahoma", Font.BOLD, 14));
         inputPanel.add(commandTitle, gridBagConstraints);
         gridBagConstraints1 = new GridBagConstraints();
         gridBagConstraints1.insets = new Insets(0, 0, 5, 0);
         gridBagConstraints1.gridx = 2;
-        gridBagConstraints1.gridy = 1;
+        gridBagConstraints1.gridy = 4;
+        wordTextField.setFont(new Font("Tahoma", Font.PLAIN, 12));
         inputPanel.add(wordTextField, gridBagConstraints1);
 
         getContentPane().add(inputPanel);
         
         GridBagConstraints gbcNewGameBtn = new GridBagConstraints();
         gbcNewGameBtn.gridx = 2;
-        gbcNewGameBtn.gridy = 9;
+        gbcNewGameBtn.gridy = 12;
         btnNewGame.addActionListener(new ActionListener() {
             public void actionPerformed(final ActionEvent arg0) {
                 reset();
@@ -112,7 +128,7 @@ public class HangmanView extends JFrame {
         GridBagConstraints gbcLabel = new GridBagConstraints();
         gbcLabel.insets = new Insets(0, 0, 5, 0);
         gbcLabel.gridx = 2;
-        gbcLabel.gridy = 8;
+        gbcLabel.gridy = 11;
         inputPanel.add(label, gbcLabel);
         inputPanel.add(btnNewGame, gbcNewGameBtn);
         initialize();
@@ -159,6 +175,7 @@ public class HangmanView extends JFrame {
              wordToGuess = h.getWord();
             
             wordTextField.setText("");
+            lblNewLabel.setText("Solve our mistery to find the special "+h.getMistery());
             commandTitle.setText("Guess a letter");
             StringBuilder sbWordKnown = new StringBuilder();
             StringBuilder sbDisplayWord = new StringBuilder();
@@ -278,7 +295,10 @@ public class HangmanView extends JFrame {
         }
 
         hangmanPanel = new JPanel();
-        hangmanPanel.add(new JLabel(new ImageIcon(hangmanImage)));
+        hangmanPanel.setBackground(new Color(255, 255, 255));
+        JLabel label_1 = new JLabel(new ImageIcon(hangmanImage));
+        label_1.setBackground(new Color(255, 255, 255));
+        hangmanPanel.add(label_1);
         getContentPane().add(hangmanPanel, BorderLayout.WEST);
         revalidate();
 

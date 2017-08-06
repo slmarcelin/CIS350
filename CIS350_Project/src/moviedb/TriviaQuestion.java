@@ -13,7 +13,7 @@ public class TriviaQuestion {
     private static int nextV=0;
     private static int prev=2;
     private static int[]list=new int[10];
-    private static Random rand = new Random();
+    private static Random rand = new Random(System.currentTimeMillis());
 
     /**
      * Constructs a new question.
@@ -53,10 +53,10 @@ public class TriviaQuestion {
    public static int setrandom(int current)
     {  
 	   int value1=0;
-	   value1=rand.nextInt((7-0)+1)+0;
+	   value1=rand.nextInt((9-0)+1)+0;
 	   while(value1==current || value1==nextV || value1==prev)
 	   {
-		   value1=rand.nextInt((8-1)+1)+1;
+		   value1=rand.nextInt((12-1)+1)+2;
 	   }
 	nextV=value1;   
 	return value1;
@@ -105,7 +105,8 @@ public class TriviaQuestion {
                 "In the Disney movie 'Beauty and the Beast', what is"
                                 +" the name of Gaston's bumbling sidekick?",
                 "Who played James Bond in the 1969 film"
-                                + " 'On Her Majesty's Secret Service'?"
+                                + " 'On Her Majesty's Secret Service'?",
+                "Who is the actor that stars in the movie Heart and Souls?"
         };
         String[] setAnswers = new String[]{
                 "war machine",
@@ -120,12 +121,13 @@ public class TriviaQuestion {
                 "abu",
                 "lindsay lohan",
                 "lefou",
-                "george robert"
+                "george robert",
+                "robert downy"
         };
         TriviaQuestion q = new TriviaQuestion(
          setQuestions[currQuestion], setAnswers[currQuestion]);
          currQuestion=setrandom(currQuestion);
-         currQuestion%=10;
+         currQuestion%=11;
          prev=currQuestion;
         return q;
     }
