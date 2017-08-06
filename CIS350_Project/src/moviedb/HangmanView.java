@@ -163,12 +163,13 @@ public class HangmanView extends JFrame {
             StringBuilder sbWordKnown = new StringBuilder();
             StringBuilder sbDisplayWord = new StringBuilder();
             for (int i = 0; i < wordToGuess.length(); i++) {
-                if (wordToGuess.charAt(i) != ' ') {
+                if (Character.isDigit(wordToGuess.charAt(i)) || 
+                	Character.isLetter(wordToGuess.charAt(i))) {
                     sbWordKnown.append("_");
                     sbDisplayWord.append("  __  ");
                 } else {
-                    sbWordKnown.append(" ");
-                    sbDisplayWord.append("      ");
+                    sbWordKnown.append(wordToGuess.charAt(i));
+                    sbDisplayWord.append("  " + wordToGuess.charAt(i) + "   ");
                 }
             }
             wordKnown = sbWordKnown.toString();
