@@ -383,12 +383,18 @@ public final class MovieData {
     public static ArrayList<MovieCastMember> getMovieCast(final int movieID){
     	//http://api.themoviedb.org/3/movie/movieID/casts?api_key=apiTolken
     	//Example: http://api.themoviedb.org/3/movie/282035/casts?api_key=d69cd7f2a6f9624840bee0c1fc2a9ee0
-    	String WEB_KEY = "http://api.themoviedb.org/3/movie/" + 
+    	/*String WEB_KEY = "http://api.themoviedb.org/3/movie/" + 
 				movieID + "/casts?api_key="  + 
-				MovieData.getApiKey();
+				MovieData.getApiKey();*/
     	
     	ArrayList<MovieCastMember> cast = new ArrayList<MovieCastMember>();
     	//TO DO: Add Movie Cast Member for each character only
+    	for(int i = 0; i < 10; i++)
+    	{
+    		MovieCastMember mcm = new MovieCastMember();
+    		cast.add(mcm);
+    		
+    	}
     	return cast;
     }
 }

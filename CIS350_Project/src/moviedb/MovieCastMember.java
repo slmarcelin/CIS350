@@ -3,10 +3,10 @@ package moviedb;
 import info.movito.themoviedbapi.model.people.Person;
 
 public class MovieCastMember extends Person {
-	private int personID;
-	private String characterName;
-	private String actorName;
-	private String profilePath;
+	private int personID = 99;
+	private String characterName = "Count Olaf";
+	private String actorName = "Neil Patrick-Harris";
+	private String profilePath ="/v5sCdjk0zxwSdFT4kmlVwu6M3Hb.jpg";
 	
 	public MovieCastMember() {
 		
@@ -16,7 +16,7 @@ public class MovieCastMember extends Person {
 		return characterName;
 	}
 	
-	public String getActorName() {
+	public String getName() {
 		return actorName;
 	}
 	
@@ -24,15 +24,23 @@ public class MovieCastMember extends Person {
 		return profilePath;
 	}
 	
-	public void setCharacterName() {
-		//website
+	public int getID() {
+		return personID;
 	}
 	
-	public void setActorName() {
-		//website
+	public void setCharacterName(String name) {
+		characterName = name;
 	}
 	
-	public void setProfilePath() {
-		//website
+	public void setActorName(String name) {
+		actorName = name;
+	}
+	
+	public void setProfilePath(String path) {
+		profilePath = path;
+	}
+	
+	public void setId(int id) {
+		personID = id;
 	}
 }

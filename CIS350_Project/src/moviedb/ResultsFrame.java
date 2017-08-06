@@ -92,7 +92,7 @@ public class ResultsFrame extends JFrame {
      */
     public static void displayPeople(final String title,
             final Function<Integer, ArrayList<Person>> fetchPeople) {
-        ResultsFrame display = new ResultsFrame(title, (p) -> {
+        	ResultsFrame display = new ResultsFrame(title, (p) -> {
             try {
                 ArrayList<Person> people = fetchPeople.apply(p);
                 JPanel[] panels = new JPanel[people.size()];

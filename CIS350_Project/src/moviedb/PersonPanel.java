@@ -29,12 +29,17 @@ public class PersonPanel extends JPanel {
         pnlFacts.setLayout(new BoxLayout(pnlFacts, BoxLayout.Y_AXIS));
         pnlFacts.setPreferredSize(new Dimension(100, 130));
 
-        JTextArea txtId = new JTextArea(" " + person.getId());
+        JTextArea txtId = new JTextArea(" ID: " + person.getId());
+        
+      //TODO: Character if necessary
+        if (person instanceof MovieCastMember) {
+        	MovieCastMember member = (MovieCastMember)person;
+        	txtId.setText(txtId.getText() + "\n\n Character: " + 
+        	member.getCharacterName());
+        }
+        
         txtId.setEditable(false);
         pnlFacts.add(txtId);
-        
-        //TODO: Character if necessary
-        //person.get
 
         add(lblTitle, BorderLayout.NORTH);
         add(pnlFacts, BorderLayout.CENTER);

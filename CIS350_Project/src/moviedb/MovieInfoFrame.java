@@ -21,7 +21,7 @@ public class MovieInfoFrame extends JFrame {
         });
 		
 		add(mip, BorderLayout.CENTER);
-		setSize(new Dimension(1250, 500));
+		setSize(new Dimension(1250, 445));
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}
