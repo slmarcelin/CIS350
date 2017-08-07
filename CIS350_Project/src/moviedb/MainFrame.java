@@ -40,6 +40,8 @@ public class MainFrame extends JFrame {
     private JTextField moviesTextField;
     /** The textfield to use for tv show searches. **/
     private JTextField showsTextField;
+    /** The textfield to use for general searches. **/
+    private JTextField multiTextField;
     /** The icon used to display images. */
     private JLabel imageLabel;
     /** The default icon image. */
@@ -105,7 +107,7 @@ public class MainFrame extends JFrame {
         JLabel movieGames = new JLabel("Games");
         movieGames.setForeground(Color.BLACK);
         movieGames.setFont(new Font("Dialog", Font.BOLD, 15));
-        movieGames.setBounds(8, 170, 81, 19);
+        movieGames.setBounds(8, 200, 81, 19);
         menuPanel.add(movieGames);
 
         JButton triviaBtn = new JButton("Trivia");
@@ -116,13 +118,13 @@ public class MainFrame extends JFrame {
                 TriviaFrame.play();
             }
         });
-        triviaBtn.setBounds(92, 171, 100, 21);
+        triviaBtn.setBounds(92, 200, 100, 21);
         menuPanel.add(triviaBtn);    
 
         JSeparator separator = new JSeparator();
         separator.setBackground(new Color(178, 34, 34));
         separator.setForeground(new Color(244, 164, 96));
-        separator.setBounds(-11, 201, 482, 2);
+        separator.setBounds(-11, 231, 482, 2);
         menuPanel.add(separator);
 
         JButton movieHangman = new JButton("Hangman");
@@ -133,7 +135,7 @@ public class MainFrame extends JFrame {
             }
         });
         movieHangman.setBackground(new Color(135, 206, 235));
-        movieHangman.setBounds(192, 171, 115, 21);
+        movieHangman.setBounds(192, 200, 115, 21);
         menuPanel.add(movieHangman);
     }
     
@@ -211,6 +213,17 @@ public class MainFrame extends JFrame {
      * Adds the components needed for searching for results.
      */
     private void addSearchComponents() {
+        actorsTextField = new JTextField();
+        actorsTextField.setBounds(63, 71, 166, 20);
+        actorsTextField.setColumns(20);
+        menuPanel.add(actorsTextField);
+        
+        JLabel actorsLabel = new JLabel("Actors");
+        actorsLabel.setForeground(Color.BLACK);
+        actorsLabel.setBounds(3, 72, 64, 21);
+        actorsLabel.setFont(new Font("Dialog", Font.BOLD, 15));
+        menuPanel.add(actorsLabel);
+
         menuPanel.add(createMenuButton(228, 71, 79, 21, "Search",
                 new ImageIcon(getClass().getResource("search.png")),
                 () -> {
@@ -225,17 +238,6 @@ public class MainFrame extends JFrame {
                             MovieData.getSearchActors(
                             actorsTextField.getText(), page));
                 }));
-        
-        actorsTextField = new JTextField();
-        actorsTextField.setBounds(63, 71, 166, 20);
-        actorsTextField.setColumns(20);
-        menuPanel.add(actorsTextField);
-        
-        JLabel actorsLabel = new JLabel("Actors");
-        actorsLabel.setForeground(Color.BLACK);
-        actorsLabel.setBounds(3, 72, 64, 21);
-        actorsLabel.setFont(new Font("Dialog", Font.BOLD, 15));
-        menuPanel.add(actorsLabel);
         
         moviesTextField = new JTextField();
         moviesTextField.setBounds(63, 105, 166, 20);
@@ -287,6 +289,32 @@ public class MainFrame extends JFrame {
                     ResultsFrame.displayTvSeries("TV Series Search Results",
                             (page) -> MovieData.getSearchTVShows(
                                     showsTextField.getText(), page));
+                }));
+
+        multiTextField = new JTextField();
+        multiTextField.setBounds(63, 170, 166, 20);
+        menuPanel.add(multiTextField);
+        multiTextField.setColumns(20);
+        
+        JLabel multiLabel = new JLabel("All");
+        multiLabel.setForeground(Color.BLACK);
+        multiLabel.setBounds(3, 170, 64, 17);
+        multiLabel.setFont(new Font("Dialog", Font.BOLD, 15));
+        menuPanel.add(multiLabel);
+
+        menuPanel.add(createMenuButton(228, 170, 80, 21, "Search",
+                new ImageIcon(getClass().getResource("search.png")),
+                () -> {
+                    if (showsTextField.getText().length() < 3) {
+                        JOptionPane.showMessageDialog(null,
+                                "You should at least enter 3 letters!!",
+                                "ALERT", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+
+                    ResultsFrame.displayMulti("Search Results",
+                            (page) -> MovieData.getSearch(
+                            		multiTextField.getText(), page));
                 }));
     }
     

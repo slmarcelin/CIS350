@@ -19,15 +19,16 @@ import info.movito.themoviedbapi.TmdbMovies;
 import info.movito.themoviedbapi.TmdbPeople;
 import info.movito.themoviedbapi.TmdbPeople.PersonResultsPage;
 import info.movito.themoviedbapi.TmdbSearch;
+import info.movito.themoviedbapi.TmdbSearch.MultiListResultsPage;
 import info.movito.themoviedbapi.TmdbTV;
 import info.movito.themoviedbapi.TvResultsPage;
 import info.movito.themoviedbapi.model.Genre;
 import info.movito.themoviedbapi.model.MovieDb;
+import info.movito.themoviedbapi.model.Multi;
 import info.movito.themoviedbapi.model.config.TokenSession;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.core.SessionToken;
 import info.movito.themoviedbapi.model.people.Person;
-import info.movito.themoviedbapi.model.people.PersonCast;
 import info.movito.themoviedbapi.model.tv.TvSeries;
 
 import org.json.JSONArray;
@@ -74,7 +75,30 @@ public final class MovieData {
     public static String getApiKey() {
     	return "d69cd7f2a6f9624840bee0c1fc2a9ee0";
     }
+    
+    /***************************************************************************
+     * Returns a list of any search results
+     * @param page the current display page
+     * @param searchString the string to search for
+     * @return ArrayList of results
+     **************************************************************************/
+    public static ArrayList<Multi> getSearch(
+    		final String searchString, final int page) {
+        TmdbSearch tmdbSearch = tmdbApi.getSearch();
+        ArrayList<Multi> items = new ArrayList<Multi>();
 
+        MultiListResultsPage results =
+        		tmdbSearch.searchMulti(searchString, "en", page);
+        
+        Iterator<Multi> iterator = results.iterator();
+        while (iterator.hasNext()) {
+            Multi m = iterator.next();
+            items.add(m);
+        }
+
+    	return items;
+    }
+    
     /***************************************************************************
       Returns the list of the searched movies.
       @param page the current display page

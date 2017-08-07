@@ -1,6 +1,8 @@
 package moviedb;
 
 import info.movito.themoviedbapi.model.MovieDb;
+import info.movito.themoviedbapi.model.Multi;
+import info.movito.themoviedbapi.model.Multi.MediaType;
 import info.movito.themoviedbapi.model.people.Person;
 import info.movito.themoviedbapi.model.tv.TvSeries;
 
@@ -21,6 +23,7 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
 import com.google.common.base.Function;
+
 import javax.swing.JPanel;
 /**
  * Frm_DisplayResults class.
@@ -34,6 +37,45 @@ public class ResultsFrame extends JFrame {
     private Runnable refreshPage;
     /**current page initialized to 1.*/
     private int page = 1;
+    
+    /***************************************************************************
+    Creates a JFrame to display movies.
+    @param title the title of the JFrame
+    @param fetchMulti the items to display on the JFrame
+   **************************************************************************/
+  public static void displayMulti(final String title,
+          final Function<Integer, ArrayList<Multi>> fetchMulti) {
+      ResultsFrame display = new ResultsFrame(title, (p) -> {
+          try {
+              ArrayList<Multi> items = fetchMulti.apply(p);
+              
+              JPanel[] panels = new JPanel[items.size()];
+              for (int i = 0; i < items.size(); i++) {
+            	  MediaType mt = items.get(i).getMediaType();
+            	  if(mt == MediaType.MOVIE) {
+            		  MovieDb m = (MovieDb) items.get(i);
+            		  panels[i] = new ArtworkPanel(MovieData.getMoviePoster(
+                              m, "w92"), new MoviePanel(m));
+            	  } else if (mt == MediaType.TV_SERIES) {
+            		  TvSeries t = (TvSeries) items.get(i);
+                      panels[i] = new ArtworkPanel(MovieData.getTvPoster(
+                              t, "w92"), new TvPanel(t));
+            	  } else if (mt == MediaType.PERSON) {
+            		  Person pn = (Person) items.get(i);
+                      panels[i] = new ArtworkPanel(MovieData.getPersonProfile(
+                              pn, "w92"), new PersonPanel(pn));
+            	  }
+                  
+              }
+              return panels;
+          } catch (Exception e) {
+              return new JPanel[0];
+          }
+      });
+
+      display.setLocationRelativeTo(null);
+      display.setVisible(true);
+  }
 
     /***************************************************************************
       Creates a JFrame to display movies.

@@ -75,9 +75,9 @@ public class HangmanView extends JFrame {
     /** A label for messages. */
     private final JLabel label = new JLabel("   ");
     /** A label for the introduction. */
-    private static JLabel lblNewLabel = new JLabel("Mistery");
+    private static JLabel lblNewLabel = new JLabel("Mystery");
     /** The mystery word. */
-    private static String theMistery="";
+    private static String theMystery="";
     
 
     /**
@@ -179,7 +179,7 @@ public class HangmanView extends JFrame {
             
             wordTextField.setText("");
             lblNewLabel.setText("Solve our mistery to find the special "+h.getMistery());
-            theMistery=h.getMistery();
+            theMystery=h.getMistery();
             commandTitle.setText("Guess a letter");
             StringBuilder sbWordKnown = new StringBuilder();
             StringBuilder sbDisplayWord = new StringBuilder();
@@ -235,19 +235,19 @@ public class HangmanView extends JFrame {
      */
     private void displayResult()
     {
-    	 if(theMistery.equals("Actor"))
+    	 if(theMystery.equals("Actor"))
          {
-         	ResultsFrame.displayOnePeople("The Mistery "+ theMistery, 
+         	ResultsFrame.displayOnePeople("The Mistery "+ theMystery, 
          			(page)->MovieData.getSearchActors(wordToGuess, 0));
          }
-         else if(theMistery.equals("Movie"))
+         else if(theMystery.equals("Movie"))
          {
-         	ResultsFrame.displayMovies("The Mistery "+ theMistery, 
+         	ResultsFrame.displayMovies("The Mistery "+ theMystery, 
          			(page)->MovieData.getSearchMovies(wordToGuess, 0));
          }
          else
          {
-         	ResultsFrame.displayTvSeries("The Mistery "+ theMistery, 
+         	ResultsFrame.displayTvSeries("The Mistery "+ theMystery, 
          			(page)->MovieData.getSearchTVShows(wordToGuess, 0));
          }
     }
@@ -303,7 +303,7 @@ public class HangmanView extends JFrame {
             case 6: // L Leg
                 g.drawLine(x, y + 40 + 80, x - 20, y + 40 + 80 + 40);
                 JOptionPane.showMessageDialog(this,
-                        "Game over!\nThe name of the special "+ theMistery +" is: "+ wordToGuess);
+                        "Game over!\nThe name of the special "+ theMystery +" is: "+ wordToGuess);
                 displayResult();
                 reset();
                 break;
