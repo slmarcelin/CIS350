@@ -305,7 +305,7 @@ public class MainFrame extends JFrame {
         menuPanel.add(createMenuButton(228, 170, 80, 21, "Search",
                 new ImageIcon(getClass().getResource("search.png")),
                 () -> {
-                    if (showsTextField.getText().length() < 3) {
+                    if (multiTextField.getText().length() < 3) {
                         JOptionPane.showMessageDialog(null,
                                 "You should at least enter 3 letters!!",
                                 "ALERT", JOptionPane.ERROR_MESSAGE);
