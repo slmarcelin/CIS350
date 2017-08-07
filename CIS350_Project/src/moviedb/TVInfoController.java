@@ -63,7 +63,7 @@ public class TVInfoController {
     	tvDetails.setStyle("-fx-border-color: black;");
       tvDetails.setText("Original Title: "+show.getOriginalName()+"\nReleased Date: "
       +show.getFirstAirDate()+
-      "\n\nMovie Description: "+show.getOverview());
+      "\n\nShow: Description: "+show.getOverview());
     }
     
     private void setCast()
