@@ -145,7 +145,7 @@ public class MovieInfoController {
     		
     		Label memberName = new Label(member.getName());
     		memberName.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #c0c0c0, #ffffff)");
-    		Label memberInfo = new Label(" ID: " + member.getCastId() + "\n" + 
+    		Label memberInfo = new Label(" ID: " + member.getId() + "\n" + 
     				" Character Played: " + member.getCharacterName() + "\n");
     		
     		memberPane.setLeft(memberView);

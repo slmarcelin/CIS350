@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
@@ -15,7 +16,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-
+import javafx.scene.text.TextAlignment;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
@@ -99,7 +100,7 @@ public class TVInfoController
     private void setCast()
     {
     	castScroller.setStyle("-fx-border-color: black;");
-    	VBox vbox = getCastPane(MovieData.getMovieCast(show.getId()));
+    	VBox vbox = getCastPane(MovieData.getTvCast(show.getId()));
     	castScroller.setFitToWidth(true);
     	castScroller.setContent(vbox);
     }
@@ -140,19 +141,21 @@ public class TVInfoController
      * @param list of cast members
      * @return VBox
      */
-    private VBox getCastPane(ArrayList<MovieCastMember> list)
+    private VBox getCastPane(ArrayList<TvCastMember> list)
     {
     	VBox vbox = new VBox();
     	
-    	for(MovieCastMember member : list) {
+    	for(TvCastMember member : list) {
     		BorderPane memberPane = new BorderPane();
     		Image profile = new Image("http://image.tmdb.org/t/p/w45" + member.getProfilePath());
     		ImageView memberView = new ImageView(profile);
     		
     		Label memberName = new Label(member.getName());
     		memberName.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #c0c0c0, #ffffff)");
-    		Label memberInfo = new Label(" ID: " + member.getCastId() + "\n" + 
+    		Label memberInfo = new Label(" ID: " + member.getId() + "\n" + 
     				" Character Played: " + member.getCharacterName() + "\n");
+    		memberInfo.setAlignment(Pos.CENTER_LEFT);
+    		//memberInfo.setTextAlignment(TextAlignment.LEFT);
     		
     		memberPane.setLeft(memberView);
     		memberPane.setTop(memberName);
