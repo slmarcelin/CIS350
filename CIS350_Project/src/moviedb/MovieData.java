@@ -397,4 +397,22 @@ public final class MovieData {
     	}
     	return cast;
     }
+    
+    public static ArrayList<TvCastMember> getTvCast(final int tvID){
+    	//http://api.themoviedb.org/3/movie/movieID/casts?api_key=apiTolken
+    	//Example: http://api.themoviedb.org/3/movie/282035/casts?api_key=d69cd7f2a6f9624840bee0c1fc2a9ee0
+    	/*String WEB_KEY = "http://api.themoviedb.org/3/movie/" + 
+				movieID + "/casts?api_key="  + 
+				MovieData.getApiKey();*/
+    	
+    	ArrayList<TvCastMember> cast = new ArrayList<TvCastMember>();
+    	//TO DO: Add Movie Cast Member for each character only
+    	for(int i = 0; i < 10; i++)
+    	{
+    		TvCastMember mcm = new TvCastMember();
+    		cast.add(mcm);
+    		
+    	}
+    	return cast;
+    }
 }
