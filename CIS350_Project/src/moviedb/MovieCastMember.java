@@ -2,6 +2,7 @@ package moviedb;
 
 import info.movito.themoviedbapi.model.people.Person;
 
+
 public class MovieCastMember extends Person {
 	private int personID = 99;
 	private String characterName = "Count Olaf";

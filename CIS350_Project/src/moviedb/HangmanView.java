@@ -74,12 +74,14 @@ public class HangmanView extends JFrame {
     private GridBagConstraints gridBagConstraints1;
     /** A label for messages. */
     private final JLabel label = new JLabel("   ");
+    /** A label for the introduction. */
     private static JLabel lblNewLabel = new JLabel("Mistery");
+    /** The mystery word. */
     private static String theMistery="";
     
 
     /**
-     * Constructs a new hangman window.
+     * Constructs a new Hangman window.
      */
     public HangmanView() {
     	setResizable(false);
@@ -225,7 +227,12 @@ public class HangmanView extends JFrame {
         }
         wordTextField.setText("");
     }
-
+    
+    /**
+     * Displays the result to the user while populating 
+     * a panel containing information on either a show,
+     * actor or movie
+     */
     private void displayResult()
     {
     	 if(theMistery.equals("Actor"))

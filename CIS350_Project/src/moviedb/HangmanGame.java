@@ -20,7 +20,8 @@ public class HangmanGame {
     private int source;
     /** The selected page.*/
     private int page;
-    private String mistery;
+    /** the mystery actor/movie/show.*/
+    private String mystery;
 
     /***************************************
       Constructor initializes variables.
@@ -51,14 +52,22 @@ public class HangmanGame {
         return word;
     }
     
+    /***************************************
+    getter returns Actor/Show/Movie.
+    @return mystery of type String
+    *************************************/
     public String getMistery()
     {
-    	return mistery;
+    	return mystery;
     }
     
-    public void setMistery(String wow)
+    /***************************************
+    Setter sets mystery to Actor/Show/Movie.
+    @param secret word of type String
+  ***************************************/
+    public void setMistery(String secret)
     {
-       this.mistery=wow;
+       this.mystery=secret;
     }
 
     /***************************************

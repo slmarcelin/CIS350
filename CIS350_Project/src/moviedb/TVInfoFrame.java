@@ -8,6 +8,9 @@ import javax.swing.SwingUtilities;
 
 import info.movito.themoviedbapi.model.MovieDb;
 
+/**
+ * Frame of TV show info
+ */
 public class TVInfoFrame extends JFrame {
 	TVInfoFrame(TvSeries tv){
 		setLayout(new BorderLayout());

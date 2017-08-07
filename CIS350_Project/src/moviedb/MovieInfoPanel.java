@@ -1,3 +1,6 @@
+/**
+ * @author Alec Willison
+ */
 package moviedb;
 
 import java.awt.BorderLayout;
@@ -24,6 +27,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
 
+/**
+ *Sets a JPanel for movie info 
+ */
 public class MovieInfoPanel extends JPanel {
 	public void initAndShowGUI(MovieDb movie) {
 		setLayout(new BorderLayout());

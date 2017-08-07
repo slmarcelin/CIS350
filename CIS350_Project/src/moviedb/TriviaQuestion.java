@@ -10,9 +10,11 @@ public class TriviaQuestion {
     private String question;
     /** the answer text. */
     private String answer;
+    /** the next random value. */
     private static int nextV=0;
+    /** the previous random value. */
     private static int prev=2;
-    private static int[]list=new int[10];
+    /** random integer number generator. */
     private static Random rand = new Random(System.currentTimeMillis());
 
     /**
@@ -41,15 +43,11 @@ public class TriviaQuestion {
         return answer;
     }
     
-    public static void resetList()
-    {
-    	int i;
-    	for(i=0;i<10;i++)
-    	{
-    		list[i]=0;
-    	}
-    }
-   
+   /**
+    * Setter sets the random value
+    * @param current the current quiz number
+    * @return the random integer value
+    */
    public static int setrandom(int current)
     {  
 	   int value1=0;
@@ -60,7 +58,7 @@ public class TriviaQuestion {
 	   }
 	nextV=value1;   
 	return value1;
-}
+   }
     
     /**
      * Determines if the given guess is the correct answer.
@@ -78,8 +76,8 @@ public class TriviaQuestion {
      * Generates a random question.
      * @return a random question
      */
-    public static TriviaQuestion generateRandomQuestion() {
-        resetList();
+    public static TriviaQuestion generateRandomQuestion() 
+    {
         String[] setQuestions = new String[] {
                 "Brad Pitt plays General Glen McMahon\n"
                        + "in which film directed by David Michod?",

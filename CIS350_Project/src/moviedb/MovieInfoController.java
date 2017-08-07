@@ -6,11 +6,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import javax.swing.BoxLayout;
-import javax.swing.JPanel;
-
 import info.movito.themoviedbapi.model.MovieDb;
-import javafx.embed.swing.SwingNode;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -19,32 +15,45 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.TextFlow;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
 public class MovieInfoController {
+	/**The desired movie.*/
 	private MovieDb movie;
     @FXML
+    /**Label title of movie.*/
     private Label movieTitle;
     @FXML 
+    /**The trailer view of movie.*/
     private WebView trailerView;
     @FXML
+    /**The movie poster.*/
     private ImageView moviePoster;
     @FXML
+    /**A TextArea on movie details.*/
     private TextArea movieDetails;
     @FXML
+    /**scrollpane for the list of cast.*/
     private ScrollPane castScroller;
     @FXML
+    /**The BorderPane for design.*/
     private BorderPane borderPane;
     
+    /**
+     * Controller empty
+     */
     public MovieInfoController() {
     	
     }
     
-    public void init(MovieDb movie) {
+    /**
+     * init function instantiate the program
+     * @param movie the one chosen
+     */
+    public void init(MovieDb movie)
+    {
     	this.movie = movie;
-    	
     	setMovieTitle();
     	setMovieImage();
     	setMovieDetails();
@@ -52,24 +61,37 @@ public class MovieInfoController {
     	setCast();
     }
     
-    private void setMovieTitle() {
-    	//borderPane.setStyle("-fx-border-color: black;");
+    /**
+     * Setter sets the movie title
+     */
+    private void setMovieTitle() 
+    {
     	movieTitle.setText(movie.getTitle());
     }
     
-    private void setMovieImage() {
+    /**
+     * Setter sets the movie poster image
+     */
+    private void setMovieImage() 
+    {
     	Image imgPoster = new Image("http://image.tmdb.org/t/p/w342/" + movie.getPosterPath());
     	moviePoster.setImage(imgPoster);
     }
     
-    private void setMovieDetails() {
-    	
-    	movieDetails.setStyle("-fx-border-color: black;");
+    /**
+     * Setter sets and displays the movie details
+     */
+    private void setMovieDetails() 
+    {	
+      movieDetails.setStyle("-fx-border-color: black;");
       movieDetails.setText("Original Title: "+movie.getOriginalTitle()+"\nReleased Date: "
       +movie.getReleaseDate()+"\nOriginal Language: "+movie.getOriginalLanguage() +
       "\n\nMovie Description: "+movie.getOverview());
     }
     
+    /**
+     * Setter sets the list of cast
+     */
     private void setCast()
     {
     	castScroller.setStyle("-fx-border-color: black;");
@@ -78,6 +100,9 @@ public class MovieInfoController {
     	castScroller.setContent(vbox);
     }
     
+    /**
+     * Setter sets the trailer view
+     */
     private void setTrailerView() {
     	String youtubeKey = "http://api.themoviedb.org/3/movie/" + 
 	    		movie.getId() + "/videos?api_key=d69cd7f2a6f9624840bee0c1fc2a9ee0";
@@ -105,10 +130,14 @@ public class MovieInfoController {
 	    	webEngine.load("http://www.youtube.com/embed/" + trailerKey + "?autoplay=1");
     }
     
+    /**
+     * Sets the list of movie cast members
+     * @param list
+     * @return VBox for display
+     */
     private VBox getCastPane(ArrayList<MovieCastMember> list)
     {
     	VBox vbox = new VBox();
-    	
     	for(MovieCastMember member : list) {
     		BorderPane memberPane = new BorderPane();
     		Image profile = new Image("http://image.tmdb.org/t/p/w45" + member.getProfilePath());

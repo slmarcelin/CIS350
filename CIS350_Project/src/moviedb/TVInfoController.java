@@ -6,7 +6,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import info.movito.themoviedbapi.model.MovieDb;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -15,32 +15,48 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.TextFlow;
+
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
-public class TVInfoController {
+public class TVInfoController 
+{
+	/** the chosen tv show. */
 	private TvSeries show;
     @FXML
+    /** Label of tvTitle. */
     private Label tvTitle;
     @FXML 
+    /** webView of trailer View. */
     private WebView trailerView;
     @FXML
+    /** Imageview of tv show poster. */
     private ImageView tvPoster;
     @FXML
+    /** TextArea of tv show details. */
     private TextArea tvDetails;
     @FXML
+    /** scrollPane of cast. */
     private ScrollPane castScroller;
     @FXML
+    /** BorderPane for display. */
     private BorderPane borderPane;
     
-    public TVInfoController() {
+    /**
+     * Empty constructor
+     */
+    public TVInfoController() 
+    {
     	
     }
     
-    public void init(TvSeries show) {
+    /**
+     * Initializes the program
+     * @param show chosen by user
+     */
+    public void init(TvSeries show) 
+    {
     	this.show = show;
-    	
     	setTvTitle();
     	setTvImage();
     	setTvDetails();
@@ -48,24 +64,38 @@ public class TVInfoController {
     	setCast();
     }
     
-    private void setTvTitle() {
-    	//borderPane.setStyle("-fx-border-color: black;");
+    /**
+     * Setter sets thetitle of the tv show
+     */
+    private void setTvTitle() 
+    {
     	tvTitle.setText(show.getName());
     }
     
-    private void setTvImage() {
+    /**
+     * Setter sets the poster image of the tv show
+     */
+    private void setTvImage() 
+    {
     	Image imgPoster = new Image("http://image.tmdb.org/t/p/w342/" + show.getPosterPath());
     	tvPoster.setImage(imgPoster);
     }
     
-    private void setTvDetails() {
+    /**
+     * Setter sets th etv show overview details
+     */
+    private void setTvDetails() 
+    {
     	
-    	tvDetails.setStyle("-fx-border-color: black;");
+      tvDetails.setStyle("-fx-border-color: black;");
       tvDetails.setText("Original Title: "+show.getOriginalName()+"\nReleased Date: "
-      +show.getFirstAirDate()+
-      "\n\nShow: Description: "+show.getOverview());
+      +show.getFirstAirDate()+ "\nNumber of seasons: "+show.getNumberOfSeasons()+
+      "\n\nShow Description \n"+show.getOverview());
     }
     
+    /**
+     * Setter sets the cast of the tv show
+     */
     private void setCast()
     {
     	castScroller.setStyle("-fx-border-color: black;");
@@ -74,7 +104,11 @@ public class TVInfoController {
     	castScroller.setContent(vbox);
     }
     
-    private void setTrailerView() {
+    /**
+     * Setter sets the trailer view of the tv show
+     */
+    private void setTrailerView() 
+    {
     	String youtubeKey = "http://api.themoviedb.org/3/tv/" + 
 	    		show.getId() + "/videos?api_key=d69cd7f2a6f9624840bee0c1fc2a9ee0";
 	    	URL urlYoutubeKey = null;
@@ -101,6 +135,11 @@ public class TVInfoController {
 	    	webEngine.load("http://www.youtube.com/embed/" + trailerKey + "?autoplay=1");
     }
     
+    /**
+     * gets the cast pane
+     * @param list of cast members
+     * @return VBox
+     */
     private VBox getCastPane(ArrayList<MovieCastMember> list)
     {
     	VBox vbox = new VBox();

@@ -111,6 +111,11 @@ public class ResultsFrame extends JFrame {
         display.setVisible(true);
     }
     
+    /**
+     * Creates a JFrame to display one person.
+     * @param title the title of the JFrame
+     * @param fetchPeople the person to display on the JFrame
+     */
     public static void displayOnePeople(final String title,
             final Function<Integer, ArrayList<Person>> fetchPeople) {
         	ResultsFrame display = new ResultsFrame(title, (p) -> {
