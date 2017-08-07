@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class-diagram version="1.1.14" icons="true" always-add-relationships="true" generalizations="true" realizations="true" 
-  associations="true" dependencies="true" nesting-relationships="true" router="FAN">  
+<class-diagram version="1.1.14" icons="true" automaticImage="JPEG" always-add-relationships="true" 
+  generalizations="true" realizations="true" associations="true" dependencies="true" nesting-relationships="true" 
+  router="FAN">  
   <class id="1" language="java" name="moviedb.ArtworkPanel" project="CIS350_Project" 
     file="/CIS350_Project/src/moviedb/ArtworkPanel.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="88" width="240" x="11" y="7"/>    
@@ -192,7 +193,7 @@
   </class>  
   <class id="22" language="java" name="moviedb.TVInfoFrame" project="CIS350_Project" 
     file="/CIS350_Project/src/moviedb/TVInfoFrame.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="891" y="713"/>    
+    <position height="-1" width="-1" x="884" y="733"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -218,125 +219,137 @@
     </display>  
   </class>  
   <dependency id="25">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="6"/>  
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="2"/>  
   </dependency>  
-  <association id="26">    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="27" name="quiz"/>      
-      <multiplicity id="28" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="false" multiplicity="false"/>  
-  </association>  
-  <association id="29">    
-    <end type="SOURCE" refId="19" navigable="false">      
-      <attribute id="30" name="questions"/>      
-      <multiplicity id="31" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="18" navigable="true"/>    
-    <display labels="false" multiplicity="false"/>  
-  </association>  
-  <dependency id="32">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="4"/>  
-  </dependency>  
-  <nesting id="33">    
+  <nesting id="26">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="9"/>  
+  </nesting>  
+  <nesting id="27">    
     <end type="SOURCE" refId="15"/>    
     <end type="TARGET" refId="16"/>  
   </nesting>  
+  <dependency id="28">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="29">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="21"/>  
+  </dependency>  
+  <dependency id="30">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="15"/>  
+  </dependency>  
+  <dependency id="31">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <dependency id="32">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <dependency id="33">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
   <dependency id="34">    
     <end type="SOURCE" refId="8"/>    
     <end type="TARGET" refId="7"/>  
   </dependency>  
   <dependency id="35">    
-    <end type="SOURCE" refId="22"/>    
-    <end type="TARGET" refId="23"/>  
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="12"/>  
   </dependency>  
   <dependency id="36">    
-    <end type="SOURCE" refId="24"/>    
-    <end type="TARGET" refId="22"/>  
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="10"/>  
   </dependency>  
   <dependency id="37">    
-    <end type="SOURCE" refId="21"/>    
-    <end type="TARGET" refId="7"/>  
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="6"/>  
   </dependency>  
   <dependency id="38">    
-    <end type="SOURCE" refId="23"/>    
-    <end type="TARGET" refId="21"/>  
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="18"/>  
   </dependency>  
-  <association id="39">    
+  <dependency id="39">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <dependency id="40">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <dependency id="41">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <dependency id="42">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <dependency id="43">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="17"/>  
+  </dependency>  
+  <dependency id="44">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <dependency id="45">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <association id="46">    
     <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="40" name="pnlPage"/>      
-      <multiplicity id="41" minimum="0" maximum="1"/>    
+      <attribute id="47" name="pnlPage">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="48" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="false" multiplicity="false"/>  
   </association>  
-  <dependency id="42">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="15"/>  
+  <association id="49">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="50" name="questions">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="51" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="52">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="53" name="quiz">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="54" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <dependency id="55">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="23"/>  
   </dependency>  
-  <dependency id="43">    
-    <end type="SOURCE" refId="21"/>    
-    <end type="TARGET" refId="6"/>  
-  </dependency>  
-  <dependency id="44">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="6"/>  
-  </dependency>  
-  <dependency id="45">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="2"/>  
-  </dependency>  
-  <dependency id="46">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="11"/>  
-  </dependency>  
-  <dependency id="47">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="6"/>  
-  </dependency>  
-  <dependency id="48">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="7"/>  
-  </dependency>  
-  <dependency id="49">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="17"/>  
-  </dependency>  
-  <dependency id="50">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="7"/>  
-  </dependency>  
-  <dependency id="51">    
+  <dependency id="56">    
     <end type="SOURCE" refId="7"/>    
     <end type="TARGET" refId="20"/>  
   </dependency>  
-  <dependency id="52">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="10"/>  
-  </dependency>  
-  <dependency id="53">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="2"/>  
-  </dependency>  
-  <dependency id="54">    
-    <end type="SOURCE" refId="17"/>    
-    <end type="TARGET" refId="18"/>  
-  </dependency>  
-  <dependency id="55">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="12"/>  
-  </dependency>  
-  <nesting id="56">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="9"/>  
-  </nesting>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
     <operations public="true" package="true" protected="true" private="true" static="true"/>  
   </classifier-display>  
-  <association-display labels="false" multiplicity="false"/>
+  <association-display labels="true" multiplicity="false"/>
 </class-diagram>
