@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 
+import java.util.Scanner;
+
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
@@ -27,6 +29,10 @@ import info.movito.themoviedbapi.model.core.SessionToken;
 import info.movito.themoviedbapi.model.people.Person;
 import info.movito.themoviedbapi.model.people.PersonCast;
 import info.movito.themoviedbapi.model.tv.TvSeries;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /*******************************************************************************
  * MovieData class.
@@ -383,36 +389,85 @@ public final class MovieData {
     public static ArrayList<MovieCastMember> getMovieCast(final int movieID){
     	//http://api.themoviedb.org/3/movie/movieID/casts?api_key=apiTolken
     	//Example: http://api.themoviedb.org/3/movie/282035/casts?api_key=d69cd7f2a6f9624840bee0c1fc2a9ee0
-    	/*String WEB_KEY = "http://api.themoviedb.org/3/movie/" + 
+    	String WEB_KEY = "http://api.themoviedb.org/3/movie/" + 
 				movieID + "/casts?api_key="  + 
-				MovieData.getApiKey();*/
+				MovieData.getApiKey();
     	
     	ArrayList<MovieCastMember> cast = new ArrayList<MovieCastMember>();
-    	//TO DO: Add Movie Cast Member for each character only
-    	for(int i = 0; i < 10; i++)
-    	{
-    		MovieCastMember mcm = new MovieCastMember();
-    		cast.add(mcm);
+    	try {
+    		Scanner url = new Scanner(new URL(WEB_KEY).openStream(), "UTF-8"); 
+    		String castJson = url.useDelimiter("\\A").next();
+    		url.close();
+    		
+    		JSONObject jObj = new JSONObject(castJson);
+    		JSONArray castStrs = jObj.getJSONArray("cast");
+    		for(int i = 0; i < castStrs.length(); i++) {
+    			JSONObject castMember = castStrs.getJSONObject(i);
+    			//int cast_id = castMember.getInt("cast_id");
+    			String character = castMember.getString("character");
+    			//String credit_id = castMember.getString("credit_id");
+    			//int gender = castMember.getInt("gender");
+    			int id = castMember.getInt("id");
+    			String name = castMember.getString("name");
+    			//int order = castMember.getInt("order");
+    			String profilePath = castMember.getString("profile_path");
+
+        		MovieCastMember mcm = new MovieCastMember();
+        		mcm.setName(name);
+        		mcm.setCharacterName(character);
+        		mcm.setId(id);
+        		mcm.setProfilePath(profilePath);
+        		cast.add(mcm);
+    		}
+    	} catch (IOException e) {
+    		
+    	} catch (JSONException e) {
     		
     	}
+    	
     	return cast;
     }
     
     public static ArrayList<TvCastMember> getTvCast(final int tvID){
     	//http://api.themoviedb.org/3/movie/movieID/casts?api_key=apiTolken
     	//Example: http://api.themoviedb.org/3/movie/282035/casts?api_key=d69cd7f2a6f9624840bee0c1fc2a9ee0
-    	/*String WEB_KEY = "http://api.themoviedb.org/3/movie/" + 
-				movieID + "/casts?api_key="  + 
-				MovieData.getApiKey();*/
+    	String WEB_KEY = "http://api.themoviedb.org/3/tv/" + 
+				tvID + "/credits?api_key="  + 
+				MovieData.getApiKey();
     	
     	ArrayList<TvCastMember> cast = new ArrayList<TvCastMember>();
-    	//TO DO: Add Movie Cast Member for each character only
-    	for(int i = 0; i < 10; i++)
-    	{
-    		TvCastMember mcm = new TvCastMember();
-    		cast.add(mcm);
+
+    	try {
+    		Scanner url = new Scanner(new URL(WEB_KEY).openStream(), "UTF-8"); 
+    		String castJson = url.useDelimiter("\\A").next();
+    		url.close();
+    		
+    		JSONObject jObj = new JSONObject(castJson);
+    		JSONArray castStrs = jObj.getJSONArray("cast");
+    		for(int i = 0; i < castStrs.length(); i++) {
+    			JSONObject castMember = castStrs.getJSONObject(i);
+    			//int cast_id = castMember.getInt("cast_id");
+    			String character = castMember.getString("character");
+    			//String credit_id = castMember.getString("credit_id");
+    			//int gender = castMember.getInt("gender");
+    			int id = castMember.getInt("id");
+    			String name = castMember.getString("name");
+    			//int order = castMember.getInt("order");
+    			String profilePath = castMember.getString("profile_path");
+
+        		TvCastMember tcm = new TvCastMember();
+        		tcm.setName(name);
+        		tcm.setCharacterName(character);
+        		tcm.setId(id);
+        		tcm.setProfilePath(profilePath);
+        		cast.add(tcm);
+    		}
+    	} catch (IOException e) {
+    		
+    	} catch (JSONException e) {
     		
     	}
+    	
     	return cast;
     }
 }
