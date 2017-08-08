@@ -1,12 +1,12 @@
 package moviedb;
 import info.movito.themoviedbapi.model.tv.TvSeries;
+
 import java.awt.BorderLayout;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import info.movito.themoviedbapi.model.MovieDb;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.fxml.FXMLLoader;
@@ -20,12 +20,17 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Scanner;
 
+/**
+ * Panel to display tv show information.
+ */
+@SuppressWarnings("serial")
 public class TVInfoPanel extends JPanel {
-	public void initAndShowGUI(TvSeries tv) {
+	/**
+	 * sets up the tv panel.
+	 * @param tv the tv show to display
+	 */
+	public void initAndShowGUI(final TvSeries tv) {
 		setLayout(new BorderLayout());
 		
 		final JFXPanel fxPanel = new JFXPanel();
@@ -41,7 +46,12 @@ public class TVInfoPanel extends JPanel {
 		
 	}
 	
-	private void initFX(JFXPanel fxPanel, TvSeries tv) {
+	/**
+	 * initialize fx.
+	 * @param fxPanel the fx panel
+	 * @param tv the tv show
+	 */
+	private void initFX(final JFXPanel fxPanel, final TvSeries tv) {
         // This method is invoked on the JavaFX thread
 
 		try {
@@ -50,14 +60,14 @@ public class TVInfoPanel extends JPanel {
 				      "TVInfoUI.fxml"));
 
 			
-            Parent root = (Parent)loader.load();
-            TVInfoController controller = loader.<TVInfoController>getController();
+            Parent root = (Parent) loader.load();
+            TVInfoController controller =
+            		loader.<TVInfoController>getController();
             controller.init(tv);
             Scene scene = new Scene(root, 250, 150);
             fxPanel.setScene(scene);
         } catch (IOException exc) {
             exc.printStackTrace();
-            System.exit(1);
         }
     }
 }

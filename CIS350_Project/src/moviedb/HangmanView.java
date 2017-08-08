@@ -77,7 +77,7 @@ public class HangmanView extends JFrame {
     /** A label for the introduction. */
     private static JLabel lblNewLabel = new JLabel("Mystery");
     /** The mystery word. */
-    private static String theMystery="";
+    private static String theMystery = "";
     
 
     /**
@@ -95,13 +95,13 @@ public class HangmanView extends JFrame {
         inputPanel = new JPanel(new GridBagLayout());
         inputPanel.setBackground(new Color(244, 164, 96));
         
-        GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-        gbc_lblNewLabel.insets = new Insets(0, 0, 5, 0);
-        gbc_lblNewLabel.gridx = 2;
-        gbc_lblNewLabel.gridy = 0;
+        GridBagConstraints gbclblNewLabel = new GridBagConstraints();
+        gbclblNewLabel.insets = new Insets(0, 0, 5, 0);
+        gbclblNewLabel.gridx = 2;
+        gbclblNewLabel.gridy = 0;
         lblNewLabel.setForeground(new Color(255, 255, 255));
         lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
-        inputPanel.add(lblNewLabel, gbc_lblNewLabel);
+        inputPanel.add(lblNewLabel, gbclblNewLabel);
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.insets = new Insets(0, 0, 5, 5);
         gridBagConstraints.gridx = 1;
@@ -178,14 +178,15 @@ public class HangmanView extends JFrame {
              wordToGuess = h.getWord();
             
             wordTextField.setText("");
-            lblNewLabel.setText("Solve our mistery to find the special "+h.getMistery());
-            theMystery=h.getMistery();
+            lblNewLabel.setText("Solve our mystery to find the special "
+            		+ h.getMystery());
+            theMystery = h.getMystery();
             commandTitle.setText("Guess a letter");
             StringBuilder sbWordKnown = new StringBuilder();
             StringBuilder sbDisplayWord = new StringBuilder();
             for (int i = 0; i < wordToGuess.length(); i++) {
-                if (Character.isDigit(wordToGuess.charAt(i)) || 
-                	Character.isLetter(wordToGuess.charAt(i))) {
+                if (Character.isDigit(wordToGuess.charAt(i))
+                		|| Character.isLetter(wordToGuess.charAt(i))) {
                     sbWordKnown.append("_");
                     sbDisplayWord.append("  __  ");
                 } else {
@@ -221,7 +222,8 @@ public class HangmanView extends JFrame {
         knownWordLabel.setText(sbDisplayString.toString());
 
         if (wordKnown.indexOf("_") < 0) {
-            JOptionPane.showMessageDialog(this, "Congratulations You have Won!");
+            JOptionPane.showMessageDialog(this,
+            		"Congratulations You have Won!");
             displayResult();
             reset();
         }
@@ -231,24 +233,18 @@ public class HangmanView extends JFrame {
     /**
      * Displays the result to the user while populating 
      * a panel containing information on either a show,
-     * actor or movie
+     * actor or movie.
      */
-    private void displayResult()
-    {
-    	 if(theMystery.equals("Actor"))
-         {
-         	ResultsFrame.displayOnePeople("The Mistery "+ theMystery, 
-         			(page)->MovieData.getSearchActors(wordToGuess, 0));
-         }
-         else if(theMystery.equals("Movie"))
-         {
-         	ResultsFrame.displayMovies("The Mistery "+ theMystery, 
-         			(page)->MovieData.getSearchMovies(wordToGuess, 0));
-         }
-         else
-         {
-         	ResultsFrame.displayTvSeries("The Mistery "+ theMystery, 
-         			(page)->MovieData.getSearchTVShows(wordToGuess, 0));
+    private void displayResult() {
+    	 if (theMystery.equals("Actor")) {
+         	ResultsFrame.displayOnePeople("The Mystery " + theMystery, 
+         	        (page) -> MovieData.getSearchActors(wordToGuess, 0));
+         } else if (theMystery.equals("Movie")) {
+         	ResultsFrame.displayMovies("The Mystery " + theMystery, 
+         	        (page) -> MovieData.getSearchMovies(wordToGuess, 0));
+         } else {
+         	ResultsFrame.displayTvSeries("The Mystery " + theMystery, 
+         	        (page) -> MovieData.getSearchTVShows(wordToGuess, 0));
          }
     }
     /**
@@ -303,7 +299,8 @@ public class HangmanView extends JFrame {
             case 6: // L Leg
                 g.drawLine(x, y + 40 + 80, x - 20, y + 40 + 80 + 40);
                 JOptionPane.showMessageDialog(this,
-                        "Game over!\nThe name of the special "+ theMystery +" is: "+ wordToGuess);
+                        "Game over!\nThe name of the special " + theMystery
+                        + " is: " + wordToGuess);
                 displayResult();
                 reset();
                 break;
@@ -325,9 +322,9 @@ public class HangmanView extends JFrame {
 
         hangmanPanel = new JPanel();
         hangmanPanel.setBackground(new Color(255, 255, 255));
-        JLabel label_1 = new JLabel(new ImageIcon(hangmanImage));
-        label_1.setBackground(new Color(255, 255, 255));
-        hangmanPanel.add(label_1);
+        JLabel label1 = new JLabel(new ImageIcon(hangmanImage));
+        label1.setBackground(new Color(255, 255, 255));
+        hangmanPanel.add(label1);
         getContentPane().add(hangmanPanel, BorderLayout.WEST);
         revalidate();
 

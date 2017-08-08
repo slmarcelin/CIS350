@@ -45,8 +45,8 @@ public class TvPanel extends JPanel {
         
         JButton btnMoreInfo = new JButton("More TV Show Info");
         btnMoreInfo.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent arg0) {
-        		TVInfoFrame tif = new TVInfoFrame(tv);
+        	public void actionPerformed(final ActionEvent arg0) {
+        		new TVInfoFrame(tv);
         	}
         });
 

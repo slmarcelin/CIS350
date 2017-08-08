@@ -24,7 +24,6 @@ import javax.swing.ScrollPaneConstants;
 
 import com.google.common.base.Function;
 
-import javax.swing.JPanel;
 /**
  * Frm_DisplayResults class.
  **/
@@ -52,7 +51,7 @@ public class ResultsFrame extends JFrame {
               JPanel[] panels = new JPanel[items.size()];
               for (int i = 0; i < items.size(); i++) {
             	  MediaType mt = items.get(i).getMediaType();
-            	  if(mt == MediaType.MOVIE) {
+            	  if (mt == MediaType.MOVIE) {
             		  MovieDb m = (MovieDb) items.get(i);
             		  panels[i] = new ArtworkPanel(MovieData.getMoviePoster(
                               m, "w92"), new MoviePanel(m));
@@ -90,7 +89,8 @@ public class ResultsFrame extends JFrame {
                 JPanel[] panels = new JPanel[movies.size()];
                 for (int i = 0; i < movies.size(); i++) {
                     panels[i] = new ArtworkPanel(MovieData.getMoviePoster(
-                            movies.get(i), "w92"), new MoviePanel(movies.get(i)));
+                            movies.get(i), "w92"),
+                            new MoviePanel(movies.get(i)));
                 }
                 return panels;
             } catch (Exception e) {
@@ -116,7 +116,8 @@ public class ResultsFrame extends JFrame {
                 JPanel[] panels = new JPanel[tvseries.size()];
                 for (int i = 0; i < tvseries.size(); i++) {
                     panels[i] = new ArtworkPanel(MovieData.getTvPoster(
-                            tvseries.get(i), "w92"), new TvPanel(tvseries.get(i)));
+                            tvseries.get(i), "w92"),
+                            new TvPanel(tvseries.get(i)));
                 }
                 return panels;
             } catch (Exception e) {
@@ -141,7 +142,8 @@ public class ResultsFrame extends JFrame {
                 JPanel[] panels = new JPanel[people.size()];
                 for (int i = 0; i < people.size(); i++) {
                     panels[i] = new ArtworkPanel(MovieData.getPersonProfile(
-                            people.get(i), "w92"), new PersonPanel(people.get(i)));
+                            people.get(i), "w92"),
+                            new PersonPanel(people.get(i)));
                 }
                 return panels;
             } catch (Exception e) {
@@ -164,9 +166,10 @@ public class ResultsFrame extends JFrame {
             try {
                 ArrayList<Person> people = fetchPeople.apply(p);
                 JPanel[] panels = new JPanel[people.size()];
-                int i=0;       
+                int i = 0;       
                     panels[i] = new ArtworkPanel(MovieData.getPersonProfile(
-                            people.get(i), "w92"), new PersonPanel(people.get(i)));
+                            people.get(i), "w92"),
+                            new PersonPanel(people.get(i)));
                 return panels;
             } catch (Exception e) {
                 return new JPanel[0];

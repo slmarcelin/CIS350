@@ -1,8 +1,10 @@
 package moviedb;
 
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -18,6 +20,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
+/**
+ * The controller for the movie info view.
+ */
 public class MovieInfoController {
 	/**The desired movie.*/
 	private MovieDb movie;
@@ -41,19 +46,18 @@ public class MovieInfoController {
     private BorderPane borderPane;
     
     /**
-     * Controller empty
+     * Constructs the MovieInfoController.
      */
     public MovieInfoController() {
     	
     }
     
     /**
-     * init function instantiate the program
-     * @param movie the one chosen
+     * init function instantiate the program.
+     * @param pMovie the one chosen
      */
-    public void init(MovieDb movie)
-    {
-    	this.movie = movie;
+    public void init(final MovieDb pMovie) {
+    	this.movie = pMovie;
     	setMovieTitle();
     	setMovieImage();
     	setMovieDetails();
@@ -62,38 +66,36 @@ public class MovieInfoController {
     }
     
     /**
-     * Setter sets the movie title
+     * Setter sets the movie title.
      */
-    private void setMovieTitle() 
-    {
+    private void setMovieTitle() {
     	movieTitle.setText(movie.getTitle());
     }
     
     /**
-     * Setter sets the movie poster image
+     * Setter sets the movie poster image.
      */
-    private void setMovieImage() 
-    {
-    	Image imgPoster = new Image("http://image.tmdb.org/t/p/w342/" + movie.getPosterPath());
+    private void setMovieImage() {
+    	Image imgPoster = new Image(
+    	        "http://image.tmdb.org/t/p/w342/" + movie.getPosterPath());
     	moviePoster.setImage(imgPoster);
     }
     
     /**
-     * Setter sets and displays the movie details
+     * Setter sets and displays the movie details.
      */
-    private void setMovieDetails() 
-    {	
+    private void setMovieDetails() {	
       movieDetails.setStyle("-fx-border-color: black;");
-      movieDetails.setText("Original Title: "+movie.getOriginalTitle()+"\nReleased Date: "
-      +movie.getReleaseDate()+"\nOriginal Language: "+movie.getOriginalLanguage() +
-      "\n\nMovie Description: "+movie.getOverview());
+      movieDetails.setText("Original Title: " + movie.getOriginalTitle()
+    		  + "\nReleased Date: " + movie.getReleaseDate()
+    		  + "\nOriginal Language: " + movie.getOriginalLanguage()
+    		  + "\n\nMovie Description: " + movie.getOverview());
     }
     
     /**
-     * Setter sets the list of cast
+     * Setter sets the list of cast.
      */
-    private void setCast()
-    {
+    private void setCast() {
     	castScroller.setStyle("-fx-border-color: black;");
     	VBox vbox = getCastPane(MovieData.getMovieCast(movie.getId()));
     	castScroller.setFitToWidth(true);
@@ -101,52 +103,61 @@ public class MovieInfoController {
     }
     
     /**
-     * Setter sets the trailer view
+     * Setter sets the trailer view.
      */
     private void setTrailerView() {
-    	String youtubeKey = "http://api.themoviedb.org/3/movie/" + 
-	    		movie.getId() + "/videos?api_key=d69cd7f2a6f9624840bee0c1fc2a9ee0";
+    	String trailerKey = null;
+    	String youtubeKey = "http://api.themoviedb.org/3/movie/" 
+	    		+ movie.getId()
+	    		+ "/videos?api_key=d69cd7f2a6f9624840bee0c1fc2a9ee0";
 	    	URL urlYoutubeKey = null;
 	    	try {
 				urlYoutubeKey = new URL(youtubeKey);
+
+		    	Scanner scnr = null;
+		    	try {
+		            scnr = new Scanner(new InputStreamReader(
+		            		urlYoutubeKey.openStream(),
+		            		Charset.defaultCharset()));
+		            trailerKey = scnr.nextLine();
+		            scnr.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+		    	
 			} catch (MalformedURLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 	    	
-	    	Scanner scnr = null;
-	    	try {
-				scnr = new Scanner(urlYoutubeKey.openStream());
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	    	
-	    	String trailerKey = scnr.nextLine();
-	    	trailerKey = trailerKey.substring(trailerKey.indexOf("key") + 6, trailerKey.indexOf("key") + 17);
-	        //Group  root  =  new  Group();
-	    	//trailerView = new WebView();
-	    	WebEngine webEngine = trailerView.getEngine();
-	    	webEngine.load("http://www.youtube.com/embed/" + trailerKey + "?autoplay=1");
+	    	if (trailerKey != null) { 
+	    	    trailerKey = trailerKey.substring(trailerKey.indexOf("key")
+	    				+ 6, trailerKey.indexOf("key") + 17);
+	    		//Group  root  =  new  Group();
+	    		//trailerView = new WebView();
+	    		WebEngine webEngine = trailerView.getEngine();
+	    		webEngine.load("http://www.youtube.com/embed/"
+	    				+ trailerKey + "?autoplay=1");
+	    	}
     }
     
     /**
-     * Sets the list of movie cast members
-     * @param list
+     * Sets the list of movie cast members.
+     * @param list the members to display
      * @return VBox for display
      */
-    private VBox getCastPane(ArrayList<MovieCastMember> list)
-    {
+    private VBox getCastPane(final ArrayList<MovieCastMember> list) {
     	VBox vbox = new VBox();
-    	for(MovieCastMember member : list) {
+    	for (MovieCastMember member : list) {
     		BorderPane memberPane = new BorderPane();
-    		Image profile = new Image("http://image.tmdb.org/t/p/w45" + member.getProfilePath());
+    		Image profile = new Image(
+                    "http://image.tmdb.org/t/p/w45" + member.getProfilePath());
     		ImageView memberView = new ImageView(profile);
     		
     		Label memberName = new Label(member.getName());
-    		memberName.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #c0c0c0, #ffffff)");
-    		Label memberInfo = new Label(" ID: " + member.getId() + "\n" + 
-    				" Character Played: " + member.getCharacterName() + "\n");
+    		memberName.setStyle("-fx-background-color: linear-gradient("
+    			    + "from 25% 25% to 100% 100%, #c0c0c0, #ffffff)");
+    		Label memberInfo = new Label(" ID: " + member.getId() + "\n" 
+                    + " Character Played: " + member.getCharacterName() + "\n");
     		
     		memberPane.setLeft(memberView);
     		memberPane.setTop(memberName);

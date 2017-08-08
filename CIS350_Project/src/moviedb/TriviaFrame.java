@@ -22,7 +22,6 @@ import java.awt.Color;
 
 import javax.swing.JTextField;
 import javax.swing.JOptionPane;
-import java.util.Random;
 /**
  * The window for displaying a trivia quiz.
  */
@@ -213,11 +212,11 @@ public class TriviaFrame extends JFrame {
                 int results = results();
                 JOptionPane.showMessageDialog(null, "You have scored "
                    + results + " points\n"
-                   +"       Answers\n"+ "1-"+ quiz.getQuestion(0).getAnswer()
-                   +"\n2-" + quiz.getQuestion(1).getAnswer()
-                   +"\n3-" + quiz.getQuestion(2).getAnswer()
-                   +"\n4-" + quiz.getQuestion(3).getAnswer()
-                   +"\n5-" + quiz.getQuestion(4).getAnswer(),"The results",
+                   + "       Answers\n" + "1-" + quiz.getQuestion(0).getAnswer()
+                   + "\n2-" + quiz.getQuestion(1).getAnswer()
+                   + "\n3-" + quiz.getQuestion(2).getAnswer()
+                   + "\n4-" + quiz.getQuestion(3).getAnswer()
+                   + "\n5-" + quiz.getQuestion(4).getAnswer(), "The results",
                    JOptionPane.INFORMATION_MESSAGE);
                
                 question1.setText("");

@@ -23,15 +23,17 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Scanner;
 
 /**
- *Sets a JPanel for movie info 
+ *Sets a JPanel for movie info.
  */
+@SuppressWarnings("serial")
 public class MovieInfoPanel extends JPanel {
-	public void initAndShowGUI(MovieDb movie) {
+	/**
+	 * Constructs the MovieInfoPanel GUI.
+	 * @param movie the movie to display
+	 */
+	public void initAndShowGUI(final MovieDb movie) {
 		setLayout(new BorderLayout());
 		
 		final JFXPanel fxPanel = new JFXPanel();
@@ -47,7 +49,12 @@ public class MovieInfoPanel extends JPanel {
 		
 	}
 	
-	private void initFX(JFXPanel fxPanel, MovieDb movie) {
+	/**
+	 * Initializes fx.
+	 * @param fxPanel the fx panel
+	 * @param movie the movie to display
+	 */
+	private void initFX(final JFXPanel fxPanel, final MovieDb movie) {
         // This method is invoked on the JavaFX thread
 
 		try {
@@ -56,14 +63,14 @@ public class MovieInfoPanel extends JPanel {
 				      "MovieInfoUI.fxml"));
 
 			
-            Parent root = (Parent)loader.load();
-            MovieInfoController controller = loader.<MovieInfoController>getController();
+            Parent root = (Parent) loader.load();
+            MovieInfoController controller =
+            		loader.<MovieInfoController>getController();
             controller.init(movie);
             Scene scene = new Scene(root, 250, 150);
             fxPanel.setScene(scene);
         } catch (IOException exc) {
             exc.printStackTrace();
-            System.exit(1);
         }
     }
 }

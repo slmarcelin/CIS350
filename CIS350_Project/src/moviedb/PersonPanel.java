@@ -31,11 +31,10 @@ public class PersonPanel extends JPanel {
 
         JTextArea txtId = new JTextArea(" ID: " + person.getId());
         
-      //TODO: Character if necessary
         if (person instanceof MovieCastMember) {
-        	MovieCastMember member = (MovieCastMember)person;
-        	txtId.setText(txtId.getText() + "\n\n Character: " + 
-        	member.getCharacterName());
+        	MovieCastMember member = (MovieCastMember) person;
+        	txtId.setText(txtId.getText() + "\n\n Character: "
+        			+ member.getCharacterName());
         }
         
         txtId.setEditable(false);

@@ -1,18 +1,22 @@
 package moviedb;
 import info.movito.themoviedbapi.model.tv.TvSeries;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
-import info.movito.themoviedbapi.model.MovieDb;
-
 /**
- * Frame of TV show info
+ * Frame of TV show info.
  */
+@SuppressWarnings("serial")
 public class TVInfoFrame extends JFrame {
-	TVInfoFrame(TvSeries tv){
+	/**
+	 * Constructs a TVInfoFrame window.
+	 * @param tv the tv show to display
+	 */
+	TVInfoFrame(final TvSeries tv) {
 		setLayout(new BorderLayout());
 		TVInfoPanel tvip = new TVInfoPanel(); 
 		

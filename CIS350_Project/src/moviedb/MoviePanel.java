@@ -43,8 +43,8 @@ public class MoviePanel extends JPanel {
         
         JButton btnMoreInfo = new JButton("More Movie Info");
         btnMoreInfo.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent arg0) {
-        		MovieInfoFrame mif = new MovieInfoFrame(movie);
+        	public void actionPerformed(final ActionEvent arg0) {
+        		new MovieInfoFrame(movie);
         	}
         });
 

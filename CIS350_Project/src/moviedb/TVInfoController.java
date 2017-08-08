@@ -1,10 +1,15 @@
 package moviedb;
 import info.movito.themoviedbapi.model.tv.TvSeries;
+
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+
 
 
 import javafx.fxml.FXML;
@@ -20,8 +25,10 @@ import javafx.scene.text.TextAlignment;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
-public class TVInfoController 
-{
+/**
+ * The TVInfo controller for fx.
+ */
+public class TVInfoController {
 	/** the chosen tv show. */
 	private TvSeries show;
     @FXML
@@ -44,20 +51,17 @@ public class TVInfoController
     private BorderPane borderPane;
     
     /**
-     * Empty constructor
+     * Empty constructor.
      */
-    public TVInfoController() 
-    {
-    	
+    public TVInfoController() {    	
     }
     
     /**
-     * Initializes the program
-     * @param show chosen by user
+     * Initializes the program.
+     * @param pShow chosen by user
      */
-    public void init(TvSeries show) 
-    {
-    	this.show = show;
+    public void init(final TvSeries pShow) {
+    	this.show = pShow;
     	setTvTitle();
     	setTvImage();
     	setTvDetails();
@@ -66,39 +70,37 @@ public class TVInfoController
     }
     
     /**
-     * Setter sets thetitle of the tv show
+     * Setter sets the title of the tv show.
      */
-    private void setTvTitle() 
-    {
+    private void setTvTitle() {
     	tvTitle.setText(show.getName());
     }
     
     /**
-     * Setter sets the poster image of the tv show
+     * Setter sets the poster image of the tv show.
      */
-    private void setTvImage() 
-    {
-    	Image imgPoster = new Image("http://image.tmdb.org/t/p/w342/" + show.getPosterPath());
+    private void setTvImage() {
+    	Image imgPoster = new Image(
+    	        "http://image.tmdb.org/t/p/w342/" + show.getPosterPath());
     	tvPoster.setImage(imgPoster);
     }
     
     /**
-     * Setter sets th etv show overview details
+     * Setter sets th etv show overview details.
      */
-    private void setTvDetails() 
-    {
+    private void setTvDetails() {
     	
       tvDetails.setStyle("-fx-border-color: black;");
-      tvDetails.setText("Original Title: "+show.getOriginalName()+"\nReleased Date: "
-      +show.getFirstAirDate()+ "\nNumber of seasons: "+show.getNumberOfSeasons()+
-      "\n\nShow Description \n"+show.getOverview());
+      tvDetails.setText("Original Title: " + show.getOriginalName()
+    		  + "\nReleased Date: " + show.getFirstAirDate()
+    		  + "\nNumber of seasons: " + show.getNumberOfSeasons()
+    		  + "\n\nShow Description \n" + show.getOverview());
     }
     
     /**
-     * Setter sets the cast of the tv show
+     * Setter sets the cast of the tv show.
      */
-    private void setCast()
-    {
+    private void setCast() {
     	castScroller.setStyle("-fx-border-color: black;");
     	VBox vbox = getCastPane(MovieData.getTvCast(show.getId()));
     	castScroller.setFitToWidth(true);
@@ -106,54 +108,63 @@ public class TVInfoController
     }
     
     /**
-     * Setter sets the trailer view of the tv show
+     * Setter sets the trailer view of the tv show.
      */
-    private void setTrailerView() 
-    {
-    	String youtubeKey = "http://api.themoviedb.org/3/tv/" + 
-	    		show.getId() + "/videos?api_key=d69cd7f2a6f9624840bee0c1fc2a9ee0";
+    private void setTrailerView() {
+    	String trailerKey = null;
+    	String youtubeKey = "http://api.themoviedb.org/3/tv/" + show.getId()
+	    		+ "/videos?api_key=d69cd7f2a6f9624840bee0c1fc2a9ee0";
 	    	URL urlYoutubeKey = null;
+	    	
 	    	try {
 				urlYoutubeKey = new URL(youtubeKey);
+		    	
+		    	Scanner scnr = null;
+		    	try {
+				    scnr = new Scanner(new InputStreamReader(
+					        urlYoutubeKey.openStream(),
+					        Charset.defaultCharset()));
+
+			    	trailerKey = scnr.nextLine();
+			    	
+				    scnr.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			} catch (MalformedURLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 	    	
-	    	Scanner scnr = null;
-	    	try {
-				scnr = new Scanner(urlYoutubeKey.openStream());
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	    	
-	    	String trailerKey = scnr.nextLine();
-	    	trailerKey = trailerKey.substring(trailerKey.indexOf("key") + 6, trailerKey.indexOf("key") + 17);
-	        //Group  root  =  new  Group();
-	    	//trailerView = new WebView();
-	    	WebEngine webEngine = trailerView.getEngine();
-	    	webEngine.load("http://www.youtube.com/embed/" + trailerKey + "?autoplay=1");
+	    	if (trailerKey != null) {
+                trailerKey = trailerKey.substring(trailerKey.indexOf("key") + 6,
+	    				trailerKey.indexOf("key") + 17);
+	    		//Group  root  =  new  Group();
+	    		//trailerView = new WebView();
+	    		WebEngine webEngine = trailerView.getEngine();
+	    		webEngine.load("http://www.youtube.com/embed/"
+	    				+ trailerKey + "?autoplay=1");
+	    	}
     }
     
     /**
-     * gets the cast pane
+     * gets the cast pane.
      * @param list of cast members
      * @return VBox
      */
-    private VBox getCastPane(ArrayList<TvCastMember> list)
-    {
+    private VBox getCastPane(final ArrayList<TvCastMember> list) {
     	VBox vbox = new VBox();
     	
-    	for(TvCastMember member : list) {
+    	for (TvCastMember member : list) {
     		BorderPane memberPane = new BorderPane();
-    		Image profile = new Image("http://image.tmdb.org/t/p/w45" + member.getProfilePath());
+    		Image profile = new Image(
+                    "http://image.tmdb.org/t/p/w45" + member.getProfilePath());
     		ImageView memberView = new ImageView(profile);
     		
     		Label memberName = new Label(member.getName());
-    		memberName.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #c0c0c0, #ffffff)");
-    		Label memberInfo = new Label(" ID: " + member.getId() + "\n" + 
-    				" Character Played: " + member.getCharacterName() + "\n");
+    		memberName.setStyle("-fx-background-color: linear-gradient("
+    		        + "from 25% 25% to 100% 100%, #c0c0c0, #ffffff)");
+    		Label memberInfo = new Label(" ID: " + member.getId() + "\n" 
+                    + " Character Played: " + member.getCharacterName() + "\n");
     		memberInfo.setAlignment(Pos.CENTER_LEFT);
     		//memberInfo.setTextAlignment(TextAlignment.LEFT);
     		

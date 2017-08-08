@@ -13,8 +13,13 @@ import info.movito.themoviedbapi.model.MovieDb;
  * chosen movie.
  * @author Alec Willison
  */
+@SuppressWarnings("serial")
 public class MovieInfoFrame extends JFrame {
-	MovieInfoFrame(MovieDb movie){
+	/**
+	 * Constructs a MovieInfoFrame.
+	 * @param movie the movie to display in the frame
+	 */
+	MovieInfoFrame(final MovieDb movie) {
 		setLayout(new BorderLayout());
 		MovieInfoPanel mip = new MovieInfoPanel(); 
 	

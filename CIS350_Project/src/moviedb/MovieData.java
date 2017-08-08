@@ -51,6 +51,7 @@ public final class MovieData {
     static {
         tmdbApi = new TmdbApi("d69cd7f2a6f9624840bee0c1fc2a9ee0");
         sessionToken = getNewSessionToken();
+        System.out.println(sessionToken);
     }
 
     /***************************************************************************
@@ -72,12 +73,16 @@ public final class MovieData {
         return newSessionToken;
     }
     
+    /**
+     * Fetches the API key.
+     * @return the API key
+     */
     public static String getApiKey() {
     	return "d69cd7f2a6f9624840bee0c1fc2a9ee0";
     }
     
     /***************************************************************************
-     * Returns a list of any search results
+     * Returns a list of any search results.
      * @param page the current display page
      * @param searchString the string to search for
      * @return ArrayList of results
@@ -364,13 +369,16 @@ public final class MovieData {
 
     /***************************************************************************
       Finds and returns the poster image of the movie.
-      @param movie of type MOvieDb
+      @param movie of type MovieDb
+      @param posterSize the size of the poster to load
       @return ImageIcon the image
     ***************************************************************************/
-    public static ImageIcon getMoviePoster(final MovieDb movie, final String posterSize) {
+    public static ImageIcon getMoviePoster(final MovieDb movie,
+    		final String posterSize) {
         try {
             BufferedImage img = ImageIO.read(
-                    new URL(IMAGE_ROOT_URL + posterSize + "/" + movie.getPosterPath()));
+                    new URL(IMAGE_ROOT_URL + posterSize + "/"
+                    		+ movie.getPosterPath()));
             return new ImageIcon(img);
         } catch (IOException e) {
             // Red image
@@ -381,12 +389,15 @@ public final class MovieData {
     /***************************************************************************
       Finds and returns the poster image of the show.
       @param tv of TvSeries
+      @param posterSize the size of poster to load
       @return ImageIcon the image
     ***************************************************************************/
-    public static ImageIcon getTvPoster(final TvSeries tv, String posterSize) {
+    public static ImageIcon getTvPoster(final TvSeries tv,
+    		final String posterSize) {
         try {
             BufferedImage img = ImageIO.read(
-                    new URL(IMAGE_ROOT_URL + posterSize + "/" + tv.getPosterPath()));
+                    new URL(IMAGE_ROOT_URL + posterSize + "/"
+                    		+ tv.getPosterPath()));
             return new ImageIcon(img);
         } catch (IOException e) {
             // Red image
@@ -397,12 +408,15 @@ public final class MovieData {
     /***************************************************************************
       Finds and returns the profile image of an actor.
       @param p the actor to find an image for
+      @param posterSize the size of poster to load
       @return ImageIcon the image
     ***************************************************************************/
-    public static ImageIcon getPersonProfile(final Person p, String posterSize) {
+    public static ImageIcon getPersonProfile(final Person p,
+    		final String posterSize) {
         try {
             BufferedImage img = ImageIO.read(
-                    new URL(IMAGE_ROOT_URL + posterSize + "/" + p.getProfilePath()));
+                    new URL(IMAGE_ROOT_URL + posterSize + "/"
+            + p.getProfilePath()));
             return new ImageIcon(img);
         } catch (IOException e) {
             // Red image
@@ -410,22 +424,27 @@ public final class MovieData {
         }
     }
     
-    public static ArrayList<MovieCastMember> getMovieCast(final int movieID){
+    /**************************************************************************
+     * Finds the cast of a given movie.
+     * @param movieID the id of the movie
+     * @return the cast of the movie
+     *************************************************************************/
+    public static ArrayList<MovieCastMember> getMovieCast(final int movieID) {
     	//http://api.themoviedb.org/3/movie/movieID/casts?api_key=apiTolken
-    	//Example: http://api.themoviedb.org/3/movie/282035/casts?api_key=d69cd7f2a6f9624840bee0c1fc2a9ee0
-    	String WEB_KEY = "http://api.themoviedb.org/3/movie/" + 
-				movieID + "/casts?api_key="  + 
-				MovieData.getApiKey();
+    	//Example: http://api.themoviedb.org/3/movie/282035/
+    	//			casts?api_key=d69cd7f2a6f9624840bee0c1fc2a9ee0
+    	String webKey = "http://api.themoviedb.org/3/movie/" 
+		        + movieID + "/casts?api_key=" + MovieData.getApiKey();
     	
     	ArrayList<MovieCastMember> cast = new ArrayList<MovieCastMember>();
     	try {
-    		Scanner url = new Scanner(new URL(WEB_KEY).openStream(), "UTF-8"); 
+    	    Scanner url = new Scanner(new URL(webKey).openStream(), "UTF-8"); 
     		String castJson = url.useDelimiter("\\A").next();
     		url.close();
     		
     		JSONObject jObj = new JSONObject(castJson);
     		JSONArray castStrs = jObj.getJSONArray("cast");
-    		for(int i = 0; i < castStrs.length(); i++) {
+    		for (int i = 0; i < castStrs.length(); i++) {
     			JSONObject castMember = castStrs.getJSONObject(i);
     			//int cast_id = castMember.getInt("cast_id");
     			String character = castMember.getString("character");
@@ -434,7 +453,7 @@ public final class MovieData {
     			int id = castMember.getInt("id");
     			String name = castMember.getString("name");
     			//int order = castMember.getInt("order");
-    			String profilePath = castMember.getString("profile_path");
+    		    String profilePath = castMember.getString("profile_path");
 
         		MovieCastMember mcm = new MovieCastMember();
         		mcm.setName(name);
@@ -451,24 +470,29 @@ public final class MovieData {
     	
     	return cast;
     }
-    
-    public static ArrayList<TvCastMember> getTvCast(final int tvID){
+
+    /**************************************************************************
+     * Finds the cast of a given tv show.
+     * @param tvID the id of the tv show
+     * @return the cast of the tv show
+     *************************************************************************/
+    public static ArrayList<TvCastMember> getTvCast(final int tvID) {
     	//http://api.themoviedb.org/3/movie/movieID/casts?api_key=apiTolken
-    	//Example: http://api.themoviedb.org/3/movie/282035/casts?api_key=d69cd7f2a6f9624840bee0c1fc2a9ee0
-    	String WEB_KEY = "http://api.themoviedb.org/3/tv/" + 
-				tvID + "/credits?api_key="  + 
-				MovieData.getApiKey();
+    	//Example: http://api.themoviedb.org/3/movie/282035/
+    	//			casts?api_key=d69cd7f2a6f9624840bee0c1fc2a9ee0
+    	String webKey = "http://api.themoviedb.org/3/tv/"
+		        + tvID + "/credits?api_key=" + MovieData.getApiKey();
     	
     	ArrayList<TvCastMember> cast = new ArrayList<TvCastMember>();
 
     	try {
-    		Scanner url = new Scanner(new URL(WEB_KEY).openStream(), "UTF-8"); 
+    	    Scanner url = new Scanner(new URL(webKey).openStream(), "UTF-8"); 
     		String castJson = url.useDelimiter("\\A").next();
     		url.close();
     		
     		JSONObject jObj = new JSONObject(castJson);
     		JSONArray castStrs = jObj.getJSONArray("cast");
-    		for(int i = 0; i < castStrs.length(); i++) {
+    		for (int i = 0; i < castStrs.length(); i++) {
     			JSONObject castMember = castStrs.getJSONObject(i);
     			//int cast_id = castMember.getInt("cast_id");
     			String character = castMember.getString("character");
@@ -477,7 +501,7 @@ public final class MovieData {
     			int id = castMember.getInt("id");
     			String name = castMember.getString("name");
     			//int order = castMember.getInt("order");
-    			String profilePath = castMember.getString("profile_path");
+    		    String profilePath = castMember.getString("profile_path");
 
         		TvCastMember tcm = new TvCastMember();
         		tcm.setName(name);

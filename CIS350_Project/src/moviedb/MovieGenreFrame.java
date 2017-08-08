@@ -92,7 +92,8 @@ public class MovieGenreFrame extends JFrame {
 
             for (MovieDb md : MovieData.getMoviesByGenre(genreID, page)) {
                 totalResults.add(new ArtworkPanel(
-                        MovieData.getMoviePoster(md, "w92"), new MoviePanel(md)));
+                        MovieData.getMoviePoster(md, "w92"),
+                        		new MoviePanel(md)));
             }
 
             scrollPane.setViewportView(totalResults);

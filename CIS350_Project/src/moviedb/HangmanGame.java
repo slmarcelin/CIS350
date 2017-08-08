@@ -56,8 +56,7 @@ public class HangmanGame {
     getter returns Actor/Show/Movie.
     @return mystery of type String
     *************************************/
-    public String getMistery()
-    {
+    public String getMystery() {
     	return mystery;
     }
     
@@ -65,9 +64,8 @@ public class HangmanGame {
     Setter sets mystery to Actor/Show/Movie.
     @param secret word of type String
   ***************************************/
-    public void setMistery(String secret)
-    {
-       this.mystery=secret;
+    public void setMystery(final String secret) {
+       this.mystery = secret;
     }
 
     /***************************************
@@ -147,13 +145,13 @@ public class HangmanGame {
         //generate a word based on the random value
         if (rand < 33) {
             word = MovieData.getRandMovie(source, page).getTitle();
-            setMistery("Movie");
+            setMystery("Movie");
         } else if (rand >= 33 && rand < 66) {
             word = MovieData.getRandShow(source, page).getName();
-            setMistery("Show");
+            setMystery("Show");
         } else {
             word = MovieData.getRandActor(source, page).getName();
-            setMistery("Actor");
+            setMystery("Actor");
         }
         word = word.toUpperCase();
     }
